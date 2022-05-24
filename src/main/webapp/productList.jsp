@@ -17,17 +17,24 @@
 		margin: auto;
 	}
 	#button1{
-		border: 1px solid blue;
+		/* border: 1px solid blue; */
 		width:800px;
 		padding-left: 200px;
 		margin: 50px 0;
 	}
 	.input1{
 		margin-left: 100px;
+		padding: 3px;
 	}
 	img{
-		width: 200px;
-		height: 200px;
+		width: 250px;
+		height: 250px;
+	}
+	#wrap {
+		width: 250px;
+		border : 1px solid darkgrey;
+		margin: 2px;
+		padding: 20px;
 	}
 </style>
 </head>
@@ -40,7 +47,9 @@
 		</div>
 		<div id="contents">
 			<div id="wrap">
-				<a href=""><img src="//image.goodchoice.kr/resize_1000X500x0/affiliate/2018/02/09/5a7cf0570685d.jpg" alt="" /></a>
+				<a href="">
+					<img src="//image.goodchoice.kr/resize_1000X500x0/affiliate/2018/02/09/5a7cf0570685d.jpg" alt="" />
+				</a>
 			</div>
 		</div>
 	</div>
