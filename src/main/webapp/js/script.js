@@ -10,8 +10,6 @@ $(function() {
 	$(".mypage .btn-close").on("click", closeOffCanvasMenu)
 	$(".mypage a").on("click", selected);
 
-	$(".accept").on("click", logout);
-
 });
 
 function onCheckin() {
@@ -44,7 +42,4 @@ function selected() {
 	$(this).addClass("selected");
 }
 
-function logout(){
-	location.href="logout.jsp";
-}
 

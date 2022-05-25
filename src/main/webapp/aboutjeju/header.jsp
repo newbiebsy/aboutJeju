@@ -45,7 +45,7 @@
 					<div class="modal-body">로그아웃 하시겠습니까?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"	data-bs-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary accept"><a href="logout.jsp" class="text-white">확인</a></button>
+						<button type="button" class="btn btn-primary"><a href="logout.jsp" class="text-white">확인</a></button>
 					</div>
 				</div>
 			</div>
