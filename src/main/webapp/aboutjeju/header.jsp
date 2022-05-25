@@ -11,7 +11,8 @@
 		<%
 		Object obj = session.getAttribute("vo");
 		
-		String who = request.getParameter("who");
+		// loginOk와 연결하면 주석 풀기 27~28번 라인 href 와 함께
+		// String who = request.getParameter("who");
 		
 
 		// 로그인되어있는 상태
@@ -23,8 +24,8 @@
 				data-bs-toggle="dropdown" aria-expanded="false"></i>
 			<ul class="dropdown-menu shadow"
 				aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="<%=who%>Modify.jsp">마이페이지</a></li>
-				<li><a class="dropdown-item" href="<%=who%>BookingCheck.jsp">예약내역</a></li>
+				<li><a class="dropdown-item" href="<%-- <%=who%>Modify.jsp --%>">마이페이지</a></li>
+				<li><a class="dropdown-item" href="<%-- <%=who%>BookingCheck.jsp --%>">예약내역</a></li>
 				<li>
 					<hr class="dropdown-divider">
 				</li>
