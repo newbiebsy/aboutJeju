@@ -153,6 +153,40 @@ a {
 	font-size: 15px;
 }
 
+/* 로그인페이지 */
+.header2 {
+	background-color: #428fc7;
+}
+
+.header2>div>a>img {
+	width: 150px;
+}
+
+.findIdOk {
+	height: 90%;
+}
+
+.findIdOk>div {
+	margin-top: 30vh;
+}
+
+.findIdPw button {
+	box-shadow: 3px 3px 1px #ccc;
+}
+
+.changePw {
+	margin-top: 25vh;
+}
+
+/* 맛집페이지 */
+.food .h-120{
+	height:120px;
+}
+
+.food img {
+	height: 100%;
+}
+
 /* 푸터 */
 footer>div>p, footer>div>ul {
 	font-size: 13px;
