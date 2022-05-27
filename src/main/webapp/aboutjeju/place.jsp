@@ -43,6 +43,7 @@
 	<div class="row mt-5 justify-content-evenly">
 
 		<%
+		request.setCharacterEncoding("UTF-8");
 		String cat = request.getParameter("category");
 		String cp = request.getParameter("cp");
 

@@ -178,14 +178,15 @@ a {
 	margin-top: 25vh;
 }
 
-/* 맛집페이지 */
-.food .h-120{
-	height:120px;
+/* 맛집,즐길거리 페이지 */
+.food .h-120 {
+	height: 120px;
 }
 
 .food img {
 	height: 100%;
 }
+
 
 /* 푸터 */
 footer>div>p, footer>div>ul {

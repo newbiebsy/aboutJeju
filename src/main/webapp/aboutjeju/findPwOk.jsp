@@ -2,6 +2,7 @@
 <%@page import="dao.CustomerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("UTF-8");
 String inputId = request.getParameter("inputId");
 String inputQuestion = request.getParameter("inputQuestion");
 String inputAnswer = request.getParameter("inputAnswer");
@@ -26,4 +27,7 @@ if (cwho != null) {
 
 <%
 }
+
+cdao.close();
+odao.close();
 %>

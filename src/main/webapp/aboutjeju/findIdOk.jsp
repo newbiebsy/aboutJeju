@@ -29,6 +29,7 @@
 	<jsp:include page="loginHeader.jsp" />
 
 	<%
+	request.setCharacterEncoding("UTF-8");
 	String inputName = request.getParameter("inputName");
 	String inputPhone = request.getParameter("inputPhone");
 
@@ -37,6 +38,9 @@
 
 	OwnerDAO odao = new OwnerDAO();
 	String oid = odao.findId(inputName, inputPhone);
+	
+	cdao.close();
+	odao.close();
 	%>
 
 	<div class="container-fluid text-center findIdOk">

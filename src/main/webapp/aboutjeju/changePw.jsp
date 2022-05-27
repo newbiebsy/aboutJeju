@@ -27,6 +27,7 @@
 	<jsp:include page="loginHeader.jsp" />
 
 	<%
+	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("inputId");
 	String who = request.getParameter("who");
 	%>

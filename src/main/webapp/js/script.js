@@ -39,6 +39,9 @@ $(function() {
 	$(".changePw #inputRePw, .changePw #inputPw").on("keyup", checkPw);
 	$(".changePw .submit").on("click", changePw);
 
+	fillZero();
+	$(".write .submit").on("click", writeReview);
+
 });
 
 function onCheckin() {
@@ -95,4 +98,29 @@ function changePw() {
 	}
 
 	$(".changePw #changePwfrm").submit();
+}
+
+function fillZero() {
+	var bno = $(".write .bno").text();
+	var zero = "";
+
+	for (var i = 1; i <= 9 - bno.length; i++) {
+		zero += 0;
+	}
+
+	$(".write .bno").text(zero + bno);
+}
+
+function writeReview() {
+	if ($("#inputTitle").val().length < 10) {
+		alert("제목은 5자 이상 입력하여야 합니다");
+		$("#inputTitle").focus();
+		return;
+	} else if ($("#inputContents").val().length < 40) {
+		alert("내용은 20자 이상 입력하여야 합니다");
+		$("#inputContents").focus();
+		return;
+	}
+	
+	$("#writefrm").submit();
 }
