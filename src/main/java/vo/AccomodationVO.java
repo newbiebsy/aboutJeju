@@ -10,7 +10,9 @@ public class AccomodationVO {
 	String adetail;
 	String aphone;
 	float star;
-	
+	int discount;
+	int price;
+
 	public AccomodationVO(int ano, String ono, String aname, String aaddress, String aimage, String atype,
 			String adetail, String aphone) {
 		super();
@@ -23,7 +25,7 @@ public class AccomodationVO {
 		this.adetail = adetail;
 		this.aphone = aphone;
 	}
-	
+
 	public AccomodationVO(int ano, String ono, String aname, String aaddress, String aimage, String atype,
 			String adetail, String aphone, float star) {
 		super();
@@ -36,6 +38,21 @@ public class AccomodationVO {
 		this.adetail = adetail;
 		this.aphone = aphone;
 		this.star = star;
+	}
+
+	public AccomodationVO(int ano, String ono, String aname, String aaddress, String aimage, String atype,
+			String adetail, String aphone, int discount, int price) {
+		super();
+		this.ano = ano;
+		this.ono = ono;
+		this.aname = aname;
+		this.aaddress = aaddress;
+		this.aimage = aimage;
+		this.atype = atype;
+		this.adetail = adetail;
+		this.aphone = aphone;
+		this.discount = discount;
+		this.price = price;
 	}
 
 	public int getAno() {
@@ -108,8 +125,24 @@ public class AccomodationVO {
 
 	public void setStar(float star) {
 		this.star = star;
-	}	
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	
 	
-	
+
 }

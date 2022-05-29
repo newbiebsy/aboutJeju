@@ -33,10 +33,10 @@
 
 	<!-- ## 지역 카테고리 버튼 -->
 	<div class="d-flex justify-content-center mt-4 mx-sm-5">
-		<a href="place.jsp?category=jeju&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제 주 시</a>
-		<a href="place.jsp?category=seoguipo&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">서귀포시</a> 
-		<a href="place.jsp?category=east&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제주동부</a> 
-		<a href="place.jsp?category=west&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제주서부</a>
+		<a href="place.jsp?category=jeju&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제 주 시</a> <a
+			href="place.jsp?category=seoguipo&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">서귀포시</a> <a
+			href="place.jsp?category=east&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제주동부</a> <a
+			href="place.jsp?category=west&cp=1" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">제주서부</a>
 	</div>
 
 	<!-- ## 콘텐츠 - sm 에서는 한개씩 표시됨 -->
@@ -75,7 +75,7 @@
 		for (PlaceVO vo : list) {
 		%>
 
-		<div class="col-sm-6 col-lg-5">
+		<div class="col-sm-6 col-lg-5 position-relative">
 			<div class="card mb-3" style="max-width: 540px;">
 				<div class="row g-0">
 					<div class="col-4 h-120">

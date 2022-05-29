@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- ## 헤더 -->
-<div class="container-fluid mt-4">
+<div class="container-fluid py-4 headerWrap" id="headerWrap">
 	<div class="row header">
 		<div>
 			<a href="main.jsp"><img src="../images/logo.jpg" alt="ABOUT JEJU" class="ps-2"></a>
@@ -59,14 +59,16 @@
 		%>
 
 		<div class="d-flex justify-content-center">
-			<form action="productList.jsp" id="headerfrm" class="rounded-pill mt-4 h-75">
-				<i class="bi bi-search rounded-pill float-end mt-1 p-2 fs-5"></i>
+			<form action="productList.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
+				<i class="bi bi-search rounded-pill float-end p-2 fs-5"></i>
 				<div id="headerinput" class="btn-group h-100" role="group" aria-label="Basic example">
-					<input type="search" id="search" name="search" value="" class="w-50 ps-3" placeholder="검색어 입력"> 
-					<input type="text" id="checkin"	name="checkin" placeholder="체크인" class="w-25" /> 
-					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
+					<input type="search" id="search" name="search" value="" class="w-50 ps-3" placeholder="검색어 입력"> <input type="text" id="checkin"
+						name="checkin" placeholder="체크인" class="w-25" /> <input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
 				</div>
 			</form>
 		</div>
 	</div>
+</div>
+<div class="goingUp">
+	<a href="#headerWrap"><i class="bi bi-arrow-up-circle fs-1 text-center"></i></a>
 </div>
