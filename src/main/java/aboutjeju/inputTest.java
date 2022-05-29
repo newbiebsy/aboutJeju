@@ -24,6 +24,7 @@ public class inputTest {
 			dao.addOne(vo);
 			
 		}
+
 		
 		
 	}
