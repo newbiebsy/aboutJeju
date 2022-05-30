@@ -65,12 +65,6 @@
 			// nextPage method에서 endPage가 totalPage를 넘지 않기 위한 변수
 			int checkEndPage = 0;
 		
-			// 시작페이지 번호
-			int startPage = 1;
-			// 끝페이지 번호
-			int endPage = 4;
-			
-			
 			public int beforePage(int startPage){
 				if(startPage == 1){
 					return 1;
@@ -104,17 +98,17 @@
 			
 			// dao 객체 생성
 			AccomodationDAO dao = new AccomodationDAO();
-			ArrayList<AccomodationVO> list = dao.selectType("모텔",startNo);
+			ArrayList<AccomodationVO> list = dao.selectType("호텔",startNo);
 			
 			String sortType = request.getParameter("type");
 			// 카테고리별 정렬을 위한 빈 문자열
 			String typeCheck = "";
 			if(sortType != null){
-				list = dao.SelectSort("모텔", startNo,sortType);
+				list = dao.SelectSort("호텔", startNo,sortType);
 				typeCheck = "type="+sortType+"&";
 			}
 			// 총 게시물 수 
-			int totalCount = dao.getTotalCount("모텔");
+			int totalCount = dao.getTotalCount("호텔");
 			
 			// 총 페이지 수
 			int totalPage = (totalCount%recordPerPage==0)?
@@ -122,22 +116,22 @@
 			
 			checkEndPage = totalPage;
 		
-			if(currentPage == endPage+1){
-				startPage+=4;
-				endPage +=4;
+			// 시작페이지 번호
+			int startPage = 1;
+			// 끝페이지 번호
+			int endPage = 4;
+			
+			// 페이지 미세조정
+			for(int i=0;i<=endPage;i++){
+				if(currentPage >= 1+(i*4)){
+					startPage = 1+(i*4);
+					endPage = startPage+3;
+					if(currentPage >= totalPage){
+						endPage = totalPage;
+					}
+				}
 			}
-			if(currentPage ==startPage-1){
-				startPage-=4;
-				endPage-=4;
-			}	
-			out.println("<h3>총 게시물수 : "+totalCount+"</h3>");
-			out.println("<h3>한페이지당 게시물건수 : "+recordPerPage+"</h3>");
-			out.println("<h3>총 페이지수 : "+totalPage+"</h3>");
-			out.println("<h3>현재 페이지번호 : "+currentPage+"</h3>");
-			out.println("<h3>게시물 시작번호 : "+startNo+"</h3>");
-			out.println("<h3>시작 페이지 번호 : "+startPage+"</h3>");
-			out.println("<h3>끝 페이지 번호 : "+endPage+"</h3>");
-			out.println("<h3>cp 번호 : "+cp+"</h3>");
+
 		%>
 		<div id="button1">
 			<a href="productList.jsp?type=starsort&cp=<%=currentPage%>"><input type="button" value="별점순"/></a>
@@ -154,8 +148,8 @@
 					<img src=<%=vo.getAimage() %> alt="" />
 					<b><%=vo.getAname() %></b><br>
 					<span>별점</span>
-					<p>모텔 가격</p>
-					<p>모텔 설명<%=vo.getAdetail()%></p>
+					<p><%=vo.getAtype()%> 가격</p>
+					<p><%=vo.getAtype()%> 설명<%=vo.getAdetail()%></p>
 				</a>
 			</div>
 			<%
@@ -175,7 +169,7 @@
 		for(int i=startPage;i<=endPage;i++){
 		
 	%>
-		<a href="productList.jsp?<%=typeCheck%>cp=<%=i%><%=""%>"><%=i %></a>
+		<a href="productList.jsp?<%=typeCheck%>cp=<%=i%>"><%=i %></a>
 	<%
 		}
 	%>
