@@ -22,40 +22,35 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
-<body>
+<body class="login">
 
 	<jsp:include page="loginHeader.jsp" />
 
-	<%
-	request.setCharacterEncoding("UTF-8");
-	String id = request.getParameter("inputId");
-	String who = request.getParameter("who");
-	%>
-	
-	<div class="row changePw">
-		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
-		<form action="changePwOk.jsp" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="changePwfrm">
-			<h4 class="mb-5 fw-bold">비밀번호 재설정</h4>
-			<div class="mb-3 row">
-				<label for="inputPw" class="col-form-label col-4">비밀번호 입력</label>
-				<div class="col-8">
-					<input type="hidden" class="form-control" name="inputId" value="<%=id%>"> 
-					<input type="hidden" class="form-control" name="who" value="<%=who%>"> 
-					<input type="password" class="form-control"	name="inputPw" id="inputPw">
-				</div>
+	<!-- 로그인하기 -->
+	<div class="row">
+		<div class="col-2 col-md-3 col-lg-4"></div>
+		<form action="loginOk.jsp" class="col-8 col-md-6 col-lg-4 mx-auto px-5" id="loginfrm">
+			<h3 class="mb-4 fw-bold text-center">로그인</h3>
+			<div class="position-relative mt-2">
+				<input type="text" class="form-control" name="inputId" id="inputId" placeholder="아이디"> 
+				<label for="inputId"><i	class="bi bi-person-fill fs-2"></i></label>
 			</div>
-			<div class="mb-3 row">
-				<label for="inputRePw" class="col-form-label col-4">비밀번호 재입력</label>
-				<div class="col-8">
-					<input type="password" class="form-control" name="inputRePw" id="inputRePw">
-					<div class="checkPwMsg mt-2">비밀번호 길이 8~20자</div>
-				</div>
+			<div class="position-relative">
+				<input type="password" class="form-control" name="inputPw" id="inputPw" placeholder="비밀번호"> 
+				<label for="inputPw"><i	class="bi bi-key-fill fs-2"></i></label>
 			</div>
 			<div class="mt-4 text-center">
-				<a class="btn btn-outline-primary shadow-sm mx-3 px-3 submit" role="button"><i class="bi bi-check-lg"></i> 확인</a>
+				<a href="contract.jsp?who=customer" class="btn btn-primary shadow-sm mx-3 px-4" role="button">회원가입</a> 
+				<a class="btn btn-primary shadow-sm mx-3 px-4 submit" role="button"> &nbsp;로그인&nbsp; </a>
+			</div>
+			<div class="text-center mt-4 lh-lg">
+				<a href="findIdPw.jsp" class="">ID / PW 찾기</a> 
+				<br /> 
+				<a href="contract.jsp?who=host" class="">호스트 회원가입</a>
 			</div>
 		</form>
-		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
+
+		<div class="col-2 col-md-3 col-lg-4"></div>
 	</div>
 
 	<!-- Bootstrap Bundle with Popper -->

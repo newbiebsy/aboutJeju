@@ -1,3 +1,4 @@
+<%@page import="vo.CustomerVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- ## 헤더 -->
 <div class="container-fluid py-4 headerWrap" id="headerWrap">
@@ -7,20 +8,29 @@
 		</div>
 
 		<%
-		Object obj = session.getAttribute("vo");
+		Object id = session.getAttribute("id");
+		// System.out.println("main session : " + id);
 
-		// loginOk와 연결하면 주석 풀기 27~28번 라인 href 와 함께
-		// String who = request.getParameter("who");
+		String who = request.getParameter("who");
 
-		// 로그인되어있는 상태
-		if (obj != null) {
+		// 로그인 되어있지 않은 상태
+		if (id == null || id.equals("")) {
 		%>
+		
+		<div class="dropdown text-end position-absolute w-25 mt-3">
+			<a href="login.jsp" class="rounded-pill p-2 loginyet"><i class="bi bi-key fs-5 fst-normal"> 로그인</i></a>
+		</div>
 
+		<%
+		// 로그인되어있는 상태
+		} else {
+		%>
+		
 		<div class="dropdown text-end position-absolute w-25">
 			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
 			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="<%-- <%=who%>Modify.jsp --%>">마이페이지</a></li>
-				<li><a class="dropdown-item" href="<%-- <%=who%>BookingCheck.jsp --%>">예약내역</a></li>
+				<li><a class="dropdown-item" href="<%=who%>Modify.jsp">마이페이지</a></li>
+				<li><a class="dropdown-item" href="<%=who%>BookingCheck.jsp">예약내역</a></li>
 				<li>
 					<hr class="dropdown-divider">
 				</li>
@@ -47,13 +57,6 @@
 			</div>
 		</div>
 
-		<%
-		// 로그인 되어있지 않은 상태
-		} else {
-		%>
-		<div class="dropdown text-end position-absolute w-25 mt-3">
-			<a href="login.jsp" class="rounded-pill p-2 loginyet"><i class="bi bi-key fs-5 fst-normal"> 로그인</i></a>
-		</div>
 		<%
 		}
 		%>
