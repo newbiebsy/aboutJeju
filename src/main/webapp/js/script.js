@@ -6,9 +6,9 @@ $(function() {
 	$("#checkin").on("change", onCheckin);
 	$("#headerfrm>i, .login .submit").on("click", onSubmit);
 
-	$(".header #menu-btn").on("click", showOffCanvasMenu);
-	$(".mypage .btn-close").on("click", closeOffCanvasMenu)
-	$(".mypage a").on("click", selected);
+	$(".mypage .header #menu-btn").on("click", showOffCanvasMenu);
+	$(".mypage .sidebar .btn-close").on("click", closeOffCanvasMenu)
+	$(".mypage .sidebar a").on("click", selected);
 
 	$("#idFindSubmit").on("click", function() {
 		if ($("#inputName").val() == "") {
@@ -70,15 +70,17 @@ function onSubmit() {
 }
 
 function showOffCanvasMenu() {
-	$(".mypage>div>.col-md-3, .mypage>div>div>.btn-close").removeClass("d-none").addClass("position-absolute");
+	$(".mypage .sidebar, .mypage .sidebar .btn-close").removeClass("d-none").addClass("position-absolute");
+	$(".mypage").addClass("fixedscreen");
 }
 
 function closeOffCanvasMenu() {
-	$(".mypage>div>.col-md-3, .mypage>div>div>.btn-close").addClass("d-none").removeClass("position-absolute");
+	$(".mypage .sidebar, .mypage .sidebar>.btn-close").addClass("d-none").removeClass("position-absolute");
+	$(".mypage").removeClass("fixedscreen");
 }
 
 function selected() {
-	$(".mypage a").removeClass("selected");
+	$(".mypage .sidebar a").removeClass("selected");
 	$(this).addClass("selected");
 }
 

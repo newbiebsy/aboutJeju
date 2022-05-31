@@ -13,6 +13,9 @@ public class BookVO {
 	String bphone;
 	String way;
 	int bookok;
+	String aname;
+	String rtype;
+	String aimage;
 
 	public BookVO(int bno, String ono, int rno, int cno, String bsdate, String bedate, String pay, int bprice,
 			String bname, String bphone, String way, int bookok) {
@@ -29,6 +32,17 @@ public class BookVO {
 		this.bphone = bphone;
 		this.way = way;
 		this.bookok = bookok;
+	}
+
+	public BookVO(int bno, String bsdate, String bedate, int bprice, String aname, String rtype, String aimage) {
+		super();
+		this.bno = bno;
+		this.bsdate = bsdate;
+		this.bedate = bedate;
+		this.bprice = bprice;
+		this.aname = aname;
+		this.rtype = rtype;
+		this.aimage = aimage;
 	}
 
 	public int getBno() {
@@ -125,6 +139,30 @@ public class BookVO {
 
 	public void setBookok(int bookok) {
 		this.bookok = bookok;
+	}
+
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
+	public String getRtype() {
+		return rtype;
+	}
+
+	public void setRtype(String rtype) {
+		this.rtype = rtype;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
 	}
 
 }

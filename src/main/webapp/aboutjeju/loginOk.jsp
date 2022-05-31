@@ -9,18 +9,16 @@ String pw = request.getParameter("inputPw");
 // System.out.println("id : " + id);
 
 CustomerDAO cdao = new CustomerDAO();
-boolean cloginOk = cdao.login(id, pw);
-// System.out.println("cloginOk : " + cloginOk);
+CustomerVO cvo = cdao.login(id, pw);
 
 OwnerDAO odao = new OwnerDAO();
-boolean ologinOk = odao.login(id, pw);
-// System.out.println("ologinOk : " + ologinOk);
+OwnerVO ovo = odao.login(id, pw);
 
-if (cloginOk == true) {
-	session.setAttribute("id", id);
+if (cvo != null) {
+	session.setAttribute("vo", cvo);
 	response.sendRedirect("main.jsp?who=customer");
-} else if (ologinOk == true) {
-	session.setAttribute("id", id);
+} else if (ovo != null) {
+	session.setAttribute("vo", ovo);
 	response.sendRedirect("main.jsp?who=host");
 } else {
 %>

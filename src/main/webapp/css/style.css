@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 공통 */
 * {
 	font-size: 14px;
 }
@@ -12,7 +13,6 @@ a {
 	text-decoration: none;
 }
 
-/* 메인 */
 ::placeholder {
 	/* Chrome, Firefox, Opera, Safari 10.1+*/
 	color: #bbb;
@@ -28,6 +28,7 @@ a {
 	color: #bbb;
 }
 
+/* 헤더 */
 .headerWrap {
 	height: 160px;
 }
@@ -97,6 +98,7 @@ a {
 	z-index: 100;
 }
 
+/* 메인 */
 .main_nav>.nav {
 	background: #549ecf;
 }
@@ -194,48 +196,79 @@ a {
 }
 
 /* 마이페이지 */
-.mypage {
-	height: 100vh;
+/* .mypage {
+	min-height: 100vh;
+} */
+.fixedscreen { /* 햄버거메뉴 클릭하면 화면 스크롤 사라짐 */
+	position: fixed;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 
-.mypage>div {
-	height: 100%;
+.mypage .header .bi-list {
+	font-size: 40px;
 }
 
-.mypage .col-md-3 {
+.mypage .sidebar {
+	height: 100vh;
 	background-color: #549ecf;
+	margin: 0;
+	padding: 40px 0 0 40px;
 }
 
-.mypage>div>.position-absolute {
+.mypage .row>.position-absolute {
+	/* .mypage .sidebar */
 	top: 0;
 	right: 0;
 	background-color: rgba(0, 0, 0, 0.9);
-	height: 117%;
+	height: 100%;
 	width: 50%;
+	z-index: 100;
 }
 
-.position-absolute>.btn-close {
+.mypage .sidebar .btn-close {
 	top: 20px;
 	right: 20px;
 }
 
-.mypage .nav {
+.mypage .sidebar .nav {
 	height: 100%;
 	padding: 20px;
 }
 
-.mypage .nav-link {
+.mypage .sidebar .nav-link {
 	font-size: 17px;
 	border-bottom: 4px solid #549ecf00;
 }
 
-.mypage .selected {
+.mypage .sidebar .selected {
 	border-bottom: 4px solid #fff;
 }
 
-.mypage .nav-link>.nav-link {
+.mypage .sidebar .nav-link>.nav-link {
 	font-size: 15px;
+}
+
+.mypage .contents {
+	height: 100vh;
+	margin: 0;
+}
+
+/* 손님예약화면 */
+.cbookingCheck .card {
+	box-shadow: 5px 5px 3px #eee;
+}
+
+.cbookingDetail .checkinout {
+	height: 80px;
+}
+
+.cbookingDetail .nights {
+	width: 60px;
+	border-radius: 30px;
+	top: 18px;
+	left: 295px;
 }
 
 /* 로그인 */
