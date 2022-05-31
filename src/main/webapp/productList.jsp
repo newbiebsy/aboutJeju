@@ -151,9 +151,9 @@
 				<a href="">
 					<img src=<%=list.get(i).getAimage() %> alt="" />
 					<b><%=list.get(i).getAname() %></b><br>
-					<span>별점</span>
+					<span><%=dao.selectAvgStar("호텔", list.get(i).getAno()) %>점</span>
 					<p><%=dao.selectMinPrice("호텔", list.get(i).getAno()) %>원</p>
-					<p><%=list.get(i).getAtype()%> 설명<%=list.get(i).getAdetail()%></p>
+					<p> 설명<%=list.get(i).getAdetail()%></p>
 				</a>
 			</div>
 			<%
