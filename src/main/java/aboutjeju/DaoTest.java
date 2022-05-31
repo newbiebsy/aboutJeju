@@ -11,7 +11,7 @@ public class DaoTest {
 		 
 		
 		AccomodationDAO dao = new AccomodationDAO();
-		ArrayList<AccomodationVO> list = dao.SelectSort("호텔",12 ,"starsort");
+		ArrayList<AccomodationVO> list = dao.selectSort("호텔",12 ,"starsort");
 		
 		for(AccomodationVO vo : list) {
 			System.out.println(vo.getAno()+ ":"+vo.getAname()+":"+vo.getAtype());

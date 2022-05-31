@@ -14,9 +14,9 @@
 		padding: 0;
 	}
 	#container{
-		border: 1px solid black;
+/* 		border: 1px solid black;*/
+		height: 800px; 
 		width: 1000px;
-		height: 800px;
 		margin: auto;
 	}
 	#button1{
@@ -36,7 +36,7 @@
 	#wrap {
 		width: 200px;
 		height : 250px;
-		border : 1px solid darkgrey;
+		/* border : 1px solid darkgrey; */
 		margin: 8px 4px;
 		padding: 20px;
 		float : left;
@@ -80,6 +80,9 @@
 			}
 		%>
 		<%
+			// URL에 숙소 타입을 atype으로 넘겨받음
+			String atype = request.getParameter("atype");
+		
 			// 현재 페이지 번호
 			String cp = request.getParameter("cp"); 
 		
@@ -105,7 +108,7 @@
 			// 카테고리별 정렬을 위한 빈 문자열
 			String typeCheck = "";
 			if(sortType != null){
-				list = dao.SelectSort("호텔", startNo,sortType);
+				list = dao.selectSort("호텔", startNo,sortType);
 				typeCheck = "sorttype="+sortType+"&";
 			}
 			// 총 게시물 수 
@@ -141,16 +144,16 @@
 		</div>
 		<div id="contents">
 		<%
-
-			for(AccomodationVO vo : list){
+			for(int i=0; i<list.size(); i++){
+				
 		%>
 			<div id="wrap">
 				<a href="">
-					<img src=<%=vo.getAimage() %> alt="" />
-					<b><%=vo.getAname() %></b><br>
+					<img src=<%=list.get(i).getAimage() %> alt="" />
+					<b><%=list.get(i).getAname() %></b><br>
 					<span>별점</span>
-					<p><%=vo.getAtype()%> 가격</p>
-					<p><%=vo.getAtype()%> 설명<%=vo.getAdetail()%></p>
+					<p><%=dao.selectMinPrice("호텔", list.get(i).getAno()) %>원</p>
+					<p><%=list.get(i).getAtype()%> 설명<%=list.get(i).getAdetail()%></p>
 				</a>
 			</div>
 			<%
