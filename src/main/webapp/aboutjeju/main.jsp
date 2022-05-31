@@ -48,11 +48,11 @@
 		%>
 
 		<div class="col-md-6 col-sm-6 col-lg-4 my-2">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem"> <img src="<%=vo.getAimage()%>"
-				class="card-img-top" alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
+				<img src="<%=vo.getAimage()%>" class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());
@@ -102,11 +102,11 @@
 		%>
 
 		<div class="col-md-6 my-2 px-3 position-relative">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset"> <img src="<%=vo.getAimage()%>" class="card-img-top"
-				alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset">
+				<img src="<%=vo.getAimage()%>" class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-4 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-4 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 					<div>
 						<span class="text-decoration-line-through fst-italic"><%=df.format(price)%></span> &nbsp;<span class="fw-bold fs-3 text-danger"><%=df.format(Math.round(price * (discount * 0.01)))%></span>
 					</div>
@@ -176,11 +176,11 @@
 		%>
 
 		<div class="col-md-6 col-sm-6 col-lg-4 my-3">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem"> <img src="<%=vo.getAimage()%>"
-				class="card-img-top" alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
+				<img src="<%=vo.getAimage()%>" class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());

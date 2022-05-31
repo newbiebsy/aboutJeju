@@ -94,6 +94,7 @@ a {
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
+	z-index: 100;
 }
 
 .main_nav>.nav {
@@ -288,21 +289,21 @@ a {
 	resize: none;
 }
 
-.contract #agreeAll{
-	width:25px;
-	height:25px;
-	margin-top:15px;
+.contract #agreeAll {
+	width: 25px;
+	height: 25px;
+	margin-top: 15px;
 }
 
-.contract .form-check-input{
-	width:22px;
-	height:22px;
-	margin-right:10px;
+.contract .form-check-input {
+	width: 22px;
+	height: 22px;
+	margin-right: 10px;
 }
 
-.contract .form-check-label{
-	line-height:22px;
-	padding-top:3px;
+.contract .form-check-label {
+	line-height: 22px;
+	padding-top: 3px;
 }
 
 /* 맛집,즐길거리 페이지 */
