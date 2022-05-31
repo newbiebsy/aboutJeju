@@ -138,7 +138,25 @@ public class RoomCrawler {
 		return list;
 	}
 	
-	// 숙소 리뷰(베스트리뷰x) 가져오기
+	// 방마다 가격 가져오기 (모텔은 대실,숙박 2개라서 방개수보다 많은 가격을 구해오기 때문에 사용 주의..!)
+	public ArrayList<String> getPrice(String productUrl){
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			Document doc = Jsoup.connect(productUrl).get();
+			Elements contents = doc.select(".price > div> p > b");
+			
+			for(Element e : contents) {
+				list.add(e.text().replace(",", "").replace("원",""));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	} // getPrice() end
+	
+	
+	// 숙소 리뷰(베스트리뷰x) 가져오기 (미완)
 	public ArrayList<String> getReview(String productUrl){
 		ArrayList<String> list = new ArrayList<String>();
 		

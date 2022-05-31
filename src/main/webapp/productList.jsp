@@ -82,6 +82,7 @@
 		<%
 			// 현재 페이지 번호
 			String cp = request.getParameter("cp"); 
+		
 			int currentPage = 1;			
 			if(cp != null){
 				currentPage = Integer.parseInt(cp);
@@ -100,12 +101,12 @@
 			AccomodationDAO dao = new AccomodationDAO();
 			ArrayList<AccomodationVO> list = dao.selectType("호텔",startNo);
 			
-			String sortType = request.getParameter("type");
+			String sortType = request.getParameter("sorttype");
 			// 카테고리별 정렬을 위한 빈 문자열
 			String typeCheck = "";
 			if(sortType != null){
 				list = dao.SelectSort("호텔", startNo,sortType);
-				typeCheck = "type="+sortType+"&";
+				typeCheck = "sorttype="+sortType+"&";
 			}
 			// 총 게시물 수 
 			int totalCount = dao.getTotalCount("호텔");
@@ -134,9 +135,9 @@
 
 		%>
 		<div id="button1">
-			<a href="productList.jsp?type=starsort&cp=<%=currentPage%>"><input type="button" value="별점순"/></a>
-			<a href="productList.jsp?type=reviewsort&cp=<%=currentPage%>"><input type="button" value="후기 많은 순" /></a>
-			<a href="productList.jsp?type=pricesort&cp=<%=currentPage%>"><input type="button" value="가격순" /></a>
+			<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>"><input type="button" value="별점순"/></a>
+			<a href="productList.jsp?sorttype=reviewsort&cp=<%=currentPage%>"><input type="button" value="후기 많은 순" /></a>
+			<a href="productList.jsp?sorttype=pricesort&cp=<%=currentPage%>"><input type="button" value="가격순" /></a>
 		</div>
 		<div id="contents">
 		<%

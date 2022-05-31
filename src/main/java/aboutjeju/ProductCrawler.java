@@ -130,7 +130,7 @@ public class ProductCrawler {
 		}
 		return list;
 	}
-	
+	// 펜션 이미지
 	public ArrayList<String> getCottageImage(){
 		ArrayList<String> list = new ArrayList<String>();
 		
@@ -169,7 +169,7 @@ public class ProductCrawler {
 		}
 		return list;
 	}
-	
+	// 게스트하우스 이미지
 	public ArrayList<String> getGuestHouseImage(){
 		ArrayList<String> list = new ArrayList<String>();
 		
