@@ -1,7 +1,12 @@
+<%@page import="vo.CustomerVO"%>
 <%@page import="dao.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
+
+Object obj = session.getAttribute("vo");
+CustomerVO cvo = (CustomerVO)obj;
+
 String bookNo = request.getParameter("inputBno");
 String accomoNo = request.getParameter("inputAno");
 String title = request.getParameter("inputTitle");
@@ -26,5 +31,5 @@ ReviewDAO rdao = new ReviewDAO();
 rdao.insertOne(bno, ano, title, contents, star);
 rdao.close();
 
-//response.sendRedirect("customerBookingCheck.jsp"); 손님 예약체크 페이지랑 연결하면 주석 풀기
+response.sendRedirect("customerBookingCheck.jsp?cno="+cvo.getCno()+"&cp=1");
 %>

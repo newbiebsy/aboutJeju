@@ -1,12 +1,11 @@
 package vo;
 
-public class RoomDetailVO {
-
+public class RoomdetailVO {
 	int rdno;
 	int rno;
 	String rimage;
 
-	public RoomDetailVO(int rdno, int rno, String rimage) {
+	public RoomdetailVO(int rdno, int rno, String rimage) {
 		super();
 		this.rdno = rdno;
 		this.rno = rno;
