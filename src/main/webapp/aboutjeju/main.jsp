@@ -32,6 +32,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
+
 <body class="main">
 	<jsp:include page="header.jsp" />
 	<jsp:include page="nav.jsp" />
@@ -52,7 +53,7 @@
 				class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height:45px;"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());
@@ -180,7 +181,7 @@
 				class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height:45px;"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());
