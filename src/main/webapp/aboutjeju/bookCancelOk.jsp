@@ -17,6 +17,7 @@ if(bookno!=null){
 
 BookDAO bdao = new BookDAO();
 bdao.bookCancel(bno);
+bdao.close();
 
 response.sendRedirect("customerBookingCheck.jsp?cno="+cvo.getCno());
 %>

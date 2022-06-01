@@ -6,7 +6,6 @@ public class RoomdetailVO {
 	String rimage;
 
 	public RoomdetailVO(int rdno, int rno, String rimage) {
-		super();
 		this.rdno = rdno;
 		this.rno = rno;
 		this.rimage = rimage;

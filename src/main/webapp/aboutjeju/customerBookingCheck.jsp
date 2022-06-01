@@ -14,14 +14,12 @@
 <%@page import="dao.BookDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<!doctype html>
 <html lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABOUT JEJU</title>
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -99,7 +97,7 @@
 											<%=bvo.getBsdate()%>
 										</div>
 										<div class="col-6 text-center">
-											체크아웃</br>
+											체크아웃<br/>
 											<%=bvo.getBedate()%>
 										</div>
 										<p class="fs-4 fw-bold text-end pt-4 mb-0">
@@ -153,7 +151,8 @@
 						%>
 
 						<div class="d-flex">
-							<a <%=isReviewExist==false?"href='write.jsp?bno="+bvo.getBno()+"'":"" %> class="me-auto ps-3 pt-3 <%=isReviewExist == true ? "text-muted" : ""%>">이용후기 작성하기</a>
+							<a <%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%>
+								class="me-auto ps-3 pt-3 <%=isReviewExist == true ? "text-muted" : ""%>">이용후기 작성하기</a>
 							<button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#customerBookingDetail<%=bvo.getBno()%>">자세히보기</button>
 							<div class="modal" tabindex="-1" id="customerBookingDetail<%=bvo.getBno()%>">
 								<div class="modal-dialog modal-dialog-scrollable">
@@ -170,15 +169,14 @@
 													<p>
 														예약번호 :
 														<%=dfbno.format(bvo.getBno())%></p>
-													<a class="btn btn-primary d-block mb-3" href="write.jsp?bno=<%=bvo.getBno()%>" role="button">이용후기 작성하기</a>
+													<a class="btn btn-primary d-block mb-3 <%=isReviewExist == true ? "disabled" : ""%>" <%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%> role="button">이용후기 작성하기</a>
 												</div>
 
 												<div class="box2 border border-1 border-top-0 p-3 text-center w-100">
 													<img class="w-100" src="<%=avo.getAimage()%>" alt="<%=avo.getAname()%>">
 													<p class="fw-bold fs-5 mt-3"><%=avo.getAname()%></p>
 													<p><%=avo.getAaddress()%></p>
-													<a class="btn btn-outline-primary d-block mb-3" href="#" role="button">
-														숙소(<%=avo.getAphone()%>)에 전화하기
+													<a class="btn btn-outline-primary d-block mb-3" href="tel:<%=avo.getAphone()%>" role="button"> 숙소(<%=avo.getAphone()%>)에 전화하기
 													</a>
 												</div>
 
@@ -192,11 +190,8 @@
 															체크아웃
 															<p class="pt-3 fw-normal"><%=bvo2.getBedate()%></p>
 														</div>
-														<a class="d-block border-top border-1 py-2">
-															<i class="bi bi-send-fill"></i> 예약 확정서 받기
-														</a>
-														<a class="d-block border-top border-1 py-2">
-															<i class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
+														<a class="d-block border-top border-1 py-2"> <i class="bi bi-send-fill"></i> 예약 확정서 받기
+														</a> <a class="d-block border-top border-1 py-2"> <i class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
 														</a>
 													</div>
 												</div>
@@ -304,12 +299,10 @@
 						if (currentPage > 1) {
 						%>
 
-						<li class="page-item">
-							<a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous"
-								title="5페이지 앞으로">
+						<li class="page-item"><a class="page-link"
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous" title="5페이지 앞으로">
 								<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
+						</a></li>
 
 						<%
 						}
@@ -318,17 +311,13 @@
 						if (i == currentPage) {
 						%>
 
-						<li class="page-item">
-							<a class="page-link bg-primary text-white" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a class="page-link bg-primary text-white" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						} else {
 						%>
 
-						<li class="page-item">
-							<a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						}
@@ -336,12 +325,10 @@
 
 						if (currentPage + 2 < totalPage) {
 						%>
-						<li class="page-item">
-							<a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>"
-								aria-label="Next" title="5페이지 뒤로">
-								<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
+						<li class="page-item"><a class="page-link"
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>" aria-label="Next"
+							title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
 						<%
 						}
 						}

@@ -37,8 +37,8 @@
 		<div class="dropdown text-end position-absolute w-25">
 			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
 			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="<%=who%>Modify.jsp?<%=who.equals("customer") ? "cno=" + cvo.getCno() : "ono=" + ovo.getOno()%>">마이페이지</a></li>
-				<li><a class="dropdown-item" href="<%=who%>BookingCheck.jsp?<%=who.equals("customer") ? "cno=" + cvo.getCno() : "ono=" + ovo.getOno()%>&cp=1">예약내역</a>
+				<li><a class="dropdown-item" href="<%=cvo!=null? "customerModify.jsp?cno="+cvo.getCno():"hostModify.jsp?ono="+ovo.getOno()%>">마이페이지</a></li>
+				<li><a class="dropdown-item" href="<%=cvo!=null? "customerBookingCheck.jsp?cno="+cvo.getCno():"hostBookingCheck.jsp?ono="+ovo.getOno()%>&cp=1">예약내역</a>
 				</li>
 				<li>
 					<hr class="dropdown-divider">
