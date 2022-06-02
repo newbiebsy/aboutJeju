@@ -12,7 +12,8 @@
 <%@page import="vo.BookVO"%>
 <%@page import="vo.CustomerVO"%>
 <%@page import="dao.BookDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,19 +23,25 @@
 <title>ABOUT JEJU</title>
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
 
 <!-- My CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <title>ABOUT JEJU</title>
 
 <!-- JQUERY -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
 <body class="mypage">
@@ -49,9 +56,7 @@
 				<%
 				request.setCharacterEncoding("UTF-8");
 				String cp = request.getParameter("cp");
-
 				int currentPage = 1;
-
 				if (cp != null) {
 					currentPage = Integer.parseInt(cp);
 				}
@@ -62,17 +67,15 @@
 				CustomerVO cvo = (CustomerVO) obj;
 				int cno = cvo.getCno();
 				// int cno = 0;
-
 				BookDAO bdao = new BookDAO();
 				ArrayList<BookVO> list = bdao.customerBookingData(cno, startNo);
 				System.out.println(list.size());
-
 				DecimalFormat dfprice = new DecimalFormat("###,###");
-
 				if (list.size() == 0) {
 				%>
 
-				<h3 class="pb-5 h-50 d-flex justify-content-center align-items-end">예약 내역이 없습니다.</h3>
+				<h3 class="pb-5 h-50 d-flex justify-content-center align-items-end">예약
+					내역이 없습니다.</h3>
 
 				<%
 				} else {
@@ -82,7 +85,8 @@
 				<div class="card mb-3 mx-auto" style="max-width: 650px;">
 					<div class="row g-0 border-1 border-bottom">
 						<div class="col-md-4">
-							<img src="<%=bvo.getAimage()%>" class="img-fluid rounded-start" alt="<%=bvo.getAname()%>">
+							<img src="<%=bvo.getAimage()%>" class="img-fluid rounded-start"
+								alt="<%=bvo.getAname()%>">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body row pb-0">
@@ -97,7 +101,7 @@
 											<%=bvo.getBsdate()%>
 										</div>
 										<div class="col-6 text-center">
-											체크아웃<br/>
+											체크아웃<br />
 											<%=bvo.getBedate()%>
 										</div>
 										<p class="fs-4 fw-bold text-end pt-4 mb-0">
@@ -114,19 +118,13 @@
 						RoomdetailDAO rddao = new RoomdetailDAO();
 						AccomodationDAO adao = new AccomodationDAO();
 						ReviewDAO rvdao = new ReviewDAO();
-
 						BookVO bvo2 = bdao.selectOne(bvo.getBno());
-
 						DecimalFormat dfbno = new DecimalFormat("000000000");
-
 						String bsdate = bvo2.getBsdate(); //체크인
 						String bedate = bvo2.getBedate(); //체크아웃
-
 						Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(bsdate);
 						Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(bedate);
-
 						long diffDays = (format2.getTime() - format1.getTime()) / 1000 / (24 * 60 * 60); //일자수 차이
-
 						String bookingStatus = null;
 						String bookingStatusBgColor = "green";
 						if (bvo2.getBookok() == 1) {
@@ -138,50 +136,63 @@
 							bookingStatus = "취소 완료";
 							bookingStatusBgColor = "red";
 						}
-
 						RoomVO rvo = rdao.select(bvo2.getRno()); // book 테이블에서 rno 가져와서 찾기
-
 						ArrayList<RoomdetailVO> rdlist = rddao.select(bvo2.getRno()); // book 테이블에서 rno 가져와서 찾기
 						RoomdetailVO rdvo = rdlist.get(0); // 값 여러개 중에 첫번째꺼 하나만 사용
-
 						AccomodationVO avo = adao.select(rvo.getAno()); // room 테이블에서 ano 가져와서 찾기
-
 						boolean isReviewExist = rvdao.selectOne(bvo.getBno());
 						%>
 
 						<div class="d-flex">
-							<a <%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%>
-								class="me-auto ps-3 pt-3 <%=isReviewExist == true ? "text-muted" : ""%>">이용후기 작성하기</a>
-							<button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#customerBookingDetail<%=bvo.getBno()%>">자세히보기</button>
-							<div class="modal" tabindex="-1" id="customerBookingDetail<%=bvo.getBno()%>">
+							<a
+								<%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%>
+								class="me-auto ps-3 pt-3 <%=isReviewExist == true ? "text-muted" : ""%>">이용후기
+								작성하기</a>
+							<button type="button" class="btn btn-secondary m-2"
+								data-bs-toggle="modal"
+								data-bs-target="#customerBookingDetail<%=bvo.getBno()%>">자세히보기</button>
+							<div class="modal" tabindex="-1"
+								id="customerBookingDetail<%=bvo.getBno()%>">
 								<div class="modal-dialog modal-dialog-scrollable">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title">예약 상세 내역</h5>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
 											<div class="container-fluid">
-												<p class="text-white p-2 text-center mb-0" style="background-color: <%=bookingStatusBgColor%>"><%=bookingStatus%></p>
+												<p class="text-white p-2 text-center mb-0"
+													style="background-color: <%=bookingStatusBgColor%>"><%=bookingStatus%></p>
 
-												<div class="box1 border border-1 border-top-0 p-3 text-center">
+												<div
+													class="box1 border border-1 border-top-0 p-3 text-center">
 													<p>
 														예약번호 :
 														<%=dfbno.format(bvo.getBno())%></p>
-													<a class="btn btn-primary d-block mb-3 <%=isReviewExist == true ? "disabled" : ""%>" <%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%> role="button">이용후기 작성하기</a>
+													<a
+														class="btn btn-primary d-block mb-3 <%=isReviewExist == true ? "disabled" : ""%>"
+														<%=isReviewExist == false ? "href='write.jsp?bno=" + bvo.getBno() + "'" : ""%>
+														role="button">이용후기 작성하기</a>
 												</div>
 
-												<div class="box2 border border-1 border-top-0 p-3 text-center w-100">
-													<img class="w-100" src="<%=avo.getAimage()%>" alt="<%=avo.getAname()%>">
+												<div
+													class="box2 border border-1 border-top-0 p-3 text-center w-100">
+													<img class="w-100" src="<%=avo.getAimage()%>"
+														alt="<%=avo.getAname()%>">
 													<p class="fw-bold fs-5 mt-3"><%=avo.getAname()%></p>
 													<p><%=avo.getAaddress()%></p>
-													<a class="btn btn-outline-primary d-block mb-3" href="tel:<%=avo.getAphone()%>" role="button"> 숙소(<%=avo.getAphone()%>)에 전화하기
+													<a class="btn btn-outline-primary d-block mb-3"
+														href="tel:<%=avo.getAphone()%>" role="button"> 숙소(<%=avo.getAphone()%>)에
+														전화하기
 													</a>
 												</div>
 
-												<div class="box3 border border-1 border-top-0 ps-3 pe-3 text-center">
+												<div
+													class="box3 border border-1 border-top-0 ps-3 pe-3 text-center">
 													<div class="row position-relative">
-														<div class="col-6 checkinout pt-3 border-end border-1 fw-bold">
+														<div
+															class="col-6 checkinout pt-3 border-end border-1 fw-bold">
 															체크인
 															<p class="pt-3 fw-normal"><%=bvo2.getBsdate()%></p>
 														</div>
@@ -189,8 +200,10 @@
 															체크아웃
 															<p class="pt-3 fw-normal"><%=bvo2.getBedate()%></p>
 														</div>
-														<a class="d-block border-top border-1 py-2"> <i class="bi bi-send-fill"></i> 예약 확정서 받기
-														</a> <a class="d-block border-top border-1 py-2"> <i class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
+														<a class="d-block border-top border-1 py-2"> <i
+															class="bi bi-send-fill"></i> 예약 확정서 받기
+														</a> <a class="d-block border-top border-1 py-2"> <i
+															class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
 														</a>
 													</div>
 												</div>
@@ -199,7 +212,9 @@
 													<p class="fs-5">객실 정보</p>
 													<div class="row g-0">
 														<div class="col-4">
-															<img src="<%=rdvo.getRimage()%>" class="img-fluid rounded-start" alt="<%=rvo.getRtype()%>">
+															<img src="<%=rdvo.getRimage()%>"
+																class="img-fluid rounded-start"
+																alt="<%=rvo.getRtype()%>">
 														</div>
 														<div class="col-8">
 															<div class="card-body">
@@ -226,9 +241,12 @@
 
 												<div class="box6 border border-1 border-top-0 p-3">
 													<p class="fs-5">취소 정책</p>
-													<p class="text-danger">예약한 숙소에 체크인하지 않거나 투숙 7일 전 ~ 당일 예약 취소 시 요금이 환불되지 않습니다.</p>
-													<a class="btn btn-outline-primary <%=bvo2.getBookok() == 1 ? "" : "disabled"%> d-block mb-3"
-														<%=bvo2.getBookok() == 1 ? "href='bookCancel.jsp?bno=" + bvo.getBno() + "'" : ""%> role="button">예약 취소</a>
+													<p class="text-danger">예약한 숙소에 체크인하지 않거나 투숙 7일 전 ~ 당일
+														예약 취소 시 요금이 환불되지 않습니다.</p>
+													<a
+														class="btn btn-outline-primary <%=bvo2.getBookok() == 1 ? "" : "disabled"%> d-block mb-3"
+														<%=bvo2.getBookok() == 1 ? "href='bookCancel.jsp?bno=" + bvo.getBno() + "'" : ""%>
+														role="button">예약 취소</a>
 												</div>
 
 												<div class="box7 border border-1 border-top-0 p-3">
@@ -276,16 +294,13 @@
 
 				<%
 				}
-
 				int totalCount = bdao.getTotalCount(cno);
 				int totalPage = (totalCount % 4 == 0) ? (totalCount / 4) : (totalCount / 4 + 1);
 				int startPage = currentPage;
 				int endPage = startPage + 2;
-
 				if (currentPage + 2 >= totalPage) {
 				endPage = totalPage;
 				}
-
 				if (totalPage <= 3) {
 				startPage = 1;
 				}
@@ -299,34 +314,36 @@
 						%>
 
 						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous" title="5페이지 앞으로">
-								<span aria-hidden="true">&laquo;</span>
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>"
+							aria-label="Previous" title="5페이지 앞으로"> <span
+								aria-hidden="true">&laquo;</span>
 						</a></li>
 
 						<%
 						}
-
 						for (int i = startPage; i <= endPage; i++) {
 						if (i == currentPage) {
 						%>
 
-						<li class="page-item"><a class="page-link bg-primary text-white" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
+						<li class="page-item"><a
+							class="page-link bg-primary text-white"
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						} else {
 						%>
 
-						<li class="page-item"><a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
+						<li class="page-item"><a class="page-link"
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						}
 						}
-
 						if (currentPage + 2 < totalPage) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>" aria-label="Next"
-							title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>"
+							aria-label="Next" title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 						<%
 						}
@@ -344,8 +361,10 @@
 	<!-- container-fluid end -->
 
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script
+		src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous">
 		
 	</script>
 

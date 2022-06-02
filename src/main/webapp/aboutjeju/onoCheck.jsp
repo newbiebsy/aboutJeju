@@ -1,5 +1,6 @@
 <%@page import="dao.OwnerDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -13,9 +14,9 @@ if (ono != null) {
 	OwnerDAO odao = new OwnerDAO();
 
 	oisExist = odao.onoCheck(ono);
-	
+
 	odao.close();
-System.out.println(oisExist);
+	System.out.println(oisExist);
 }
 
 if (oisExist == true) {
