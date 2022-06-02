@@ -89,23 +89,8 @@
 
 				<div class="mb-5 mx-auto text-center">
 					<a href="customerBookingCheck.jsp?cno=<%=cvo.getCno()%>&cp=1" type="button" class="btn btn-secondary btn-lg px-5 mx-4 my-2">취소</a>
-					<button type="button" class="btn btn-primary btn-lg px-5 mx-4 my-2" data-bs-toggle="modal" data-bs-target="#cancelConfirm">확인</button>
-					
-					<!-- Modal -->
-					<div class="modal" id="cancelConfirm" tabindex="-1" aria-labelledby="cancelConfirmLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">확인</h5>
-								</div>
-								<div class="modal-body">예약을 취소하시겠습니까?</div>
-								<div class="modal-footer">
-									<a type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</a>
-									<a href="bookCancelOk.jsp?bno=<%=bno %>" type="button" class="btn btn-primary">확인</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					<input type="hidden" value="<%=bno %>" id="getBno">					
+					<button type="button" class="btn btn-primary btn-lg px-5 mx-4 my-2 submit">확인</button>
 				</div>
 			</div>
 

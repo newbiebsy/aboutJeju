@@ -59,7 +59,7 @@
 
 	// 현재 페이지 번호
 	String cp = request.getParameter("cp");
-	
+
 	int currentPage = 1;
 	if (cp != null) {
 		currentPage = Integer.parseInt(cp);
@@ -110,26 +110,26 @@
 	%>
 
 	<div class="d-flex justify-content-center mt-4 mx-sm-5">
-		<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">별점순</a>
-		<a href="productList.jsp?sorttype=reviewsort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">후기 많은 순</a>
-		<a href="productList.jsp?sorttype=pricesort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">가격순</a>
+		<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>&atype=<%=atype%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">별점순</a>
+		<a href="productList.jsp?sorttype=reviewsort&cp=<%=currentPage%>&atype=<%=atype%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">후기
+			많은 순</a>
+		<a href="productList.jsp?sorttype=pricesort&cp=<%=currentPage%>&atype=<%=atype%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">가격순</a>
 	</div>
 
 	<div class="row mt-4 mx-auto pt-1">
 
 		<%
-			for(int i=0; i<list.size(); i++){
-				
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(i + "번째 이미지 경로 : " + list.get(i).getAimage());
 		%>
 
 		<div class="col-lg-4 col-md-6 col-xl-3 my-3">
 			<a href="productDetail.jsp?ano=<%=list.get(i).getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
-				<img src="<%=list.get(i).getAimage() %>" class="card-img-top" alt="<%=list.get(i).getAname() %>" />
+				<img src="<%=list.get(i).getAimage()!=null?list.get(i).getAimage():"../images/noimage.png"%>" style="height:150px" class="card-img-top" alt="<%=list.get(i).getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-						<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname() %></div>
-					<span><%=dao.selectAvgStar(atype, list.get(i).getAno()) %>점</span><br /> 
-					<span><%=dao.selectMinPrice(atype, list.get(i).getAno()) %>원</span><br/>
+					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname()%></div>
+					<span><%=dao.selectAvgStar(atype, list.get(i).getAno())%>점</span><br /> <span><%=dao.selectMinPrice(atype, list.get(i).getAno())%>원</span><br />
 					<span><%=list.get(i).getAtype()%></span>
 					<%=list.get(i).getAdetail()%>
 					</p>
@@ -151,7 +151,7 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=beforePage(startPage)%>&atype=<%=atype %>" aria-label="Previous">
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=beforePage(startPage)%>&atype=<%=atype%>" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 				</a>
 			</li>
@@ -161,14 +161,14 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=i%>&atype=<%=atype %>"><%=i%></a>
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=i%>&atype=<%=atype%>"><%=i%></a>
 			</li>
 
 			<%
 			}
 			%>
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=nextPage(endPage)%>&atype=<%=atype %>" aria-label="Next">
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=nextPage(endPage)%>&atype=<%=atype%>" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 				</a>
 			</li>
@@ -183,6 +183,6 @@
 
 	<!-- My JS -->
 	<script src="../js/script.js"></script>
->>>>>>> refs/remotes/origin/master
+	>>>>>>> refs/remotes/origin/master
 </body>
 </html>
