@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import dao.AccomodationDAO;
 import dao.OwnerDAO;
 import dao.RoomDAO;
-import dao.RoomDetailDAO;
+import dao.RoomdetailDAO;
 import vo.AccomodationVO;
 import vo.OwnerVO;
-import vo.RoomDetailVO;
+import vo.RoomdetailVO;
 import vo.RoomVO;
 
 public class inputTest {
@@ -22,8 +22,8 @@ public class inputTest {
 		RoomDAO roomDao = new RoomDAO();
 		RoomVO roomVo = new RoomVO();
 
-		RoomDetailDAO roomDetailDao = new RoomDetailDAO();
-		RoomDetailVO roomDetailVo = new RoomDetailVO();
+		RoomdetailDAO roomDetailDao = new RoomdetailDAO();
+		RoomdetailVO roomDetailVo = new RoomdetailVO();
 
 		ArrayList<String> productUrl = room.getProductUrl(room.cottage);
 
