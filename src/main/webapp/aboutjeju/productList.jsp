@@ -75,17 +75,17 @@
 
 	// dao 객체 생성
 	AccomodationDAO dao = new AccomodationDAO();
-	ArrayList<AccomodationVO> list = dao.selectType("호텔", startNo);
+	ArrayList<AccomodationVO> list = dao.selectType(atype, startNo);
 
 	String sortType = request.getParameter("sorttype");
 	// 카테고리별 정렬을 위한 빈 문자열
 	String typeCheck = "";
 	if (sortType != null) {
-		list = dao.selectSort("호텔", startNo, sortType);
+		list = dao.selectSort(atype, startNo, sortType);
 		typeCheck = "sorttype=" + sortType + "&";
 	}
 	// 총 게시물 수 
-	int totalCount = dao.getTotalCount("호텔");
+	int totalCount = dao.getTotalCount(atype);
 
 	// 총 페이지 수
 	int totalPage = (totalCount % recordPerPage == 0) ? totalCount / recordPerPage : totalCount / recordPerPage + 1;
@@ -110,9 +110,9 @@
 	%>
 
 	<div class="d-flex justify-content-center mt-4 mx-sm-5">
-		<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">별점순</a>
-		<a href="productList.jsp?sorttype=reviewsort&cp=<%=currentPage%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">후기 많은 순</a>
-		<a href="productList.jsp?sorttype=pricesort&cp=<%=currentPage%>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">가격순</a>
+		<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">별점순</a>
+		<a href="productList.jsp?sorttype=reviewsort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">후기 많은 순</a>
+		<a href="productList.jsp?sorttype=pricesort&cp=<%=currentPage%>&atype=<%=atype %>" type="button" class="btn btn-secondary mx-lg-4 mx-2 px-md-5 px-4">가격순</a>
 	</div>
 
 	<div class="row mt-4 mx-auto pt-1">
@@ -129,7 +129,7 @@
 					<p class="card-text">
 						<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname() %></div>
 					<span>별점</span><br /> 
-					<span><%=dao.selectMinPrice("호텔", list.get(i).getAno()) %>원</span><br/>
+					<span><%=dao.selectMinPrice(atype, list.get(i).getAno()) %>원</span><br/>
 					<span><%=list.get(i).getAtype()%></span>
 					<%=list.get(i).getAdetail()%>
 					</p>
@@ -151,7 +151,7 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=beforePage(startPage)%>" aria-label="Previous">
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=beforePage(startPage)%>&atype=<%=atype %>" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 				</a>
 			</li>
@@ -161,14 +161,14 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=i%>"><%=i%></a>
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=i%>&atype=<%=atype %>"><%=i%></a>
 			</li>
 
 			<%
 			}
 			%>
 			<li class="page-item">
-				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=nextPage(endPage)%>" aria-label="Next">
+				<a class="page-link" href="productList.jsp?<%=typeCheck%>cp=<%=nextPage(endPage)%>&atype=<%=atype %>" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 				</a>
 			</li>
