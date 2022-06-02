@@ -1,3 +1,7 @@
+<%@page import="vo.AccomodationVO"%>
+<%@page import="dao.AccomodationDAO"%>
+<%@page import="vo.RoomVO"%>
+<%@page import="dao.RoomDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +23,7 @@
 	input{display:none;}
 	
 	/* 슬라이드 영역 */
-	.section .slidewrap {max-width:700px;margin:50px auto;overflow:hidden;position:relative;}
+	.section .slidewrap {max-width:900px;margin:50px auto;overflow:hidden;position:relative;border: 1px solid black; }
 	.section .slidelist {white-space:nowrap;font-size:0;}
 	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
 	.section .slidelist > li > a {display:block;position:relative;}
@@ -28,8 +32,8 @@
 	/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
 	.section .slide-control {position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;}
 	.section .slide-control label {position:absolute;z-index:1;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
-	.section .slide-control .left {left:30px;background:url('https://cdn-icons.flaticon.com/png/512/2990/premium/2990156.png?token=exp=1653976556~hmac=b4cfe9c2a0ee8e71431c26a230a27150') center center / 100% no-repeat;}
-	.section .slide-control .right {right:30px;background:url('https://cdn-icons.flaticon.com/png/512/2990/premium/2990162.png?token=exp=1653976556~hmac=a47e34c6ade9cadc5250e6775a527cb7') center center / 100% no-repeat;}
+	.section .slide-control .left {left:30px;background:url('https://yaimg.yanolja.com/joy/sunny/static/images/btn-slide-photo-prev.svg') center center / 100% no-repeat;}
+	.section .slide-control .right {right:30px;background:url('https://yaimg.yanolja.com/joy/sunny/static/images/btn-slide-photo-next.svg') center center / 100% no-repeat;}
 	.section .slide-control [class*="control"] {display:none;}
 	
 	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
@@ -41,13 +45,25 @@
 	.section [id="slide01"]:checked ~ .slidewrap .control01 {display:block;}
 	.section [id="slide02"]:checked ~ .slidewrap .control02 {display:block;}
 	.section [id="slide03"]:checked ~ .slidewrap .control03 {display:block;}
+	
+	.roomwrap{margin:auto; width:800px;height:250px; border: 1px solid blue;}
 
 </style>
 <body>
 	<%
+		// productList에서 파라미터로 값 받아오기
+		String anoNum = request.getParameter("ano");
+		int ano = 0;		
+		if(anoNum != null){
+			ano = Integer.parseInt(anoNum);
+		}
 		
-	
-	
+		// dao 객체 생성
+		RoomDAO roomDao = new RoomDAO();
+		AccomodationDAO accoDao = new AccomodationDAO();
+		
+		AccomodationVO accoVo = accoDao.selectOne(ano);
+		
 	
 	
 	%>
@@ -60,7 +76,7 @@
 				<ul class="slidelist" >
 					<li>
 						<a>
-							<img src="./img/slide01.jpg" alt="" />
+							<img src="<%=accoVo.getAimage() %>" alt="" />
 						</a>
 					</li>
 					<li>
@@ -91,6 +107,13 @@
 				</div>
 			</div>
 		</div> 
+		<div class="roomwrap">
+					
+		</div>
 	</div>
+	<%
+		roomDao.close();
+		accoDao.close();
+	%>
 </body>
 </html>

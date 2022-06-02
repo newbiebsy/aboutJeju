@@ -148,7 +148,7 @@
 				
 		%>
 			<div id="wrap">
-				<a href="">
+				<a href="productDetail.jsp?ano=<%=list.get(i).getAno()%>">
 					<img src=<%=list.get(i).getAimage() %> alt="" />
 					<b><%=list.get(i).getAname() %></b><br>
 					<span><%=dao.selectAvgStar("호텔", list.get(i).getAno()) %>점</span>
