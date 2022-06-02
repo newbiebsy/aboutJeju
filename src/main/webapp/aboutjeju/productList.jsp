@@ -135,7 +135,6 @@
 					}
 				}
 			}
-
 		%>
 		<div id="button1">
 			<a href="productList.jsp?sorttype=starsort&cp=<%=currentPage%>"><input type="button" value="별점순"/></a>
