@@ -48,8 +48,9 @@ $(function() {
 	$(".hostSignUp .submit").on("click", hostSignUp);
 
 	fillZero();
-	$(".write .submit").on("click", writeReview);
+	$(".write .cancelAccept").on("click", writeReview);
 
+	$(".hostBookingCheck #hostBookCancel .submit").on("click", bookCancel);
 });
 
 function onCheckin() {
@@ -151,7 +152,6 @@ function checkOno() {
 	var ono = $(".signUp #inputOno").val();
 	var params = "ono=" + ono;
 
-	console.log("ono :" + ono + ", params : " + params);
 	sendRequest("onoCheck.jsp", params, callback, "GET");
 }
 
@@ -266,4 +266,10 @@ function writeReview() {
 	}
 
 	$("#writefrm").submit();
+}
+
+function bookCancel() {
+	console.log("test")
+	var bno = $("input[type='checkbox']:checked").attr("id");
+	location.href = "bookCancelOk.jsp?who=host&bno=" + bno;
 }

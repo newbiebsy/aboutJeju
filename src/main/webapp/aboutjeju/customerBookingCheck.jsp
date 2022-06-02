@@ -40,7 +40,7 @@
 <body class="mypage">
 	<jsp:include page="mypageHeader.jsp" />
 
-	<div class="container-fluid mt-4">
+	<div class="container-fluid">
 		<div class="row">
 			<jsp:include page="mypageSidebarC.jsp" />
 
@@ -56,7 +56,7 @@
 					currentPage = Integer.parseInt(cp);
 				}
 
-				int startNo = (currentPage - 1) * 10;
+				int startNo = (currentPage - 1) * 4;
 
 				Object obj = session.getAttribute("vo");
 				CustomerVO cvo = (CustomerVO) obj;
@@ -147,7 +147,6 @@
 						AccomodationVO avo = adao.select(rvo.getAno()); // room 테이블에서 ano 가져와서 찾기
 
 						boolean isReviewExist = rvdao.selectOne(bvo.getBno());
-						System.out.println(bvo.getBno() + " : " + isReviewExist);
 						%>
 
 						<div class="d-flex">
@@ -218,7 +217,7 @@
 												<div class="box5 border border-1 border-top-0 p-3">
 													<p class="fs-5">투숙객 정보</p>
 													<p>
-														투숙자 이름 :
+														대표 투숙객 :
 														<%=bvo2.getBname()%></p>
 													<p>
 														전화번호 :
@@ -279,7 +278,7 @@
 				}
 
 				int totalCount = bdao.getTotalCount(cno);
-				int totalPage = (totalCount % 10 == 0) ? (totalCount / 10) : (totalCount / 10 + 1);
+				int totalPage = (totalCount % 4 == 0) ? (totalCount / 4) : (totalCount / 4 + 1);
 				int startPage = currentPage;
 				int endPage = startPage + 2;
 

@@ -101,7 +101,7 @@
 								<div class="modal-body">예약을 취소하시겠습니까?</div>
 								<div class="modal-footer">
 									<a type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</a>
-									<a href="bookCancelOk.jsp?bno=<%=bno %>" type="button" class="btn btn-primary">확인</a>
+									<a href="bookCancelOk.jsp?who=customer&bno=<%=bno %>" type="button" class="btn btn-primary">확인</a>
 								</div>
 							</div>
 						</div>

@@ -16,7 +16,7 @@ if (cno != null) {
 	who = "host";
 }
 %>
-<div class="container-fluid header mt-4">
+<div class="container-fluid header py-4">
 	<div>
 		<a href="main.jsp?who=<%=who%>"><img src="../images/logo.jpg" alt="ABOUT JEJU" class="ps-2"></a>
 	</div>
