@@ -51,7 +51,7 @@
 
 				int startNo = (currentPage - 1) * 10;
 
-				Object obj = session.getAttribute("vo");
+				Object obj = session.getAttribute("ovo");
 				OwnerVO ovo = (OwnerVO) obj;
 				String ono = ovo.getOno();
 				int ownerno = Integer.parseInt(ono);

@@ -5,17 +5,17 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-String who = request.getParameter("who");
+Object cobj = session.getAttribute("cvo");
+Object oobj = session.getAttribute("ovo");
 
-Object obj = session.getAttribute("vo");
-
-OwnerVO ovo = null;
 CustomerVO cvo = null;
+OwnerVO ovo = null;
 
-if ("host".equals(who)) {
-	ovo = (OwnerVO) obj;
-} else {
-	cvo = (CustomerVO) obj;
+if(cobj!=null){
+	cvo = (CustomerVO)cobj;
+}
+if(oobj!=null){
+	ovo = (OwnerVO)oobj;
 }
 
 String bookno = request.getParameter("bno");
@@ -29,7 +29,7 @@ BookDAO bdao = new BookDAO();
 bdao.bookCancel(bno);
 bdao.close();
 
-if ("host".equals(who)) {
+if (ovo!=null) {
 	response.sendRedirect("hostBookingCheck.jsp?ono=" + ovo.getOno() + "&cp=1");
 } else {
 	response.sendRedirect("customerBookingCheck.jsp?cno=" + cvo.getCno() + "&cp=1");

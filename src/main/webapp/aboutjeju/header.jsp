@@ -1,32 +1,39 @@
 <%@page import="vo.OwnerVO"%>
 <%@page import="vo.CustomerVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- ## 헤더 -->
 <div class="container-fluid py-4 headerWrap" id="headerWrap">
 	<div class="row header">
 		<div>
-			<a href="main.jsp"><img src="../images/logo.jpg" alt="ABOUT JEJU" class="ps-2"></a>
+			<a href="main.jsp">
+				<img src="../images/logo.jpg" alt="ABOUT JEJU" class="ps-2">
+			</a>
 		</div>
 
 		<%
-		Object obj = session.getAttribute("vo");
-		OwnerVO ovo = null;
+		Object cobj = session.getAttribute("cvo");
+		Object oobj = session.getAttribute("ovo");
+
 		CustomerVO cvo = null;
+		OwnerVO ovo = null;
 
-		String who = request.getParameter("who");
 
-		if ("host".equals(who)) {
-			ovo = (OwnerVO) obj;
-		} else {
-			cvo = (CustomerVO) obj;
+		if(cobj!=null){
+			cvo = (CustomerVO)cobj;
+		}
+		if(oobj!=null){
+			ovo = (OwnerVO)oobj;
 		}
 
 		// 로그인 되어있지 않은 상태
-		if (obj == null || obj.equals("")) {
+		if (cvo == null && ovo == null) {
 		%>
 
 		<div class="dropdown text-end position-absolute w-25 mt-3">
-			<a href="login.jsp" class="rounded-pill p-2 loginyet"><i class="bi bi-key fs-5 fst-normal"> 로그인</i></a>
+			<a href="login.jsp" class="rounded-pill p-2 loginyet">
+				<i class="bi bi-key fs-5 fst-normal"> 로그인</i>
+			</a>
 		</div>
 
 		<%
@@ -37,13 +44,19 @@
 		<div class="dropdown text-end position-absolute w-25">
 			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
 			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="<%=cvo!=null? "customerModify.jsp?cno="+cvo.getCno():"hostModify.jsp?ono="+ovo.getOno()%>">마이페이지</a></li>
-				<li><a class="dropdown-item" href="<%=cvo!=null? "customerBookingCheck.jsp?cno="+cvo.getCno():"hostBookingCheck.jsp?ono="+ovo.getOno()%>&cp=1">예약내역</a>
+				<li>
+					<a class="dropdown-item" href="<%=cvo != null ? "customerModify.jsp?cno=" + cvo.getCno() : "hostModify.jsp?ono=" + ovo.getOno()%>">마이페이지</a>
+				</li>
+				<li>
+					<a class="dropdown-item"
+						href="<%=cvo != null ? "customerBookingCheck.jsp?cno=" + cvo.getCno() : "hostBookingCheck.jsp?ono=" + ovo.getOno()%>&cp=1">예약내역</a>
 				</li>
 				<li>
 					<hr class="dropdown-divider">
 				</li>
-				<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</a></li>
+				<li>
+					<a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</a>
+				</li>
 			</ul>
 		</div>
 
@@ -74,13 +87,16 @@
 			<form action="productList.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
 				<i class="bi bi-search rounded-pill float-end p-2 fs-5"></i>
 				<div id="headerinput" class="btn-group h-100" role="group" aria-label="Basic example">
-					<input type="search" id="search" name="search" value="" class="w-50 ps-3" placeholder="검색어 입력"> <input type="text" id="checkin"
-						name="checkin" placeholder="체크인" class="w-25" /> <input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
+					<input type="search" id="search" name="search" value="" class="w-50 ps-3" placeholder="검색어 입력">
+					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
+					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <div class="goingUp">
-	<a href="#headerWrap"><i class="bi bi-arrow-up-circle fs-1 text-center"></i></a>
+	<a href="#headerWrap">
+		<i class="bi bi-arrow-up-circle fs-1 text-center"></i>
+	</a>
 </div>

@@ -53,7 +53,7 @@
 	<%
 		// productList에서 파라미터로 값 받아오기
 		String anoNum = request.getParameter("ano");
-		int ano = 0;		
+		int ano = 0;
 		if(anoNum != null){
 			ano = Integer.parseInt(anoNum);
 		}

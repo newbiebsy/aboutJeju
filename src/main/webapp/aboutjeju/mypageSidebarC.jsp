@@ -6,7 +6,7 @@
 request.setCharacterEncoding("UTF-8");
 String cp = request.getParameter("cp");
 
-Object obj = session.getAttribute("vo");
+Object obj = session.getAttribute("cvo");
 CustomerVO cvo = (CustomerVO)obj;
 %>
 <div class="col-md-3 d-none d-md-block sidebar">

@@ -63,10 +63,10 @@
 
 				int startNo = (currentPage - 1) * 4;
 
-				Object obj = session.getAttribute("vo");
+				Object obj = session.getAttribute("cvo");
 				CustomerVO cvo = (CustomerVO) obj;
 				int cno = cvo.getCno();
-				// int cno = 0;
+
 				BookDAO bdao = new BookDAO();
 				ArrayList<BookVO> list = bdao.customerBookingData(cno, startNo);
 				System.out.println(list.size());

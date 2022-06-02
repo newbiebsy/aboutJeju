@@ -48,7 +48,7 @@ $(function() {
 	$(".hostSignUp .submit").on("click", hostSignUp);
 
 	fillZero();
-	$(".write .cancelAccept").on("click", writeReview);
+	$(".write .submit").on("click", writeReview);
 
 	$(".hostBookingCheck #hostBookCancel .submit").on("click", bookCancel);
 });
@@ -255,11 +255,11 @@ function fillZero() {
 }
 
 function writeReview() {
-	if ($("#inputTitle").val().length < 10) {
+	if ($("#inputTitle").val().length < 5) {
 		alert("제목은 5자 이상 입력하여야 합니다");
 		$("#inputTitle").focus();
 		return;
-	} else if ($("#inputContents").val().length < 40) {
+	} else if ($("#inputContents").val().length < 20) {
 		alert("내용은 20자 이상 입력하여야 합니다");
 		$("#inputContents").focus();
 		return;
@@ -269,7 +269,6 @@ function writeReview() {
 }
 
 function bookCancel() {
-	console.log("test")
-	var bno = $("input[type='checkbox']:checked").attr("id");
+	var bno = $("input[type='radio']:checked").attr("id");
 	location.href = "bookCancelOk.jsp?who=host&bno=" + bno;
 }

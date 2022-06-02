@@ -6,7 +6,7 @@
 request.setCharacterEncoding("UTF-8");
 String cp = request.getParameter("cp");
 
-Object obj = session.getAttribute("vo");
+Object obj = session.getAttribute("ovo");
 OwnerVO ovo = (OwnerVO) obj;
 %>
 

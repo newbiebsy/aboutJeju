@@ -4,7 +4,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-Object obj = session.getAttribute("vo");
+Object obj = session.getAttribute("cvo");
 CustomerVO cvo = (CustomerVO)obj;
 
 String bookNo = request.getParameter("inputBno");
