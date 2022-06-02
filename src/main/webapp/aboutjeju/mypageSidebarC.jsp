@@ -5,7 +5,6 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String cp = request.getParameter("cp");
-System.out.println("cp : " + cp);
 
 Object obj = session.getAttribute("vo");
 CustomerVO cvo = (CustomerVO)obj;
