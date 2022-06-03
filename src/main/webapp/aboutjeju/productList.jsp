@@ -56,6 +56,9 @@
 	<%
 	// URL에 숙소 타입을 atype으로 넘겨받음
 	String atype = request.getParameter("atype");
+	if(atype == null){
+		atype="호텔";
+	}
 
 	// 현재 페이지 번호
 	String cp = request.getParameter("cp");
@@ -183,6 +186,5 @@
 
 	<!-- My JS -->
 	<script src="../js/script.js"></script>
->>>>>>> refs/remotes/origin/master
 </body>
 </html>
