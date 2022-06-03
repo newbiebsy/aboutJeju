@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +11,10 @@
 </head>
 <body>
 	<%
-		String ac = request.getParameter("accommodation");
-	
+	String ac = request.getParameter("accommodation");
+
 	out.println(ac);
 	%>
-	
+
 </body>
 </html>
