@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.AccomodationDAO"%>
 <%@page import="vo.AccomodationVO"%>
@@ -119,19 +120,46 @@
 	<div class="row mt-4 mx-auto pt-1">
 
 		<%
+		DecimalFormat df = new DecimalFormat("###,###");
+
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(i + "번째 이미지 경로 : " + list.get(i).getAimage());
 		%>
 
 		<div class="col-lg-4 col-md-6 col-xl-3 my-3">
 			<a href="productDetail.jsp?ano=<%=list.get(i).getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
-				<img src="<%=list.get(i).getAimage()!=null?list.get(i).getAimage():"../images/noimage.png"%>" style="height:150px" class="card-img-top" alt="<%=list.get(i).getAname()%>" />
+				<img src="<%=list.get(i).getAimage() != null ? list.get(i).getAimage() : "../images/noimage.png"%>" style="height: 150px" class="card-img-top"
+					alt="<%=list.get(i).getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
 					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname()%></div>
-					<span><%=dao.selectAvgStar(atype, list.get(i).getAno())%>점</span><br /> <span><%=dao.selectMinPrice(atype, list.get(i).getAno())%>원</span><br />
-					<span><%=list.get(i).getAtype()%></span>
-					<%=list.get(i).getAdetail()%>
+
+					<%
+					int star = (int) Math.floor(dao.selectAvgStar(atype, list.get(i).getAno()));
+					float remainder = dao.selectAvgStar(atype, list.get(i).getAno()) % 1;
+
+					for (int j = 1; j <= star; j++) {
+					%>
+
+					<i class="bi bi-star-fill text-warning"></i>
+
+					<%
+					}
+					if (remainder != 0) {
+					%>
+
+					<i class="bi bi-star-half text-warning"></i>
+
+					<%
+					}
+					%>
+					<span><%=Math.round(dao.selectAvgStar(atype, list.get(i).getAno()) * 100) / 100.0%></span><br />
+					<p class="text-end fw-bold">
+						￦
+						<%=df.format(dao.selectMinPrice(atype, list.get(i).getAno()))%>/박
+					</p>
+
+					<%-- <%=list.get(i).getAdetail()%> --%>
+					<!-- adetail 추가되면 살려보기  -->
 					</p>
 				</div>
 			</a>

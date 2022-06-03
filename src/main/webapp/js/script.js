@@ -2,8 +2,8 @@ $(function() {
 	$("#checkin").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
 	$("#checkout").attr("disabled", "disabled");
 	$("#checkout").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
-
 	$("#checkin").on("change", onCheckin);
+	
 	$("#headerfrm>i, .login .submit").on("click", onSubmit);
 
 	$(".mypage .header #menu-btn").on("click", showOffCanvasMenu);
