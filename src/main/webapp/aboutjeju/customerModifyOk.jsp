@@ -22,5 +22,5 @@ CustomerDAO dao = new CustomerDAO();
 dao.updateOne(pw, pwq, pwqa, name, phone, id);
 dao.close();
 
-response.sendRedirect("customerModify.jsp");
+response.sendRedirect("customerModify2.jsp");
 %>
