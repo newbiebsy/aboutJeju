@@ -17,7 +17,7 @@ System.out.println("pwqa:" + pwqa);
 System.out.println("name:" + name);
 System.out.println("phone:" + phone);
 
-
+ 
 CustomerDAO dao = new CustomerDAO();
 dao.updateOne(pw, pwq, pwqa, name, phone, id);
 dao.close();
