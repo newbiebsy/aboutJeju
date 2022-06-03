@@ -5,15 +5,35 @@ public class CustomerVO {
 	String cid;
 	String cpw;
 	String cfindpw;
+	String cfindpwa;
 	String cname;
 	String cphone;
-
+	
 	public CustomerVO(int cno, String cid, String cpw, String cfindpw, String cname, String cphone) {
 		super();
 		this.cno = cno;
 		this.cid = cid;
 		this.cpw = cpw;
 		this.cfindpw = cfindpw;
+		this.cname = cname;
+		this.cphone = cphone;
+	}
+
+	public CustomerVO(int cno, String cid, String cpw, String cfindpw, String cfindpwa, String cname, String cphone) {
+		super();
+		this.cno = cno;
+		this.cid = cid;
+		this.cpw = cpw;
+		this.cfindpw = cfindpw;
+		this.cfindpwa = cfindpwa;
+		this.cname = cname;
+		this.cphone = cphone;
+	}
+
+	public CustomerVO(String cfindpw, String cfindpwa, String cname, String cphone) {
+		super();
+		this.cfindpw = cfindpw;
+		this.cfindpwa = cfindpwa;
 		this.cname = cname;
 		this.cphone = cphone;
 	}
@@ -48,6 +68,14 @@ public class CustomerVO {
 
 	public void setCfindpw(String cfindpw) {
 		this.cfindpw = cfindpw;
+	}
+	
+	public String getCfindpwa() {
+		return cfindpwa;
+	}
+
+	public void setCfindpwa(String cfindpwa) {
+		this.cfindpwa = cfindpwa;
 	}
 
 	public String getCname() {

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
 
@@ -7,27 +8,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
 
 <!-- My CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <title>ABOUT JEJU</title>
 
 <!-- JQUERY -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
 <body class="contract">
 	<jsp:include page="loginHeader.jsp" />
-	
+
 	<%
 	request.setCharacterEncoding("UTF-8");
-	
+
 	String who = request.getParameter("who");
 	%>
 
@@ -37,16 +44,19 @@
 			<div class="col-sm-10 col-md-8 col-lg-6">
 				<div class="mb-2 mx-auto">
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="agreeAll"> 
-						<label class="form-check-label fs-5 fw-bold" for="agreeAll">이용약관,
-							개인정보 수집 및 이용, <br/>위치정보 이용약관(선택)에 모두 동의합니다.</label>
+						<input class="form-check-input" type="checkbox" value=""
+							id="agreeAll"> <label
+							class="form-check-label fs-5 fw-bold" for="agreeAll">이용약관,
+							개인정보 수집 및 이용, <br />위치정보 이용약관(선택)에 모두 동의합니다.
+						</label>
 					</div>
 				</div>
 				<div class="mb-4 mx-auto">
 					<div class="form-check py-3">
-						<input type="hidden" value="<%=who %>"> 
-						<input class="form-check-input checkSub" type="checkbox" value="" id="contract1"> 
-						<label class="form-check-label" for="contract1">어바웃제주	이용약관 동의(필수)</label>
+						<input type="hidden" value="<%=who%>"> <input
+							class="form-check-input checkSub" type="checkbox" value=""
+							id="contract1"> <label class="form-check-label"
+							for="contract1">어바웃제주 이용약관 동의(필수)</label>
 					</div>
 					<textarea class="form-control noresize" rows="6" disabled>
 여러분을 환영합니다.
@@ -70,8 +80,9 @@ ABOUT JEJU는 단체에 속한 여러 구성원들이 공동의 계정으로 ABO
 				</div>
 				<div class="mb-4 mx-auto">
 					<div class="form-check py-3">
-						<input class="form-check-input checkSub" type="checkbox" value="" id="contract2"> 
-						<label class="form-check-label" for="contract2">개인정보 수집 및 이용 동의(필수)</label>
+						<input class="form-check-input checkSub" type="checkbox" value=""
+							id="contract2"> <label class="form-check-label"
+							for="contract2">개인정보 수집 및 이용 동의(필수)</label>
 					</div>
 					<textarea class="form-control noresize" rows="6" disabled>
 개인정보보호법에 따라 ABOUT JEJU에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
@@ -86,8 +97,9 @@ ABOUT JEJU는 단체에 속한 여러 구성원들이 공동의 계정으로 ABO
 				</div>
 				<div class="mb-4 mx-auto">
 					<div class="form-check py-3">
-						<input class="form-check-input checkSub" type="checkbox" value="" id="contract3"> 
-						<label class="form-check-label" for="contract3">위치기반서비스 이용약관 동의(선택)</label>
+						<input class="form-check-input checkSub" type="checkbox" value=""
+							id="contract3"> <label class="form-check-label"
+							for="contract3">위치기반서비스 이용약관 동의(선택)</label>
 					</div>
 					<textarea class="form-control noresize" rows="6" disabled>
 위치기반서비스 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 ABOUT JEJU 위치기반 서비스를 이용할 수 있습니다.
@@ -107,16 +119,19 @@ ABOUT JEJU는 단체에 속한 여러 구성원들이 공동의 계정으로 ABO
 			</textarea>
 				</div>
 				<div class="mb-5 mx-auto text-center">
-					<a href="login.jsp" type="button" class="btn btn-secondary btn-lg px-5 mx-4 my-2">취소</a>
-					<a type="button" class="btn btn-primary btn-lg px-5 mx-4 my-2 submit">확인</a>
+					<a href="login.jsp" type="button"
+						class="btn btn-secondary btn-lg px-5 mx-4 my-2">취소</a> <a
+						type="button" class="btn btn-primary btn-lg px-5 mx-4 my-2 submit">확인</a>
 				</div>
 			</div>
 			<div class="col-sm-1 col-md-2 col-lg-3"></div>
 		</div>
 	</div>
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script
+		src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous">
 		
 	</script>
 

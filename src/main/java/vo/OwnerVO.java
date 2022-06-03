@@ -5,8 +5,10 @@ public class OwnerVO {
 	String oid;
 	String opw;
 	String ofindpw;
+	String ofindpwa;
 	String oname;
 	String ophone;
+	
 
 	public OwnerVO(String ono, String oid, String opw, String ofindpw, String oname, String ophone) {
 		super();
@@ -14,6 +16,13 @@ public class OwnerVO {
 		this.oid = oid;
 		this.opw = opw;
 		this.ofindpw = ofindpw;
+		this.oname = oname;
+		this.ophone = ophone;
+	}
+	public OwnerVO(String ofindpw, String ofindpwa, String oname, String ophone) {
+		super();
+		this.ofindpw = ofindpw;
+		this.ofindpwa = ofindpwa;
 		this.oname = oname;
 		this.ophone = ophone;
 	}

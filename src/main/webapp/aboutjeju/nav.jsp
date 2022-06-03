@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!--  ## 메뉴  -->
 <div class="main_nav">
-	<nav class="nav container-fluid d-flex justify-content-center text-white shadow">
+	<nav
+		class="nav container-fluid d-flex justify-content-center text-white shadow">
 		<a class="nav-link text-reset" href="productList.jsp?atype=호텔">호텔</a>
 		<a class="nav-link text-reset" href="productList.jsp?atype=모텔">모텔</a>
 		<a class="nav-link text-reset" href="productList.jsp?atype=펜션">펜션</a>

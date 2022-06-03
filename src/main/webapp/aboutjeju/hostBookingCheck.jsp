@@ -5,7 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.OwnerVO"%>
 <%@page import="dao.BookDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,19 +16,25 @@
 <title>ABOUT JEJU</title>
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
 
 <!-- My CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <title>ABOUT JEJU</title>
 
 <!-- JQUERY -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
 <body class="mypage hostBookingCheck">
@@ -70,12 +77,13 @@
 				if (list.size() == 0) {
 				%>
 
-				<h3 class="pb-5 h-50 d-flex justify-content-center align-items-end">예약 내역이 없습니다.</h3>
+				<h3 class="pb-5 h-50 d-flex justify-content-center align-items-end">예약
+					내역이 없습니다.</h3>
 
 				<%
 				} else {
 				%>
-				
+
 				<div class="table-responsive">
 					<table class="table table-striped table-hover text-center">
 						<thead class="table-secondary">
@@ -110,9 +118,9 @@
 							%>
 
 							<tr>
-								<td>
-									<input class="form-check-input" type="radio" name="bookCancelRadio" id="<%=bvo.getBno()%>" <%=bvo.getBookok() == 1 ? "" : "disabled"%>>
-								</td>
+								<td><input class="form-check-input" type="radio"
+									name="bookCancelRadio" id="<%=bvo.getBno()%>"
+									<%=bvo.getBookok() == 1 ? "" : "disabled"%>></td>
 								<th scope="row"><%=dfbno.format(bvo.getBno())%></th>
 								<td><%=bvo.getBname()%></td>
 								<td><%=bvo.getBphone()%></td>
@@ -132,10 +140,12 @@
 						</tbody>
 					</table>
 				</div>
-				<button type="button" class="btn btn-outline-secondary mt-3" data-bs-toggle="modal" data-bs-target="#hostBookCancel">예약취소</button>
+				<button type="button" class="btn btn-outline-secondary mt-3"
+					data-bs-toggle="modal" data-bs-target="#hostBookCancel">예약취소</button>
 
 				<!-- Modal -->
-				<div class="modal fade" id="hostBookCancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="hostBookCancel" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -143,7 +153,8 @@
 							</div>
 							<div class="modal-body">예약을 취소하시겠습니까?</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">닫기</button>
 								<button type="button" class="btn btn-primary submit">확인</button>
 							</div>
 						</div>
@@ -174,12 +185,11 @@
 						if (currentPage > 1) {
 						%>
 
-						<li class="page-item">
-							<a class="page-link" href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous"
-								title="5페이지 앞으로">
-								<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
+						<li class="page-item"><a class="page-link"
+							href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>"
+							aria-label="Previous" title="5페이지 앞으로"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
 
 						<%
 						}
@@ -188,17 +198,16 @@
 						if (i == currentPage) {
 						%>
 
-						<li class="page-item">
-							<a class="page-link bg-primary text-white" href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a
+							class="page-link bg-primary text-white"
+							href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						} else {
 						%>
 
-						<li class="page-item">
-							<a class="page-link" href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a class="page-link"
+							href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						}
@@ -206,12 +215,10 @@
 
 						if (currentPage + 2 < totalPage) {
 						%>
-						<li class="page-item">
-							<a class="page-link" href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>"
-								aria-label="Next" title="5페이지 뒤로">
-								<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
+						<li class="page-item"><a class="page-link"
+							href="hostBookingCheck.jsp?ono=<%=ono%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>"
+							aria-label="Next" title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
 						<%
 						}
 
@@ -228,8 +235,10 @@
 	<!-- container-fluid end -->
 
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script
+		src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous">
 		
 	</script>
 
