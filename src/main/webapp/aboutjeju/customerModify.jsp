@@ -34,29 +34,26 @@
 <script>
 	window.onload=function(){
 		
-		var test = document.getElementById("btn");
-		test.onclick=test3;
+		var btn1 = document.getElementById("btn1");
+		btn1.onclick=test3;
+		
 	}
 	
 	function test3(){
 		var pw = $("#inputRePw").val();
 		var num = pw.search(/[0-9]/g);
+		var frm = document.frm;
+		var phoneNum = $("#inputPhone").val(); 
+		var patternPhone = /01[016789][^0][0-9]{2,3}[0-9]{3,4}/;
+		var str = $("#inputName").val();
 		// var eng = pw.search(/[a-z]/ig);
 		// console.log("test");
 		// console.log(pw);
-		if(pw.length < 8 || pw.length > 20){
-			alert("8자리 ~ 20자리 이내로 입력해주세요.");
-			return false;
-		}else if(pw.search(/\s/) != -1){
-		 	alert("비밀번호는 공백 없이 입력해주세요.");
-		 	return false;
-		}
 		
-		// console.log($("#inputName").val());
-		
-		for (var i=0; i<$("#inputName").val().length; i++)  {
+		// name 유효성검사
+		for(var i=0; i<$("#inputName").val().length; i++){
 			var chk = $("#inputName").val().substring(i,i+1);     
-			if(chk.match(/[0-9]|[a-z]|[A-Z]/)) {     	
+			if(chk.match(/[0-9]|[a-z]|[A-Z]/i)) {     	
 				alert("이름을 정확히 입력해주세요");        
 				return;    
 			}    
@@ -64,23 +61,35 @@
 				alert("이름을 정확히 입력해주세요");       
 				return;    
 			}    
-			if($("#inputName").val() == " "){    	
+			if(str.search(/\s/) != -1){    	
 				alert("이름을 정확히 입력해주세요");        
 				return;   
 			}
 		}
 		
-		var phoneNum = $("#inputPhone").val(); 
-		var patternPhone = /01[016789][^0][0-9]{2,3}[0-9]{3,4}/;
-		if(!patternPhone.test(phoneNum)) {
+		if(pw.length < 8 || pw.length > 20){
+			alert("8자리 ~ 20자리 이내로 입력해주세요.");
+			return false;
+		}else if(pw.search(/\s/) != -1){
+		 	alert("비밀번호는 공백 없이 입력해주세요.");
+		 	return false;
+		}else if(!patternPhone.test(phoneNum)){
 			alert('핸드폰 번호를 확인 해주세요');
-			return;    
-		}else {
+			return;
+		}else if( !((pw.length < 8 || pw.length > 20) && (pw.search(/\s/) != -1) && (!patternPhone.test(phoneNum))) ) {
 			alert("수정되었습니다.");
+			frm.action="customerModifyOk.jsp";
+			frm.method = "get";
+			frm.submit();
 			// console.log("통과"); 
 		    //return true;
-		}
+		}else{
+			alert("양식에 맞게 입력해주세요.");
+		}		
 	}
+		
+		
+		// console.log($("#inputName").val());
 	
 </script>
 </head>
@@ -104,7 +113,7 @@
 	<div class="row my-5">
 		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
 		<!-- 수정 버튼 누르면 customerModifyOk.jsp으로 이동 -->
-		<form action="customerModifyOk.jsp" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="signUpfrm">
+		<form name="frm" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="signUpfrm">
 			<h4 class="mb-4 fw-bold text-center">내 정보 수정</h4>
 			<div class="mb-3 row">
 				<label for="inputId" class="col-form-label col-4">아이디</label>
@@ -213,7 +222,7 @@
 			</div>
 			<div class="mt-4 text-center">
 				<a href="drop.jsp" class="btn btn-secondary m-3 px-4" role="button"><i class="bi bi-x-lg"></i> 회원탈퇴</a> 
-				<!-- <a class="btn btn-primary m-3 px-4 submit"><i class="bi bi-check-lg"></i> --> <input type="submit" class="btn btn-primary m-3 px-4" value="수정" id="btn" />
+				<!-- <a class="btn btn-primary m-3 px-4 submit"><i class="bi bi-check-lg"></i> --> <input type="button" class="btn btn-primary m-3 px-4" value="수정" id="btn1" />
 			</div>
 		</form>
 		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
