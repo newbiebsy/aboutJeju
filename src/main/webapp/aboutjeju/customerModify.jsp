@@ -39,38 +39,49 @@
 	}
 	
 	function test3(){
-		alert("수정되었습니다.");
-	}
-	<!-- 비밀번호 입력, 비밀번호 재입력부분 비밀번호 길이 8~20자 조건걸기,
-	 비밀번호 입력, 비밀번호 재입력, 비밀번호 찾기 답, 이름 빈칸이면 수정안되게끔
-	  --> 
-	function chkPW(){
-
-		 var pw = $("#inputPw").val();
-		 var num = pw.search(/[0-9]/g);
-		 var eng = pw.search(/[a-z]/ig);
-
-		 if(pw.length < 8 || pw.length > 20){
-		  alert("8자리 ~ 20자리 이내로 입력해주세요.");
-		  return false;
-		 }else if(pw.search(/\s/) != -1){
-		  alert("비밀번호는 공백 없이 입력해주세요.");
-		  return false;
-		 }else {
-			// console.log("통과"); 
-		    return true;
-		 }
-
+		var pw = $("#inputRePw").val();
+		var num = pw.search(/[0-9]/g);
+		// var eng = pw.search(/[a-z]/ig);
+		// console.log("test");
+		// console.log(pw);
+		if(pw.length < 8 || pw.length > 20){
+			alert("8자리 ~ 20자리 이내로 입력해주세요.");
+			return false;
+		}else if(pw.search(/\s/) != -1){
+		 	alert("비밀번호는 공백 없이 입력해주세요.");
+		 	return false;
 		}
-	// 010-1111-2222 형식으로 db에 저장되게끔
-	//$(document).ready(function() {
-        
-	//	  var test = "${customerVO.cphone}";
-	//	  var testDate = test.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
-		  
-	//	  $("#cphone").text(testDate);
-		 
-	//});
+		
+		// console.log($("#inputName").val());
+		
+		for (var i=0; i<$("#inputName").val().length; i++)  {
+			var chk = $("#inputName").val().substring(i,i+1);     
+			if(chk.match(/[0-9]|[a-z]|[A-Z]/)) {     	
+				alert("이름을 정확히 입력해주세요");        
+				return;    
+			}    
+			if(chk.match(/([^가-힣\x20])/i)){    
+				alert("이름을 정확히 입력해주세요");       
+				return;    
+			}    
+			if($("#inputName").val() == " "){    	
+				alert("이름을 정확히 입력해주세요");        
+				return;   
+			}
+		}
+		
+		var phoneNum = $("#inputPhone").val(); 
+		var patternPhone = /01[016789][^0][0-9]{2,3}[0-9]{3,4}/;
+		if(!patternPhone.test(phoneNum)) {
+			alert('핸드폰 번호를 확인 해주세요');
+			return;    
+		}else {
+			alert("수정되었습니다.");
+			// console.log("통과"); 
+		    //return true;
+		}
+	}
+	
 </script>
 </head>
 
@@ -95,7 +106,7 @@
 	<div class="row my-5">
 		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
 		<!-- 수정 버튼 누르면 customerModifyOk.jsp으로 이동 -->
-		<form action="customerModifyOk.jsp" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="signUpfrm">
+		<form action="" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="signUpfrm">
 			<h4 class="mb-4 fw-bold text-center">내 정보 수정</h4>
 			<div class="mb-3 row">
 				<label for="inputId" class="col-form-label col-4">아이디</label>
@@ -204,7 +215,7 @@
 			</div>
 			<div class="mt-4 text-center">
 				<a href="drop.jsp" class="btn btn-secondary m-3 px-4" role="button"><i class="bi bi-x-lg"></i> 회원탈퇴</a> 
-				<!-- <a class="btn btn-primary m-3 px-4 submit"><i class="bi bi-check-lg"></i> --> <input type="submit" class="btn btn-primary m-3 px-4" value="수정" id="btn" />
+				<!-- <a class="btn btn-primary m-3 px-4 submit"><i class="bi bi-check-lg"></i> --> <input type="button" class="btn btn-primary m-3 px-4" value="수정" id="btn" />
 			</div>
 		</form>
 		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
