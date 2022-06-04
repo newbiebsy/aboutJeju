@@ -77,7 +77,7 @@
 				%>
 				
 				<div class="table-responsive">
-					<table class="table table-striped table-hover text-center">
+					<table class="table table-sm table-striped table-hover text-center">
 						<thead class="table-secondary">
 							<tr>
 								<th scope="col"></th>

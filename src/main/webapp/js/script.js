@@ -1,10 +1,9 @@
 $(function() {
 	$("#checkin").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
-	$("#checkout").attr("disabled", "disabled");
 	$("#checkout").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
 	$("#checkin").on("change", onCheckin);
 	
-	$("#headerfrm>i, .login .submit").on("click", onSubmit);
+	$("#headerfrm>.submit, .login .submit").on("click", onSubmit);
 
 	$(".mypage .header #menu-btn").on("click", showOffCanvasMenu);
 	$(".mypage .sidebar .btn-close").on("click", closeOffCanvasMenu)
@@ -58,7 +57,6 @@ $(function() {
 
 function onCheckin() {
 	if ($("#checkin").val() !== "") {
-		$("#checkout").removeAttr("disabled");
 		var dateMin = $("#checkin").datepicker("getDate");
 		var rMin = new Date(
 			dateMin.getFullYear(),
@@ -70,6 +68,7 @@ function onCheckin() {
 }
 
 function onSubmit() {
+	console.log("test");
 	$("form").submit();
 }
 

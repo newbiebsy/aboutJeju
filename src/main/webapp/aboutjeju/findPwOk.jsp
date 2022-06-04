@@ -8,7 +8,7 @@ String inputQuestion = request.getParameter("inputQuestion");
 String inputAnswer = request.getParameter("inputAnswer");
 
 CustomerDAO cdao = new CustomerDAO();
-String cwho = cdao.findPw(inputId, inputQuestion);
+String cwho = cdao.findPw(inputId, inputQuestion, inputAnswer);
 
 OwnerDAO odao = new OwnerDAO();
 String owho = odao.findPw(inputId, inputQuestion);
