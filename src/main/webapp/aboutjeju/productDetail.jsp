@@ -61,11 +61,19 @@
 	 추후 슬라이드 시 홀수번째 이미지 불러오게 기능 추가하겠습니다 */
 	#roomimg:nth-child(odd){display: none;}
 	
+	/* 방정보 css */
 	.detailleft{float: left; margin-top:30px;}
-	.detailright{float: right; margin-top: 100px;}
-	span{text-decoration: line-through; color: darkgrey;}
-	.adetailbox{margin:auto; text-align: center;}
-	textarea{width:800px;}
+	.detailright{margin-top: 100px;}
+	.detailright>span{text-decoration: line-through; color: darkgrey;}
+	
+	/* 숙소정보 css */
+	.infobox{margin:auto; text-align: left; padding: 20px; position: relative;}
+	.infowrap{overflow: hidden; margin:auto; padding:20px; padding-bottom: 40px; width:800px; height: 300px; background: RGB(249,248,248);}
+	.infowrap ul{padding-left: 15px; list-style: none;}
+	.infowrap h3{margin:20px 0;}
+	#info-off{display: none;}
+	.infobox > button{position: absolute; right:500px; bottom:20px;}
+
 </style>
 <!-- Jquery Ui CSS -->
 <link
@@ -78,7 +86,7 @@
 
 <!-- My JS -->
 <script src="../js/script.js"></script>
-<body>
+<script>
 	<%
 		// productList에서 파라미터로 값 받아오기
 		String anoNum = request.getParameter("ano");
@@ -98,6 +106,40 @@
 		ArrayList<RoomVO> roomList = roomDao.selectAllRoom(ano);
 
 	%>
+	window.onload=function(){
+		var info = document.getElementsByClassName("infowrap")[0];
+		var spanText = document.getElementById("infoheight");
+		var infoOnBtn = document.getElementById("info-on");	
+		var infoOffBtn = document.getElementById("info-off");
+		
+		// 숙소소개란 내용이 짦을 경우 div길이 조절 후 펼치기 버튼 display : none;
+		console.dir(info); 
+		console.dir(spanText); 
+		if(spanText.offsetHeight < 100){
+			info.style.height = "auto";
+			infoOnBtn.style.display = "none";
+		}
+		
+		
+		// 숙소소개란 펼치기, 접기 기능
+		infoOnBtn.onclick=function(){
+			info.style.height = "auto";
+			infoOnBtn.style.display = "none";
+			infoOffBtn.style.display="inline";
+		}
+		
+		infoOffBtn.onclick=function(){
+			info.style.height="300px";
+			
+			infoOnBtn.style.display="inline";
+			infoOffBtn.style.display = "none";
+		}
+		
+	}
+	
+
+</script>
+<body>
 	<div class="container">
 		<div class="section">
 			<input type="radio" name="slide" id="slide01" checked />
@@ -182,9 +224,17 @@
 			}
 		%>
 		
-		<div class="adetailbox">
-			<%-- <textarea name="adetail" id="adetail" disabled ><%=accoVo.getAdetail() %></textarea> --%>
-			<%=accoVo.getAdetail() %>
+		<div class="infobox">
+			<div class="infowrap">
+				<h2>숙소소개</h2>
+				<span id="infoheight"><%=accoVo.getAdetail() %></span>
+			</div>
+			<button id="info-on">펼치기</button>
+			<button id="info-off">접기</button>
+		</div> 
+		
+		<div class="review">
+		
 		</div>
 	</div>
 	<%
