@@ -1,3 +1,6 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="vo.ConvenienceVO"%>
+<%@page import="dao.ConvenienceDAO"%>
 <%@page import="vo.RoomdetailVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.RoomdetailDAO"%>
@@ -73,6 +76,15 @@
 	.infowrap h3{margin:20px 0;}
 	#info-off{display: none;}
 	.infobox > button{position: absolute; right:500px; bottom:20px;}
+	
+	/* 편의사항 css */
+	.conveniencebox{margin:auto; width:800px; height:120px; border: 1px solid darkgray;}
+	.conwrap{}
+	.conimgwrap{float:left; text-align:center; margin-right: 20px;}
+	.conimgwrap span{display: block; }
+
+	/* 지도 */
+	
 
 </style>
 <!-- Jquery Ui CSS -->
@@ -100,10 +112,12 @@
 		RoomdetailDAO rdDao = new RoomdetailDAO();
 		AccomodationDAO accoDao = new AccomodationDAO();
 		ReviewDAO reviewDao = new ReviewDAO();
+		ConvenienceDAO conDao = new ConvenienceDAO();
 		
 		AccomodationVO accoVo = accoDao.selectOne(ano);
 		
 		ArrayList<RoomVO> roomList = roomDao.selectAllRoom(ano);
+		ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);
 
 	%>
 	window.onload=function(){
@@ -232,13 +246,35 @@
 			<button id="info-on">펼치기</button>
 			<button id="info-off">접기</button>
 		</div> 
-		
+		<div class="conveniencebox">
+		<%
+			for(ConvenienceVO vo : conList){
+		%>
+			<div class="conwrap">
+				<div class="conimgwrap">
+					<img src="../image/24h.png" alt="" width="70px"/>
+					<span><%=vo.getOption() %></span>
+				</div>
+			</div>
+		<%
+			}
+			request.setCharacterEncoding("UTF-8");
+			
+		%>
+		</div>
+		<jsp:include page="apitest.jsp" >
+			<jsp:param value="<%=accoVo.getAaddress() %>" name="aaddress"/>
+			<jsp:param value="<%=accoVo.getAname() %>" name="aname"/>
+		</jsp:include>
 		<div class="review">
 		
 		</div>
 	</div>
 	<%
 		roomDao.close();
+		conDao.close();
+		rdDao.close();
+		reviewDao.close();
 		accoDao.close();
 	%>
 </body>
