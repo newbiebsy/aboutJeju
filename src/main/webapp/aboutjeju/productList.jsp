@@ -75,6 +75,9 @@
 
 	// URL에 숙소 타입을 atype으로 넘겨받음
 	String atype = request.getParameter("atype");
+	if(atype == null){
+		atype="호텔";
+	}
 
 	// 현재 페이지 번호
 	String cp = request.getParameter("cp");
@@ -182,6 +185,7 @@
 				alt="<%=list.get(i).getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
+
 					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname()%></div>
 
 					<%

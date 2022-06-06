@@ -51,7 +51,7 @@ input[type="text"] {
 		
 		var btn2 = document.getElementById("btn2");
 		btn2.onclick=function(){
-			var title = document.getElementById("title");
+		/* 	var title = document.getElementById("title");
 			var detail = $('input:radio[name=detail]').is(':checked');
 			var addrs1 = document.getElementById("addrs1");
 			var addrs2 = document.getElementById("addrs2");
@@ -66,7 +66,7 @@ input[type="text"] {
 			else if(addrs2==null){alert("주소를 입력해주시기 바랍니다")}
 			else if(phone==null){alert("전화번호를 입력해주시기 바랍니다")}
 			else if(convenience==false){alert("편의사항을 확인해주시기 바랍니다")}
-			else{
+			else{ } */
 			
 			
 			alert("수정이 완료되었습니다");
@@ -75,7 +75,7 @@ input[type="text"] {
 			frm.action="productManageOk.jsp";
 			frm.submit();
 			}
-		}
+		
 	}
 
 	function openKaKao() {
