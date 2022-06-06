@@ -8,6 +8,8 @@ public class CustomerVO {
 	String cfindpwa;
 	String cname;
 	String cphone;
+	
+
 
 	public CustomerVO(int cno, String cid, String cpw, String cfindpw, String cfindpwa, String cname, String cphone) {
 		super();
@@ -59,6 +61,7 @@ public class CustomerVO {
 	public void setCfindpw(String cfindpw) {
 		this.cfindpw = cfindpw;
 	}
+	
 
 	public String getCfindpwa() {
 		return cfindpwa;

@@ -12,6 +12,8 @@ public class AccomodationVO {
 	float star;
 	int discount;
 	int price;
+	
+	public AccomodationVO() {}
 
 	public AccomodationVO(int ano, String ono, String aname, String aaddress, String aimage, String atype,
 			String adetail, String aphone) {
@@ -143,7 +145,4 @@ public class AccomodationVO {
 		this.price = price;
 	}
 	
-	
-
 }
-

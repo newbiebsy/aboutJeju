@@ -1,4 +1,4 @@
-﻿// 생성된 XMLHttpRequest객체의 변수 선언
+// 생성된 XMLHttpRequest객체의 변수 선언
 var xhr = null;
 // 브라우저에 상관없이 XMLHttpReqeust객체 생성
 function getXMLHttpRequest() {
@@ -56,9 +56,3 @@ function sendRequest(url, params, callback, method) {
 	xhr.send(httpMethod == 'POST' ? httpParams : null);
 
 }
-
-
-
-
-
-
