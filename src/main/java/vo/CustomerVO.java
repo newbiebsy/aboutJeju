@@ -59,7 +59,7 @@ public class CustomerVO {
 	public void setCfindpw(String cfindpw) {
 		this.cfindpw = cfindpw;
 	}
-	
+
 	public String getCfindpwa() {
 		return cfindpwa;
 	}
