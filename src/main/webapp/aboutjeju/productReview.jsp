@@ -14,8 +14,8 @@
 		padding: 0;
 	}
 	.reviewbox{width: 800px; margin: auto; margin-top:30px; border:1px solid black;}
-	.reviewheader > h3{text-align: center; line-height:20px; width: 800px; height:50px; border:1px solid green; background: lightgrey;}
-
+	.reviewheader > h3{text-align: center; line-height:50px; width: 800px; height:50px; border:1px solid green; background: lightgrey;}
+	.reviewwrap{width:800px; border:1px solid black;}
 
 </style>
 </head>
@@ -25,7 +25,7 @@
 		Object cobj = session.getAttribute("cvo");
 		
 		String str = request.getParameter("ano");
-		System.out.println("str : "+str);
+		//System.out.println("str : "+str);
 		int ano = Integer.parseInt(str);
 		
 		ReviewDAO rDao = new ReviewDAO();
@@ -39,8 +39,10 @@
 			ArrayList<ReviewVO> list = rDao.selectAll(ano);
 		for(ReviewVO vo : list){
 		%>
-			<div class="review">
-				<%=vo.getContents() %>
+			<div class="reviewwrap">
+				<h3><%=vo.getTitle() %></h3>
+				<h4><%=vo.getStar() %></h4>
+				<span class="review"><%=vo.getContents() %></span>
 			</div>
 		<%
 				}
