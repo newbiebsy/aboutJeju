@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
+<<<<<<< HEAD
+<!-- 시각 장애인이나 다른 보조 수단을 통해 정보에 접근해야 할 경우
+주언어가 명시되어 있으면 해당 언어에 알맞게 번역(점자, 소리)되어 올바른 해석으로 정보전달 할 수 있음 -->
 <html lang="ko">
 
 <head>
 <meta charset="utf-8">
+<!--  뷰포트 메타 태그가 없으면 휴대기기는 페이지를 일반적인 데스크톱 화면 너비로 렌더링한 다음 페이지를 축소하여 읽기 어렵게 만듭니다.
+뷰포트 메타 태그를 설정하면 뷰포트의 너비와 크기를 제어하여 모든 기기에서 올바른 크기로 조정할 수 있음 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->

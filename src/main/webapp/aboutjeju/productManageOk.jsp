@@ -58,7 +58,7 @@
 	cVo.setAno(aVo.getAno());
 	
 	for(int i = 0; i<convenience.length; i++){
-		cVo.setOption(convenience[i]);
+		cVo.setCoption(convenience[i]);
 		
 		cDao.addImage(cVo);
 		
