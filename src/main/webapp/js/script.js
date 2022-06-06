@@ -68,7 +68,6 @@ function onCheckin() {
 }
 
 function onSubmit() {
-	console.log("test");
 	$("form").submit();
 }
 
