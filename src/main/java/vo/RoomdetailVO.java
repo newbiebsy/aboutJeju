@@ -5,6 +5,8 @@ public class RoomdetailVO {
 	int rno;
 	String rimage;
 
+	public RoomdetailVO() {}
+	
 	public RoomdetailVO(int rdno, int rno, String rimage) {
 		this.rdno = rdno;
 		this.rno = rno;

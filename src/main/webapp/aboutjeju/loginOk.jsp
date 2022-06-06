@@ -25,7 +25,12 @@ if (cvo != null) {
 	session.setAttribute("ovo", ovo);
 	response.sendRedirect("main.jsp");
 } else {
+
 %>
+
+<!-- object obj =session.getAttribute("ovo") 
+	OwnerVo ovo = (OwnerVo)obj
+-->
 
 <script>
 	alert('입력하신 내용과 일치하는 정보가 없습니다.');

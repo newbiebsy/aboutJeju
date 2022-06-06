@@ -1,11 +1,12 @@
 <%@page import="vo.CustomerVO"%>
 <%@page import="dao.ReviewDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 
 Object obj = session.getAttribute("cvo");
-CustomerVO cvo = (CustomerVO)obj;
+CustomerVO cvo = (CustomerVO) obj;
 
 String bookNo = request.getParameter("inputBno");
 String accomoNo = request.getParameter("inputAno");
@@ -31,5 +32,5 @@ ReviewDAO rdao = new ReviewDAO();
 rdao.insertOne(bno, ano, title, contents, star);
 rdao.close();
 
-response.sendRedirect("customerBookingCheck.jsp?cno="+cvo.getCno()+"&cp=1");
+response.sendRedirect("customerBookingCheck.jsp?cno=" + cvo.getCno() + "&cp=1");
 %>
