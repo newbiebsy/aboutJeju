@@ -51,32 +51,21 @@ input[type="text"] {
 		
 		var btn2 = document.getElementById("btn2");
 		btn2.onclick=function(){
-			var title = document.getElementByName("title");
+			var title = document.getElementById("title");
+			var detail = $('input:radio[name=detail]').is(':checked');
+			var addrs1 = document.getElementById("addrs1");
+			var addrs2 = document.getElementById("addrs2");
+			var phone = document.getElementById("phone");
+			var convenience = $('input:checkbox[name=convenience]').is(':checked');
 			
-			var detail = document.getElementByName("detail");
-			var detailchk = false;
-			for(var i = 0; i<detail.length; i++){
-				if(detailchk[i].checked==true){
-					detailchk = true;
-				}
-			}
-			var addrs1 = document.getElementByName("addrs1");
-			var addrs2 = document.getElementByName("addrs2");
-			var phone = document.getElementByName("phone");
 			
-			var convenience = document.getElementByName("convenience");
-			var conchk = false;
-			for(var i = 0; i<convenience.length; i++){
-				if(convenience[i].checked==true){
-					conchk = true;
-				}
-			}
-			if(title ==null) {alert("숙소이름을 입력해주시기 바랍니다")}
-			else if(detailchk ==false){alert("숙소종류를 확인해주시기 바랍니다")}
+			
+			if(title.isEmpty()) {alert("숙소이름을 입력해주시기 바랍니다")}
+			else if(detail ==false){alert("숙소종류를 확인해주시기 바랍니다")}
 			else if(addrs1==null){alert("주소를 입력해주시기 바랍니다")}
 			else if(addrs2==null){alert("주소를 입력해주시기 바랍니다")}
 			else if(phone==null){alert("전화번호를 입력해주시기 바랍니다")}
-			else if(conchk==false){alert("편의사항을 확인해주시기 바랍니다")}
+			else if(convenience==false){alert("편의사항을 확인해주시기 바랍니다")}
 			else{
 			
 			
@@ -148,17 +137,17 @@ input[type="text"] {
 			</tr>
 			<tr>
 				<td class="title">주소</td>
-				<td><input type="text" name="addrs1" id="addrs" /> <input
+				<td><input type="text" name="addrs1" id="addrs1" /> <input
 					type="button" value="주소검색" id="btn" /></td>
 			</tr>
 			<tr>
 				<td class="title">상세주소</td>
-				<td><input type="text" name="addrs2" id="detailaddrs"
+				<td><input type="text" name="addrs2" id="addrs2"
 					placeholder="상세주소를 입력하세요" /></td>
 			</tr>
 			<tr>
 				<td class="title">전화번호</td>
-				<td><input type="text" name="phone" id="" /></td>
+				<td><input type="text" name="phone" id="phone" /></td>
 			</tr>
 			<tr>
 				<td class="title">편의사항</td>

@@ -39,17 +39,25 @@ window.onload = function() {
 		}
 	 */
  	var add1 = document.getElementById("add");
-	add1.onclick=test;
+	add1.onclick=addRoom;
+	
+	var cancle1 = document.getElementById("cancle");
+	cancle1.onclick=cancleRoom;
 		
 	
 	} 
 	
-	function test(){
+	function addRoom(){
 		var frm2 = document.frm;
 		frm2.action="addRoomOk.jsp";
 		frm2.submit();
 	}
 	
+	function cancleRoom(){
+		var frm = document.frm;
+		frm.action="roomManage.jsp";
+		frm.submit();
+	}
 
 function read(input){
 	if(input.files && input.files[0]){

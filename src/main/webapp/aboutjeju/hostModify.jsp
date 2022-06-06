@@ -235,7 +235,7 @@ window.onload=function(){
 				</div>
 			</div>
 			<div class="mt-4 text-center">
-				<a href="drop.jsp" class="btn btn-secondary m-3 px-4" role="button"><i class="bi bi-x-lg"></i> 회원탈퇴</a> 
+				<a href="ownerDrop.jsp" class="btn btn-secondary m-3 px-4" role="button"><i class="bi bi-x-lg"></i> 회원탈퇴</a> 
 				<!-- <a class="btn btn-primary m-3 px-4 submit"><i class="bi bi-check-lg"></i> --><!--  <input type="button" class="btn btn-primary m-3 px-4" value="수정" id="modify" /> -->
 				<input type="button" value="수정" id="modify" class="btn btn-primary m-3 px-4"/>
 			</div>

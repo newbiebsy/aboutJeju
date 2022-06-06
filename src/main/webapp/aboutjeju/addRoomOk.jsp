@@ -16,10 +16,10 @@
 	AccomodationVO aVo =  aDao.selectOne(ovo.getOno());
 	
 	String rtype = request.getParameter("type");
-	String rcount = request.getParameter("count");
-	String price = request.getParameter("price");
-	String discount = request.getParameter("discount");
-	String rpeople = request.getParameter("people");
+	int rcount = Integer.parseInt(request.getParameter("count"));
+	int price = Integer.parseInt(request.getParameter("price"));
+	int discount = Integer.parseInt(request.getParameter("discount"));
+	int rpeople = Integer.parseInt(request.getParameter("people"));
 	
 	System.out.println(rtype);
 	System.out.println(rcount);
@@ -31,12 +31,15 @@
 	RoomVO rVo = new RoomVO();
 	
 	
-/* 	rVo.setAno(aVo.getAno());
+	rVo.setAno(aVo.getAno());
 	rVo.setRtype(rtype);
 	rVo.setRcount(rcount);
 	rVo.setPrice(price);
 	rVo.setDiscount(discount);
-	rVo.setRpeople(rpeople); */
+	rVo.setRpeople(rpeople); 
 	
-	//rDao.insertRoom(rVo);
+	rDao.insertRoom(rVo);
+	
+	 response.sendRedirect("roomManage.jsp");
+	
 %>
