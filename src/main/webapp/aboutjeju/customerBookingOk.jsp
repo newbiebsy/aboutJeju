@@ -52,7 +52,8 @@
 		adao.close();
 		rdao.close();
 		bdao.close();
-		//response.sendRedirect("customerBookingCheck.jsp");
+		
+		response.sendRedirect("customerBookingCheck.jsp");
 	
 	%>
 
