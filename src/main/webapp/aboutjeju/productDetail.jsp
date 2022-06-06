@@ -80,7 +80,6 @@
 	
 	/* 편의사항 css */
 	.conveniencebox{margin:auto; margin-bottom:20px; width:800px; height:120px; border: 1px solid darkgray;}
-	.conwrap{}
 	.conimgwrap{float:left; text-align:center; margin-right: 20px;}
 	.conimgwrap span{display: block; }
 
@@ -267,11 +266,23 @@
 		<div class="conveniencebox">
 		<%
 			for(ConvenienceVO vo : conList){
+				String src = "";
+				if(vo.getOption().equals("냉장고")){src = "refrigerator";}
+				else if(vo.getOption().equals("흡연구역")){src = "smokingarea";}
+				else if(vo.getOption().equals("WIFI")){src = "wifi";}
+				else if(vo.getOption().equals("24H")){src = "24h";}
+				else if(vo.getOption().equals("주차가능")){src = "parking";}
+				else if(vo.getOption().equals("수영장")){src = "swim";}
+				else if(vo.getOption().equals("짐보관")){src = "baggage";}
+				else if(vo.getOption().equals("레스토랑")){src = "restaurant";}
+				else if(vo.getOption().equals("금연객실")){src = "nosmoke";}
+				System.out.println(vo.getOption());
 		%>
 			<div class="conwrap">
 				<div class="conimgwrap">
-					<img src="../image/24h.png" alt="" width="70px"/>
+					<img src="../image/<%=src%>.png" alt="" width="65px"/>
 					<span><%=vo.getOption() %></span>
+					
 				</div>
 			</div>
 		<%
