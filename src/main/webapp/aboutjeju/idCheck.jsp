@@ -1,11 +1,11 @@
 <%@page import="dao.OwnerDAO"%>
 <%@page import="dao.CustomerDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 
 String id = request.getParameter("id");
-
 
 String result = null;
 boolean cisExist = false;
@@ -17,7 +17,7 @@ if (id != null) {
 
 	cisExist = cdao.idCheck(id);
 	oisExist = odao.idCheck(id);
-	
+
 	cdao.close();
 	odao.close();
 }

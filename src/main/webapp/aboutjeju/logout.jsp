@@ -3,6 +3,6 @@
 // 세션 종료(로그아웃)
 session.invalidate();
 
-// main.jsp 로 redirect
+// main.jsp 로 redirect 
 response.sendRedirect("main.jsp");
 %>

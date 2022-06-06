@@ -1,3 +1,4 @@
+<%@page import="vo.RoomVO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="dao.OwnerDAO"%>
 <%@page import="dao.RoomDAO"%>
@@ -32,6 +33,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
+
 <body class="main">
 	<jsp:include page="header.jsp" />
 	<jsp:include page="nav.jsp" />
@@ -44,15 +46,19 @@
 		AccomodationDAO adao = new AccomodationDAO();
 		ArrayList<AccomodationVO> list = adao.selectAll(0, 3);
 
+		RoomDAO rdao = new RoomDAO();
+		DecimalFormat df = new DecimalFormat("###,###");
+
 		for (AccomodationVO vo : list) {
+			RoomVO rvo = rdao.selectOne(vo.getAno());
 		%>
 
 		<div class="col-md-6 col-sm-6 col-lg-4 my-2">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem"> <img src="<%=vo.getAimage()%>"
-				class="card-img-top" alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
+				<img src="<%=vo.getAimage() != null ? vo.getAimage() : "../images/noimage.png"%>" class="card-img-top" alt="<%=vo.getAname()%>"
+					style="height: 150px;" />
 				<div class="card-body">
-					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());
@@ -74,8 +80,11 @@
 					}
 					%>
 
-					<span> <%=vo.getStar()%></span><br />
-					<%=vo.getAdetail()%>
+					<span> <%=Math.round(vo.getStar() * 100) / 100.0%></span><br />
+					<p class="fw-bold text-end">
+						￦
+						<%=df.format(Math.round(rvo.getPrice() * (1 - rvo.getDiscount() * 0.01)))%>/박
+					</p>
 					</p>
 				</div>
 			</a>
@@ -87,6 +96,7 @@
 
 	</div>
 
+	<!-- 오늘의 특가 -->
 	<h5 class="mt-5 pt-4 text-center fw-bold">- 오늘의 특가 -</h5>
 	<div class="row w-75 mt-4 mx-auto px-5">
 
@@ -96,21 +106,20 @@
 		for (int i = 0; i < 2; i++) {
 			AccomodationVO vo = list2.get(i);
 
-			DecimalFormat df = new DecimalFormat("###,###");
 			int price = vo.getPrice();
 			int discount = vo.getDiscount();
 		%>
 
 		<div class="col-md-6 my-2 px-3 position-relative">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset"> <img src="<%=vo.getAimage()%>" class="card-img-top"
-				alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset">
+				<img src="<%=vo.getAimage() != null ? vo.getAimage() : "../images/noimage.png"%>" class="card-img-top" alt="<%=vo.getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-4 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-4 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 					<div>
-						<span class="text-decoration-line-through fst-italic"><%=df.format(price)%></span> &nbsp;<span class="fw-bold fs-3 text-danger"><%=df.format(Math.round(price * (discount * 0.01)))%></span>
+						<span class="text-decoration-line-through fst-italic">￦ <%=df.format(price)%></span> &nbsp;<span class="fw-bold fs-3 text-danger">￦ <%=df.format(Math.round(price * (discount * 0.01)))%></span><span
+							class="fw-bold"> /박</span>
 					</div>
-					<%=vo.getAdetail()%>
 					</p>
 				</div>
 			</a>
@@ -173,14 +182,16 @@
 		ArrayList<AccomodationVO> list3 = adao.selectAll(startNo, 6);
 
 		for (AccomodationVO vo : list3) {
+			RoomVO rvo = rdao.selectOne(vo.getAno());
 		%>
 
 		<div class="col-md-6 col-sm-6 col-lg-4 my-3">
-			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem"> <img src="<%=vo.getAimage()%>"
-				class="card-img-top" alt="<%=vo.getAname()%>" />
+			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset" style="width: 18rem">
+				<img src="<%=vo.getAimage() != null ? vo.getAimage() : "../images/noimage.png"%>" class="card-img-top" alt="<%=vo.getAname()%>"
+					style="height: 150px;" />
 				<div class="card-body">
 					<p class="card-text">
-					<div class="fs-5 fw-bold"><%=vo.getAname()%></div>
+					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>
 
 					<%
 					int star = (int) Math.floor(vo.getStar());
@@ -202,8 +213,11 @@
 					}
 					%>
 
-					<span> <%=vo.getStar()%></span><br />
-					<%=vo.getAdetail()%>
+					<span> <%=Math.round(vo.getStar() * 100) / 100.0%></span><br />
+					<p class="fw-bold text-end">
+						￦
+						<%=df.format(Math.round(rvo.getPrice() * (1 - rvo.getDiscount() * 0.01)))%>/박
+					</p>
 					</p>
 				</div>
 			</a>

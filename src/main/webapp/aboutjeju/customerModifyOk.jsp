@@ -9,14 +9,12 @@ String pwq = request.getParameter("inputQuestion");
 String pwqa = request.getParameter("inputAnswer");
 String name = request.getParameter("inputName");
 String phone = request.getParameter("inputPhone");
-
 System.out.println("id:" + id);
 System.out.println("pw:" + pw);
 System.out.println("pwq:" + pwq);
 System.out.println("pwqa:" + pwqa);
 System.out.println("name:" + name);
 System.out.println("phone:" + phone);
-
 
 CustomerDAO dao = new CustomerDAO();
 dao.updateOne(pw, pwq, pwqa, name, phone, id);

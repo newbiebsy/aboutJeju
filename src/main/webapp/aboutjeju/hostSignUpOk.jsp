@@ -1,5 +1,6 @@
 <%@page import="dao.OwnerDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -17,3 +18,4 @@ dao.close();
 
 response.sendRedirect("login.jsp");
 %>
+>>>>>>> branch 'master' of https://github.com/kjhws1028/webproject.git

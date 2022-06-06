@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
+<<<<<<< HEAD
 <!-- 시각 장애인이나 다른 보조 수단을 통해 정보에 접근해야 할 경우
 주언어가 명시되어 있으면 해당 언어에 알맞게 번역(점자, 소리)되어 올바른 해석으로 정보전달 할 수 있음 -->
 <html lang="ko">

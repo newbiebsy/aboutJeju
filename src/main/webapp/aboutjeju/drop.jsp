@@ -13,7 +13,7 @@
 	div#drop_wrapper{
 		position: absolute;
 		top: 15%;
-		left: 20%;
+		left: 32%;
 		/*
 		margin-top: 100px;
 		margin-left: 300px; */

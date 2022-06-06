@@ -32,19 +32,19 @@
 
 	<%
 	request.setCharacterEncoding("UTF-8");
-	//String bookNo = request.getParameter("bookno"); // 이전페이지랑 연결하면 name 뭐로 넘어오는지 보고 수정 후 주석 풀기
-	int bno = 2;  // 값 0으로 수정
+	String bookno = request.getParameter("bno");
+	int bno = 0;
 
-	/* if (bookNo != null) {  // 주석 풀기
-		bno = Integer.parseInt(bookNo);
+	if (bookno != null) {
+		bno = Integer.parseInt(bookno);
 	}
-	 */
+
 	BookDAO bdao = new BookDAO();
 	BookVO bvo = bdao.selectOne(bno);
-	
-	AccomodationDAO adao = new AccomodationDAO();	
+
+	AccomodationDAO adao = new AccomodationDAO();
 	AccomodationVO avo = adao.selectOne(bvo.getOno());
-		
+
 	bdao.close();
 	adao.close();
 	%>
@@ -53,18 +53,24 @@
 	<div class="row write">
 		<div class="col-1 col-sm-2 col-lg-3 col-xl-4"></div>
 		<form action="writeOk.jsp" class="col-10 col-sm-8 col-lg-6 col-xl-4" id="writefrm">
-			<h4 class="mt-5 mb-4 fw-bold">이용 후기</h4>
-			<div class="card mb-1" style="max-width: 540px;">
-				<div class="row p-4">
+			<h4 class="mt-5 mb-4 fw-bold text-center">이용 후기</h4>
+			<div class="card p-4 mb-1">
+				<div class="row">
 					<div class="col-4">
-						<img src="<%=avo.getAimage() %>" class="rounded-start w-100 h-100" alt="<%=avo.getAname()%>">
+						<img src="<%=avo.getAimage()%>" class="rounded-start w-100 h-100" alt="<%=avo.getAname()%>">
 					</div>
 					<div class="col-8">
 						<div class="card-body">
-							<h5 class="card-title fw-bold"><%=avo.getAname() %></h5>
-							<%-- <div class="card-text"><%=bvo.getRno() %></div> --%> <!-- 방 db 입력되면 dao 만들어서 불러오기 -->
-							<div class="card-text">예약번호 : <span class="bno"><%=bvo.getBno() %></span></div>
-							<div class="card-text">숙박기간 : <%=bvo.getBsdate() %> ~ <%=bvo.getBedate() %></div>
+							<h5 class="card-title fw-bold"><%=avo.getAname()%></h5>
+							<div class="card-text">
+								예약번호 : <span class="bno"><%=bvo.getBno()%></span>
+							</div>
+							<div class="card-text">
+								숙박기간 :
+								<p><%=bvo.getBsdate()%>
+									~
+									<%=bvo.getBedate()%></p>
+							</div>
 							<input type="hidden" name="inputBno" value="<%=bvo.getBno()%>">
 							<input type="hidden" name="inputAno" value="<%=avo.getAno()%>">
 						</div>
@@ -97,7 +103,9 @@
 					</div>
 				</div>
 				<div class="mt-2 text-center">
-					<a class="btn btn-outline-primary shadow-sm mx-3 px-3 submit" role="button"><i class="bi bi-check-lg"></i> 작성하기</a>
+					<a class="btn btn-outline-primary shadow-sm mx-3 px-3 submit" role="button">
+						<i class="bi bi-check-lg"></i> 작성하기
+					</a>
 				</div>
 			</div>
 		</form>
