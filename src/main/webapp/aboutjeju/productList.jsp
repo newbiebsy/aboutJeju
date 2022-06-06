@@ -133,8 +133,15 @@
 						<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname() %></div>
 					<span><%=dao.selectAvgStar(atype, list.get(i).getAno()) %>점</span><br /> 
 					<span><%=dao.selectMinPrice(atype, list.get(i).getAno()) %>원</span><br/>
-					<span><%=list.get(i).getAtype()%></span>
-					<%=list.get(i).getAdetail()%>
+					<!-- 숙소설명이 15자 이상인경우 문자열 자르기 -->
+					<%
+						String subStr = list.get(i).getAdetail();
+						if(subStr.length() >=15){
+							subStr = subStr.substring(0,20);
+						}
+					
+					%>
+					<%=subStr%>
 					</p>
 				</div>
 			</a>

@@ -10,12 +10,23 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=316afa77f138d6ac9ee33d24f461ce26&libraries=services"></script>
 </head>
 <body>
-	<div id="map" style="width: 100%; height: 350px;"></div>
+		<%
+			request.setCharacterEncoding("UTF-8");
+		
+			String address = request.getParameter("aaddress");
+			String name = request.getParameter("aname");
+			/* System.out.println("aaddress : "+ address); */
+			
+		%>
+	<div id="map" style="width: 800px; height: 250px; margin:auto; ">
+	</div>
+		<div style="width: 800px; margin:auto; "><%=address %></div>
+	
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
+			level : 4
 		// 지도의 확대 레벨
 		};
 
@@ -25,21 +36,13 @@
 		// 주소-좌표 변환 객체를 생성합니다
 		var geocoder = new kakao.maps.services.Geocoder();
 
-		<%
-			request.setCharacterEncoding("UTF-8");
-		
-			String address = request.getParameter("aaddress");
-			String name = request.getParameter("aname");
-			System.out.println("aaddress : "+ address);
-			
-		%>
 
 		// 주소로 좌표를 검색합니다
 		geocoder
 				.addressSearch(
 						"<%=address%>" ,
 						function(result, status) {
-								console.log("<%=address%>");
+								<%-- console.log("<%=address%>"); --%>
 
 							// 정상적으로 검색이 완료됐으면 
 							if (status === kakao.maps.services.Status.OK) {

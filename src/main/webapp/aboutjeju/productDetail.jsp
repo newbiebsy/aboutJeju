@@ -1,3 +1,4 @@
+<%@page import="vo.OwnerVO"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="vo.ConvenienceVO"%>
 <%@page import="dao.ConvenienceDAO"%>
@@ -78,12 +79,11 @@
 	.infobox > button{position: absolute; right:500px; bottom:20px;}
 	
 	/* 편의사항 css */
-	.conveniencebox{margin:auto; width:800px; height:120px; border: 1px solid darkgray;}
+	.conveniencebox{margin:auto; margin-bottom:20px; width:800px; height:120px; border: 1px solid darkgray;}
 	.conwrap{}
 	.conimgwrap{float:left; text-align:center; margin-right: 20px;}
 	.conimgwrap span{display: block; }
 
-	/* 지도 */
 	
 
 </style>
@@ -127,8 +127,6 @@
 		var infoOffBtn = document.getElementById("info-off");
 		
 		// 숙소소개란 내용이 짦을 경우 div길이 조절 후 펼치기 버튼 display : none;
-		console.dir(info); 
-		console.dir(spanText); 
 		if(spanText.offsetHeight < 100){
 			info.style.height = "auto";
 			infoOnBtn.style.display = "none";
@@ -262,13 +260,18 @@
 			
 		%>
 		</div>
-		<jsp:include page="apitest.jsp" >
+		<!-- include로 kakaoMap.jsp 불러오기 -->
+		<jsp:include page="kakaoMap.jsp" >
 			<jsp:param value="<%=accoVo.getAaddress() %>" name="aaddress"/>
 			<jsp:param value="<%=accoVo.getAname() %>" name="aname"/>
 		</jsp:include>
-		<div class="review">
+
+		<!-- include로 productReview.jsp 불러오기 -->
+		<jsp:include page="productReview.jsp" >
+			<jsp:param value="<%=accoVo.getAno() %>" name="ano"/>
+		</jsp:include>
 		
-		</div>
+
 	</div>
 	<%
 		roomDao.close();
