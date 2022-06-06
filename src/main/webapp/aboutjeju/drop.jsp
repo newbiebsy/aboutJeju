@@ -1,3 +1,4 @@
+<%@page import="vo.CustomerVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,6 +37,11 @@
     		frm.checkButton.disabled=true;
 	}
 </script>
+<%
+ Object obj = session.getAttribute("cvo");
+ CustomerVO vo = (CustomerVO)obj;
+
+%>
 </head>
 <body>
 	<jsp:include page="loginHeader.jsp" />
@@ -46,7 +52,7 @@
 		
 		<div>
 			<p>
-			<b style=color:black">사용하고 계신 아이디(<span style="color:green">aaa</span>)는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</p>
+			<b style=color:black">사용하고 계신 아이디(<span style="color:green"><%= vo.getCid() %></span>)는 탈퇴할 경우 재사용 및 복구가 불가능 합니다.</p>
 			<p><span style="color:orange">
 			탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구</span><span style="color:gray">가 불가하오니 신중하게 선택하시기 바랍니다.</span></b></p>
 			<br>
@@ -71,7 +77,7 @@
 		 
 		<div>
 			<p><span style="color:orange">
-			<b>탈퇴 후에는 아이디 aaa로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.<br>
+			<b>탈퇴 후에는 아이디 <%= vo.getCid() %>로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.<br>
 			남아있는 후기는 탈퇴 후 삭제할 수 없습니다.</span></b>
 			</p>
 			<br>
