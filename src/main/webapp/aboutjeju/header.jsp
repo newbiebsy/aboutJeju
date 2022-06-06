@@ -41,7 +41,7 @@
 		<div class="dropdown text-end position-absolute w-25">
 			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
 			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="<%=cvo != null ? "mypage.jsp" : "hostModify.jsp"%>">마이페이지</a></li>
+				<li><a class="dropdown-item" href="<%=cvo != null ? "customerModify.jsp" : "hostModify.jsp"%>">마이페이지</a></li>
 				<li><a class="dropdown-item" href="<%=cvo != null ? "customerBookingCheck.jsp?cp=1" : "hostBookingCheck.jsp?cp=1"%>">예약내역</a></li>
 				<li>
 					<hr class="dropdown-divider">

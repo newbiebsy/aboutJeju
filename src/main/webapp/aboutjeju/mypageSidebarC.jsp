@@ -13,7 +13,7 @@ CustomerVO cvo = (CustomerVO)obj;
 	<button type="button" class="btn-close btn-close-white d-none" aria-label="Close"></button>
 	<h3 class="text-white">마이페이지</h3>
 	<nav class="nav flex-column h-75">
-		<a class="nav-link text-white ps-0 <%=cp==null?"selected":"" %>" href="mypage.jsp">내 정보</a> 
+		<a class="nav-link text-white ps-0 <%=cp==null?"selected":"" %>" href="customerModify.jsp">내 정보</a> 
 		<a class="nav-link text-white mt-2 ps-0 <%=cp!=null?"selected":"" %>" href="customerBookingCheck.jsp?cp=1">예약 관리</a>
 	</nav>
 </div>
