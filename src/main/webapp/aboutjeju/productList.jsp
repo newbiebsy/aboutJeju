@@ -131,17 +131,28 @@
 				<div class="card-body">
 					<p class="card-text">
 						<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname() %></div>
-					<span><%=dao.selectAvgStar(atype, list.get(i).getAno()) %>점</span><br /> 
-					<span><%=dao.selectMinPrice(atype, list.get(i).getAno()) %>원</span><br/>
-					<!-- 숙소설명이 15자 이상인경우 문자열 자르기 -->
-					<%
-						String subStr = list.get(i).getAdetail();
-						if(subStr.length() >=15){
-							subStr = subStr.substring(0,20);
-						}
 					
+					<%
+					int star = (int) Math.floor(dao.selectAvgStar(atype, list.get(i).getAno()));
+					float remainder = dao.selectAvgStar(atype, list.get(i).getAno()) % 1;
+
+					for (int j = 1; j <= star; j++) {
 					%>
-					<%=subStr%>
+
+					<i class="bi bi-star-fill text-warning"></i>
+
+					<%
+					}
+					if (remainder != 0) {
+					%>
+
+					<i class="bi bi-star-half text-warning"></i>
+
+					<%
+					}
+					%>
+					<span><%=dao.selectAvgStar(atype, list.get(i).getAno()) %></span><br /> 
+					<span><%=dao.selectMinPrice(atype, list.get(i).getAno()) %>원</span><br/>
 					</p>
 				</div>
 			</a>
