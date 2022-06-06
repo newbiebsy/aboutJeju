@@ -83,11 +83,6 @@
 	.conimgwrap{float:left; text-align:center; margin-right: 20px;}
 	.conimgwrap span{display: block; }
 
-	
-
-input {
-	display: none;
-}
 
 /* 슬라이드 영역 */
 .section .slidewrap {
@@ -254,7 +249,24 @@ input {
 		
 	}
 	
+	$.datepicker.setDefaults({
+		  dateFormat: 'yy-mm-dd',
+		  prevText: '이전 달',
+		  nextText: '다음 달',
+		  monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		  monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		  dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		  dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		  dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		  showMonthAfterYear: true,
+		  yearSuffix: '년'
+		});
 
+		$(function () {
+		  $('.datepicker').datepicker();
+		});
+		
+			
 </script>
 <body>
 	<div class="container">
@@ -335,13 +347,13 @@ input {
 			for(RoomVO vo : roomList){
 				ArrayList<RoomdetailVO> rdList = rdDao.select(vo.getRno());	
 		%>
+		<a href="customerBooking.jsp?rno=<%=vo.getRno()%>&ano=<%=vo.getAno()%>">
 		<div class="roomwrap">
 			<div class="imgwrap">
 		<%
 				for(int i=0; i<rdList.size();i++){
-				
 		%>
-				<img src="<%=rdList.get(i).getRimage()%>" alt="" id="roomimg" />
+					<img src="<%=rdList.get(i).getRimage()%>" alt="" id="roomimg" />
 		<%
 				}
 		%>
@@ -357,6 +369,7 @@ input {
 				<h3><%=Math.round(vo.getPrice()*(1-vo.getDiscount()*0.01)) %>원</h3>
 			</div>
 		</div>
+		</a>
 		<%
 			}
 		%>
@@ -373,21 +386,20 @@ input {
 		<%
 			for(ConvenienceVO vo : conList){
 				String src = "";
-				if(vo.getOption().equals("냉장고")){src = "refrigerator";}
-				else if(vo.getOption().equals("흡연구역")){src = "smokingarea";}
-				else if(vo.getOption().equals("WIFI")){src = "wifi";}
-				else if(vo.getOption().equals("24H")){src = "24h";}
-				else if(vo.getOption().equals("주차가능")){src = "parking";}
-				else if(vo.getOption().equals("수영장")){src = "swim";}
-				else if(vo.getOption().equals("짐보관")){src = "baggage";}
-				else if(vo.getOption().equals("레스토랑")){src = "restaurant";}
-				else if(vo.getOption().equals("금연객실")){src = "nosmoke";}
-				System.out.println(vo.getOption());
+				if(vo.getCoption().equals("냉장고")){src = "refrigerator";}
+				else if(vo.getCoption().equals("흡연구역")){src = "smokingarea";}
+				else if(vo.getCoption().equals("WIFI")){src = "wifi";}
+				else if(vo.getCoption().equals("24H")){src = "24h";}
+				else if(vo.getCoption().equals("주차가능")){src = "parking";}
+				else if(vo.getCoption().equals("수영장")){src = "swim";}
+				else if(vo.getCoption().equals("짐보관")){src = "baggage";}
+				else if(vo.getCoption().equals("레스토랑")){src = "restaurant";}
+				else if(vo.getCoption().equals("금연객실")){src = "nosmoke";}
 		%>
 			<div class="conwrap">
 				<div class="conimgwrap">
 					<img src="../image/<%=src%>.png" alt="" width="65px"/>
-					<span><%=vo.getOption() %></span>
+					<span><%=vo.getCoption() %></span>
 					
 				</div>
 			</div>

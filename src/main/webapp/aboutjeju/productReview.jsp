@@ -100,7 +100,7 @@
 		
 		
 	%>
-	<div class="reviewbox">
+	<div class="reviewbox" id="reviewtest">
 		<div class="reviewheader">
 		<h3>후기</h3>
 		</div>
@@ -127,18 +127,20 @@
 			
 		%>
 		<div class="reviewpage">
-			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=beforePage(startPage)%>"><</a>
+			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=beforePage(startPage)%>#reviewtest"><</a>
 			<%
 					for(int i=startPage;i<=endPage;i++){
 			%>
-			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=i%>"><%=i%></a>
+			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=i%>#reviewtest"><%=i%></a>
 			<%
 					}
 			%>
-			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=nextPage(endPage)%>">></a>
+			<a href="productDetail.jsp?ano=<%=ano%>&cp=<%=nextPage(endPage)%>#reviewtest">></a>
 		</div>
 			<%
 			}
+		
+			rDao.close();
 			%>
 	</div>
 </body>
