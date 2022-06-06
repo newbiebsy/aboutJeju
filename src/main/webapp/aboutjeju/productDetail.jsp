@@ -198,7 +198,27 @@
 		<div class="maininfo">
 			<%=accoVo.getAtype() %>
 			<h2><%=accoVo.getAname() %></h2>
-			<%=accoDao.selectAvgStar(accoVo.getAtype(), ano) %>점
+			<!-- 별표시 코드 옮겨왔는데 css부분은 제가 건드리면 안될것 같아서 그 부분은 빼고 옮겼습니다..! -->
+			<%
+					int star = (int)Math.floor(accoDao.selectAvgStar(accoVo.getAtype(), ano));
+					float remainder = accoDao.selectAvgStar(accoVo.getAtype(), ano) % 1;
+
+					for (int j = 1; j <= star; j++) {
+					%>
+
+					<i class="bi bi-star-fill text-warning"></i>
+
+					<%
+					}
+					if (remainder != 0) {
+					%>
+
+					<i class="bi bi-star-half text-warning"></i>
+
+					<%
+					}
+					%>
+					<%=accoDao.selectAvgStar(accoVo.getAtype(), ano) %>
 			<br>후기 <%=reviewDao.getCountOne(ano) %>개
 		
 		</div>

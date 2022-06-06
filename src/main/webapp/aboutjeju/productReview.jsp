@@ -20,6 +20,23 @@
 </style>
 </head>
 <body>
+	<%!// nextPage method에서 endPage가 totalPage를 넘지 않기 위한 변수
+		int checkEndPage = 0;
+	
+		public int beforePage(int startPage) {
+			if (startPage == 1) {
+				return 1;
+			}
+			return startPage - 1;
+		}
+	
+		public int nextPage(int endPage) {
+			if (endPage == checkEndPage) {
+				return checkEndPage;
+			}
+			return endPage + 1;
+		}
+	%>
 	<%
 		Object oobj = session.getAttribute("ovo");
 		Object cobj = session.getAttribute("cvo");
@@ -36,7 +53,7 @@
 		<div class="reviewheader">
 		<h3>후기</h3>
 		<%
-			ArrayList<ReviewVO> list = rDao.selectAll(ano);
+			ArrayList<ReviewVO> list = rDao.selectPaging(ano, 0);
 		for(ReviewVO vo : list){
 		%>
 			<div class="reviewwrap">
