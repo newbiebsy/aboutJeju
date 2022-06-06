@@ -1,10 +1,9 @@
 $(function() {
 	$("#checkin").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
-	$("#checkout").attr("disabled", "disabled");
 	$("#checkout").datepicker({ minDate: 0, dateFormat: "yy-mm-dd" });
-
 	$("#checkin").on("change", onCheckin);
-	$("#headerfrm>i, .login .submit").on("click", onSubmit);
+	
+	$("#headerfrm>.submit, .login .submit").on("click", onSubmit);
 
 	$(".mypage .header #menu-btn").on("click", showOffCanvasMenu);
 	$(".mypage .sidebar .btn-close").on("click", closeOffCanvasMenu)
@@ -50,11 +49,14 @@ $(function() {
 	fillZero();
 	$(".write .submit").on("click", writeReview);
 
+	$(".bookCancel .submit").on("click", checkCheckBox);
+
+	$(".hostBookingCheck #hostBookCancel .submit").on("click", bookCancel);
+
 });
 
 function onCheckin() {
 	if ($("#checkin").val() !== "") {
-		$("#checkout").removeAttr("disabled");
 		var dateMin = $("#checkin").datepicker("getDate");
 		var rMin = new Date(
 			dateMin.getFullYear(),
@@ -66,6 +68,7 @@ function onCheckin() {
 }
 
 function onSubmit() {
+	console.log("test");
 	$("form").submit();
 }
 
@@ -104,7 +107,6 @@ function essentialCheck() {
 	}
 
 	var who = $("input[type='hidden']").val();
-	console.log(who);
 
 	if (who == "host") {
 		location.href = "hostSignUp.jsp";
@@ -151,7 +153,6 @@ function checkOno() {
 	var ono = $(".signUp #inputOno").val();
 	var params = "ono=" + ono;
 
-	console.log("ono :" + ono + ", params : " + params);
 	sendRequest("onoCheck.jsp", params, callback, "GET");
 }
 
@@ -255,15 +256,32 @@ function fillZero() {
 }
 
 function writeReview() {
-	if ($("#inputTitle").val().length < 10) {
+	if ($("#inputTitle").val().length < 5) {
 		alert("제목은 5자 이상 입력하여야 합니다");
 		$("#inputTitle").focus();
 		return;
-	} else if ($("#inputContents").val().length < 40) {
+	} else if ($("#inputContents").val().length < 20) {
 		alert("내용은 20자 이상 입력하여야 합니다");
 		$("#inputContents").focus();
 		return;
 	}
 
 	$("#writefrm").submit();
+}
+
+function checkCheckBox() {
+	var bno = $(".bookCancel #getBno").val();
+	console.log(bno);
+	if ($("#cancelContract").is(":checked") == false) {
+		alert("취소, 환불 및 보상 약관은 필수 동의 항목입니다.");
+		$("#cancelContract").focus();
+		return;
+	}
+
+	location.href = "bookCancelOk.jsp?who=host&bno=" + bno;
+}
+
+function bookCancel() {
+	var bno = $("input[type='radio']:checked").attr("id");
+	location.href = "bookCancelOk.jsp?who=host&bno=" + bno;
 }

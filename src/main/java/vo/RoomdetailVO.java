@@ -1,10 +1,5 @@
 package vo;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
 public class RoomdetailVO {
 	int rdno;
 	int rno;

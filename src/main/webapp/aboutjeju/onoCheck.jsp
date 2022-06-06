@@ -5,7 +5,6 @@
 request.setCharacterEncoding("UTF-8");
 
 String ono = request.getParameter("ono");
-System.out.println("ono : " + ono);
 
 String result = null;
 boolean oisExist = false;
@@ -16,7 +15,6 @@ if (ono != null) {
 	oisExist = odao.onoCheck(ono);
 
 	odao.close();
-	System.out.println(oisExist);
 }
 
 if (oisExist == true) {
@@ -25,6 +23,5 @@ if (oisExist == true) {
 	result = "사용 가능한 사업자번호입니다.";
 }
 
-System.out.println(result);
 out.println(result);
 %>

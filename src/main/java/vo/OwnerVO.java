@@ -1,12 +1,5 @@
 package vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class OwnerVO {
 	String ono;
 	String oid;
@@ -14,6 +7,16 @@ public class OwnerVO {
 	String ofindpw;
 	String oname;
 	String ophone;
+
+	public OwnerVO(String ono, String oid, String opw, String ofindpw, String oname, String ophone) {
+		super();
+		this.ono = ono;
+		this.oid = oid;
+		this.opw = opw;
+		this.ofindpw = ofindpw;
+		this.oname = oname;
+		this.ophone = ophone;
+	}
 
 	public String getOno() {
 		return ono;

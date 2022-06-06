@@ -7,7 +7,6 @@
 <%
 String id = request.getParameter("inputId");
 String pw = request.getParameter("inputPw");
-// System.out.println("id : " + id);
 
 CustomerDAO cdao = new CustomerDAO();
 CustomerVO cvo = cdao.login(id, pw);
@@ -16,11 +15,11 @@ OwnerDAO odao = new OwnerDAO();
 OwnerVO ovo = odao.login(id, pw);
 
 if (cvo != null) {
-	session.setAttribute("vo", cvo);
-	response.sendRedirect("main.jsp?who=customer");
+	session.setAttribute("cvo", cvo);
+	response.sendRedirect("main.jsp");
 } else if (ovo != null) {
-	session.setAttribute("vo", ovo);
-	response.sendRedirect("main.jsp?who=host");
+	session.setAttribute("ovo", ovo);
+	response.sendRedirect("main.jsp");
 } else {
 %>
 
