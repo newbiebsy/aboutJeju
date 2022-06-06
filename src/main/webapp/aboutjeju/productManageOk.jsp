@@ -1,3 +1,4 @@
+<%@page import="vo.OwnerVO"%>
 <%@page import="vo.ConvenienceVO"%>
 <%@page import="dao.ConvenienceDAO"%>
 <%@page import="vo.AccomodationVO"%>
@@ -30,11 +31,15 @@
 	String convenience[] = mr.getParameterValues("convenience");
 	
 	
-	String ono = "0000000003";
+	
 
 	AccomodationDAO aDao = new AccomodationDAO();
 	AccomodationVO aVo = new AccomodationVO();
 	/* AccomodationVO aVo = new AccomodationVO( 0, ono, aname, aaddrs, aimage, atype, adetail, phone  ); */
+	
+	Object obj = session.getAttribute("ovo");
+	OwnerVO oVo=(OwnerVO)obj;
+	String ono = oVo.getOno();
 	
 	aVo.setOno(ono);
 	aVo.setAname(aname);

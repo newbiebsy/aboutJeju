@@ -51,11 +51,41 @@ input[type="text"] {
 		
 		var btn2 = document.getElementById("btn2");
 		btn2.onclick=function(){
+			var title = document.getElementByName("title");
+			
+			var detail = document.getElementByName("detail");
+			var detailchk = false;
+			for(var i = 0; i<detail.length; i++){
+				if(detailchk[i].checked==true){
+					detailchk = true;
+				}
+			}
+			var addrs1 = document.getElementByName("addrs1");
+			var addrs2 = document.getElementByName("addrs2");
+			var phone = document.getElementByName("phone");
+			
+			var convenience = document.getElementByName("convenience");
+			var conchk = false;
+			for(var i = 0; i<convenience.length; i++){
+				if(convenience[i].checked==true){
+					conchk = true;
+				}
+			}
+			if(title ==null) {alert("숙소이름을 입력해주시기 바랍니다")}
+			else if(detailchk ==false){alert("숙소종류를 확인해주시기 바랍니다")}
+			else if(addrs1==null){alert("주소를 입력해주시기 바랍니다")}
+			else if(addrs2==null){alert("주소를 입력해주시기 바랍니다")}
+			else if(phone==null){alert("전화번호를 입력해주시기 바랍니다")}
+			else if(conchk==false){alert("편의사항을 확인해주시기 바랍니다")}
+			else{
+			
+			
 			alert("수정이 완료되었습니다");
 			
 			var frm = document.frm;
 			frm.action="productManageOk.jsp";
 			frm.submit();
+			}
 		}
 	}
 
@@ -98,7 +128,7 @@ input[type="text"] {
 		<table>
 			<tr>
 				<td class="title">숙소 이름</td>
-				<td><input type="text" name="title" id="" /></td>
+				<td><input type="text" name="title" id="title" /></td>
 			</tr>
 			<tr>
 				<td class="title">숙소 종류</td>
@@ -134,23 +164,23 @@ input[type="text"] {
 				<td class="title">편의사항</td>
 				<td>
 					<div>
-						<input type="checkbox" name="convenience" id="" />주차가능
+						<input type="checkbox" name="convenience" id="" value="주차가능"/>주차가능
 							<img src="../image/parking.png" alt="parking" /> 
-						<input type="checkbox" name="con0venience" id="" />수영장 
+						<input type="checkbox" name="convenience" id="" value="수영장"/>수영장 
 							<img src="../image/swim.png" alt="swim" /> 
-						<input type="checkbox" name="convenience" id="" />냉장고 
+						<input type="checkbox" name="convenience" id="" value="냉장고"/>냉장고 
 							<img src="../image/refrigerator.png" alt="refrigerator" /> 
-						<input type="checkbox" name="convenience" id="" />짐보관 
+						<input type="checkbox" name="convenience" id="" value="짐보관"/>짐보관 
 							<img src="../image/baggage.png" alt="baggage" /> 
-						<input type="checkbox" name="convenience" id="" />24H 
+						<input type="checkbox" name="convenience" id="" value="24H"/>24H 
 							<img src="../image/24h.png" alt="24h" /> <br /> 
-						<input type="checkbox" name="convenience" id="" />레스토랑 
+						<input type="checkbox" name="convenience" id="" value="레스토랑"/>레스토랑 
 							<img src="../image/restaurant.png" alt="restaurant" /> 
-						<input type="checkbox" name="convenience" id="" />WIFI 
+						<input type="checkbox" name="convenience" id="" value="WIFI"/>WIFI 
 							<img src="../image/wifi.png" alt="wifi" /> 
-						<input type="checkbox" name="convenience" id="" />금연객실 
+						<input type="checkbox" name="convenience" id="" value="금연객실"/>금연객실 
 							<img src="../image/nosmoke.png" alt="nosmoke" /> 
-						<input type="checkbox" name="convenience" id="" />흡연구역
+						<input type="checkbox" name="convenience" id="" value="흡연구역"/>흡연구역
 							<img src="../image/smokingarea.png" alt="smokingarea" />
 					</div>
 				</td>
