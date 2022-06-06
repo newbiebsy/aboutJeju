@@ -7,8 +7,7 @@
 <div class="container-fluid py-4 headerWrap" id="headerWrap">
 	<div class="row header">
 		<div>
-			<a href="main.jsp"> <img src="../images/logo.jpg"
-				alt="ABOUT JEJU" class="ps-2">
+			<a href="main.jsp"> <img src="../images/logo.jpg" alt="ABOUT JEJU" class="ps-2">
 			</a>
 		</div>
 
@@ -31,8 +30,7 @@
 		%>
 
 		<div class="dropdown text-end position-absolute w-25 mt-3">
-			<a href="login.jsp" class="rounded-pill p-2 loginyet"> <i
-				class="bi bi-key fs-5 fst-normal"> 로그인</i>
+			<a href="login.jsp" class="rounded-pill p-2 loginyet"> <i class="bi bi-key fs-5 fst-normal"> 로그인</i>
 			</a>
 		</div>
 
@@ -42,21 +40,14 @@
 		%>
 
 		<div class="dropdown text-end position-absolute w-25">
-			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1"
-				data-bs-toggle="dropdown" aria-expanded="false"></i>
-			<ul class="dropdown-menu shadow"
-				aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item"
-					href="<%=cvo != null ? "customerModify.jsp?cno=" + cvo.getCno() : "hostModify.jsp?ono=" + ovo.getOno()%>">마이페이지</a>
-				</li>
-				<li><a class="dropdown-item"
-					href="<%=cvo != null ? "customerBookingCheck.jsp?cno=" + cvo.getCno() : "hostBookingCheck.jsp?ono=" + ovo.getOno()%>&cp=1">예약내역</a>
-				</li>
+			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item" href="<%=cvo != null ? "customerModify.jsp" : "hostModify.jsp"%>">마이페이지</a></li>
+				<li><a class="dropdown-item" href="<%=cvo != null ? "customerBookingCheck.jsp?cp=1" : "hostBookingCheck.jsp?cp=1"%>">예약내역</a></li>
 				<li>
 					<hr class="dropdown-divider">
 				</li>
-				<li><a class="dropdown-item" type="button"
-					data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</a></li>
+				<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</a></li>
 			</ul>
 		</div>
 
@@ -87,23 +78,17 @@
 		%>
 
 		<div class="d-flex justify-content-center">
-			<form action="productList.jsp" id="headerfrm"
-				class="rounded-pill mt-3 h-75">
-				<i class="bi bi-search rounded-pill float-end p-2 fs-5"></i>
-				<div id="headerinput" class="btn-group h-100" role="group"
-					aria-label="Basic example">
-					<input type="search" id="search" name="search" value=""
-						class="w-50 ps-3" placeholder="검색어 입력"> <input type="text"
-						id="checkin" name="checkin" placeholder="체크인" class="w-25" /> <input
-						type="text" id="checkout" name="checkout" placeholder="체크아웃"
-						class="w-25" />
+			<form action="productList.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
+				<i class="bi bi-search rounded-pill float-end p-2 fs-5 submit"></i>
+				<div id="headerinput" class="btn-group h-100" role="group" aria-label="Basic example">
+					<input type="search" id="search" name="search" value="" class="w-50 ps-3" placeholder="검색어 입력"> <input type="text" id="checkin"
+						name="checkin" placeholder="체크인" class="w-25" /> <input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <div class="goingUp">
-	<a href="#headerWrap"> <i
-		class="bi bi-arrow-up-circle fs-1 text-center"></i>
+	<a href="#headerWrap"> <i class="bi bi-arrow-up-circle fs-1 text-center"></i>
 	</a>
 </div>

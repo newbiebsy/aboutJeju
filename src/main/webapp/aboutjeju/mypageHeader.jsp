@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
 <!-- 마이페이지 헤더 -->
-<div class="container-fluid header py-4">
+<div class="container-fluid header my-4">
 	<div>
 		<a href="main.jsp"><img src="../images/logo.jpg" alt="ABOUT JEJU"
 			class="ps-2"></a>

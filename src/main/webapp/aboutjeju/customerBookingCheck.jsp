@@ -149,7 +149,7 @@
 						ArrayList<RoomdetailVO> rdlist = rddao.select(bvo2.getRno()); // book 테이블에서 rno 가져와서 찾기
 						RoomdetailVO rdvo = rdlist.get(0); // 값 여러개 중에 첫번째꺼 하나만 사용
 
-						AccomodationVO avo = adao.select(rvo.getAno()); // room 테이블에서 ano 가져와서 찾기
+						AccomodationVO avo = adao.selectOne(rvo.getAno()); // room 테이블에서 ano 가져와서 찾기
 
 						boolean isReviewExist = rvdao.selectOne(bvo.getBno());
 						%>
@@ -193,9 +193,7 @@
 														alt="<%=avo.getAname()%>">
 													<p class="fw-bold fs-5 mt-3"><%=avo.getAname()%></p>
 													<p><%=avo.getAaddress()%></p>
-													<a class="btn btn-outline-primary d-block mb-3"
-														href="tel:<%=avo.getAphone()%>" role="button"> 숙소(<%=avo.getAphone()%>)에
-														전화하기
+													<a class="btn btn-outline-primary d-block mb-3" href="tel:<%=avo.getAphone()%>" role="button"> 숙소(<%=avo.getAphone()%>)에 전화하기
 													</a>
 												</div>
 
@@ -211,10 +209,8 @@
 															체크아웃
 															<p class="pt-3 fw-normal"><%=bvo2.getBedate()%></p>
 														</div>
-														<a class="d-block border-top border-1 py-2"> <i
-															class="bi bi-send-fill"></i> 예약 확정서 받기
-														</a> <a class="d-block border-top border-1 py-2"> <i
-															class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
+														<a class="d-block border-top border-1 py-2"> <i class="bi bi-send-fill"></i> 예약 확정서 받기
+														</a> <a class="d-block border-top border-1 py-2"> <i class="bi bi-envelope-exclamation-fill"></i> 숙소 정책 보기
 														</a>
 													</div>
 												</div>
@@ -275,13 +271,18 @@
 														<div class="col-6 text-end">
 															<p>
 																￦
+																<%=dfprice.format(rvo.getPrice())%>
+																*
+																<%=diffDays%>
+																=
 																<%=dfprice.format(rvo.getPrice() * diffDays)%></p>
 															<p class="text-success">
 																￦
-																<%=dfprice.format(Math.round(rvo.getPrice() * rvo.getDiscount() * 0.01))%></p>
+																<%=dfprice.format(Math.round(rvo.getPrice() * rvo.getDiscount() * 0.01) * diffDays)%></p>
 															<p class="fw-bold">
 																￦
-																<%=dfprice.format((rvo.getPrice() * diffDays) - (Math.round(rvo.getPrice() * rvo.getDiscount() * 0.01)))%></p>
+																<%=dfprice
+		.format((rvo.getPrice() * diffDays) - (Math.round(rvo.getPrice() * rvo.getDiscount() * 0.01) * diffDays))%></p>
 															<p><%=bvo2.getPay()%></p>
 														</div>
 													</div>
@@ -325,9 +326,8 @@
 						%>
 
 						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>"
-							aria-label="Previous" title="5페이지 앞으로"> <span
-								aria-hidden="true">&laquo;</span>
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous" title="5페이지 앞으로">
+								<span aria-hidden="true">&laquo;</span>
 						</a></li>
 
 						<%
@@ -336,18 +336,13 @@
 						if (i == currentPage) {
 						%>
 
-						<li class="page-item"><a
-							class="page-link bg-primary text-white"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a class="page-link bg-primary text-white" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						} else {
 						%>
 
-						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a>
-						</li>
+						<li class="page-item"><a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						}
@@ -355,8 +350,8 @@
 						if (currentPage + 2 < totalPage) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>"
-							aria-label="Next" title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
+							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage + 5 > totalPage) ? (totalPage) : (currentPage + 5)%>" aria-label="Next"
+							title="5페이지 뒤로"> <span aria-hidden="true">&raquo;</span>
 						</a></li>
 						<%
 						}

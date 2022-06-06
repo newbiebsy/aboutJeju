@@ -9,15 +9,7 @@ public class CustomerVO {
 	String cname;
 	String cphone;
 	
-	public CustomerVO(int cno, String cid, String cpw, String cfindpw, String cname, String cphone) {
-		super();
-		this.cno = cno;
-		this.cid = cid;
-		this.cpw = cpw;
-		this.cfindpw = cfindpw;
-		this.cname = cname;
-		this.cphone = cphone;
-	}
+
 
 	public CustomerVO(int cno, String cid, String cpw, String cfindpw, String cfindpwa, String cname, String cphone) {
 		super();
@@ -70,6 +62,7 @@ public class CustomerVO {
 		this.cfindpw = cfindpw;
 	}
 	
+
 	public String getCfindpwa() {
 		return cfindpwa;
 	}
