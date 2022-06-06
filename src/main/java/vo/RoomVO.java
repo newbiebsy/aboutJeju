@@ -8,7 +8,9 @@ public class RoomVO {
 	int price;
 	int discount;
 	int rpeople;
-
+	
+	public RoomVO() {}
+	
 	public RoomVO(int rno, int ano, String rtype, int rcount, int price, int discount, int rpeople) {
 		super();
 		this.rno = rno;

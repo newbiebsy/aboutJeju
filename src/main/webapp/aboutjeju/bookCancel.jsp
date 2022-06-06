@@ -1,5 +1,6 @@
 <%@page import="vo.CustomerVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
 
@@ -8,19 +9,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
 
 <!-- My CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <title>ABOUT JEJU</title>
 
 <!-- JQUERY -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
 <body class="bookCancel">
@@ -82,15 +89,18 @@
 제3조 고객이 예약한 객실이 아닌 다른 객실이 숙소에 의해 제공된 경우, 고객이 숙소에 의해 제공된 객실을 이용하거나 숙소의 기타 보상 안을 수용한 경우, 어바웃제주는 별도의 보상 의무를 지지 않습니다.
 					</textarea>
 					<div class="form-check py-3">
-						<input class="form-check-input" type="checkbox" id="cancelContract">
-						<label class="form-check-label" for="cancelContract">어바웃제주 취소, 환불 및 보상 약관 동의(필수)</label>
+						<input class="form-check-input" type="checkbox"
+							id="cancelContract"> <label class="form-check-label"
+							for="cancelContract">어바웃제주 취소, 환불 및 보상 약관 동의(필수)</label>
 					</div>
 				</div>
 
 				<div class="mb-5 mx-auto text-center">
-					<a href="customerBookingCheck.jsp?cno=<%=cvo.getCno()%>&cp=1" type="button" class="btn btn-secondary btn-lg px-5 mx-4 my-2">취소</a>
-					<input type="hidden" value="<%=bno %>" id="getBno">					
-					<button type="button" class="btn btn-primary btn-lg px-5 mx-4 my-2 submit">확인</button>
+					<a href="customerBookingCheck.jsp?cno=<%=cvo.getCno()%>&cp=1"
+						type="button" class="btn btn-secondary btn-lg px-5 mx-4 my-2">취소</a>
+					<input type="hidden" value="<%=bno%>" id="getBno">
+					<button type="button"
+						class="btn btn-primary btn-lg px-5 mx-4 my-2 submit">확인</button>
 				</div>
 			</div>
 
@@ -99,8 +109,10 @@
 		</div>
 	</div>
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script
+		src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous">
 		
 	</script>
 
