@@ -69,13 +69,13 @@
 
 	// URL에 체크인날짜를 checkin으로 넘겨받음(기본값이 null이어야 sql 에러안남)
 	String checkin = request.getParameter("checkin");
-
+	
 	// URL에 체크아웃날짜를 checkout으로 넘겨받음(기본값이 null이어야 sql 에러안남)
 	String checkout = request.getParameter("checkout");
 
 	// URL에 숙소 타입을 atype으로 넘겨받음
 	String atype = request.getParameter("atype");
-	
+
 	// 현재 페이지 번호
 	String cp = request.getParameter("cp");
 
@@ -217,7 +217,7 @@
 		</div>
 
 		<%
-		}
+			}
 		} else if (search != null) { // 메인에서 검색을 통해 productList로 이동한경우
 		ReviewDAO rvdao = new ReviewDAO();
 
