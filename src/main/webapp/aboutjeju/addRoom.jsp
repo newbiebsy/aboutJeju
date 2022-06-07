@@ -38,24 +38,25 @@ window.onload = function() {
 			frm.submit();
 		}
 	 */
- 	var add1 = document.getElementById("add");
-	add1.onclick=addRoom;
-	
+ 	
 	var cancle1 = document.getElementById("cancle");
 	cancle1.onclick=cancleRoom;
 		
 	
 	} 
 	
-	function addRoom(){
-		var frm2 = document.frm;
+	function addRoom(x){
+		
+		var frm2 = x.form;
 		frm2.action="addRoomOk.jsp";
-		frm2.submit();
+		frm2.method="post";
+		frm2.submit();  
 	}
 	
 	function cancleRoom(){
 		var frm = document.frm;
 		frm.action="roomManage.jsp";
+		frm.method="post";
 		frm.submit();
 	}
 
@@ -92,7 +93,7 @@ function read2(input){
 
 			<div class="col-md-9">
 
-	<form name="frm" method="post" enctype="multipart/form-data">
+	<form name="frm"  enctype="multipart/form-data">
 	<p>방 종류: <input type="text" name="type" id="type" /></p>
 	<p>방 갯수: <input type="text" name="count"  /></p>
 	<p>가격 : <input type="text" name="price"  />
@@ -106,7 +107,7 @@ function read2(input){
 	<img src="" alt="" id="preview2" />
 	</p>
 	<input type="button" value="취소" id="cancle"/>
-	<input type="button" value="추가" id="add"/>
+	<input type="button" value="추가" id="" onclick="addRoom(this);"/>
 	</form>
 	</div>
 	</div>

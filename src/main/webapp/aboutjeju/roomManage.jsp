@@ -62,14 +62,21 @@
 			
 			
 			RoomdetailDAO rdDao = new RoomdetailDAO();
+			%>
 			
-	%>	
+			
+	<form name="frm2" enctype="multipart/form-data">
+	<p><input type="button" value="추가하기" onclick="addRoom(this);"/></p>
+	</form>
 	
-	<form name="frm"  enctype="multipart/form-data" action="addRoom.jsp">
-	<p><input type="submit" value="추가하기" id=add/></p>
+	
+	<% 		
+			for(int i = 0; i<rList.size(); i++){
+	%>	
+	<form name="frm" enctype="multipart/form-data"  >
 	
 	<%
-		for(int i = 0; i<rList.size(); i++){
+		
 			int rno = rList.get(i).getRno();
 			
 		ArrayList<RoomdetailVO> rdList = rdDao.select(rno);
@@ -78,21 +85,32 @@
 	%>			
 	<img src="<%=rdVo.getRimage() %>" alt="" id="rimage"/>
 	<% 	} %>
+	
+	<input type="hidden" name="rno" value="<%=rno %>" />
 	<p>방 종류: <input type="text" name="type" id="" value="<%= rList.get(i).getRtype() %>"/></p>
 		<p>방 갯수: <input type="text" name="count" id="" value="<%= rList.get(i).getRcount() %>"/></p>
 		<p>방 가격: <input type="text" name="price" id="" value="<%= rList.get(i).getPrice() %>"/> </p>
 		할인율<input type="text" name="discount" id="" value="<%= rList.get(i).getDiscount() %>"/>
 		<p>수용가능인원: <input type="text" name="people" id="" value="<%=rList.get(i).getRpeople() %>"/> </p>
-		<p>방 사진: <input type="file" name="filename" id="" onchange="read(this)"/>
-		<span><img src="" alt="" id="preview"/></span></p>
-		<p><input type="file" name="filename2" id="" onchange="read2(this)"/>
-		<span><img src="" alt="" id="preview2"/></span></p>
+		
+		<p>방 사진: <input type="file" name="filename" id="" onchange="read<%=rno %>(this)"/>
+		<img src="" alt="" id="preview<%=rno%>"/></p>
+		
+		<p><input type="file" name="filename2" id="" onchange="read2<%=rno %>(this)"/>
+		<span><img src="" alt="" id="preview2<%=rno%>"/></span></p>
 
 		
-		<p><input type="button" value="수정" id ="<%=rno%>" onclick="modifyRoom<%=rno%>();"/> <input type="button" value="삭제" id="<%=rno %>"  onclick="deleteRoom<%=rno %>();" /></p>
+		<p><input type="button" value="수정" id ="<%=rno%>" onclick="modifyRoom(this);"/> <input type="button" value="삭제" id="<%=rno %>"  onclick="deleteRoom<%=rno %>();" /></p>
 		</form>		
 
 	<script>
+		function addRoom(x){
+			var frm = x.form;
+			frm.action="addRoom.jsp"; 
+			frm.method="post";
+			frm.submit();
+		}
+	
 		function deleteRoom<%=rno%>(){
 			/* 	console.log(e.getAttribute("id"));
 				var a = e.getAttribute("id");
@@ -108,29 +126,35 @@
 			frm.submit();
 			}		
 		
-		function modifyRoom<%=rno%>(){
-			var frm = document.frm;
+		function modifyRoom(x){
+			<%-- var frm = document.frm;
 			frm.action="roomModify.jsp?rno=<%=rno%>";
 			frm.method="post";
-			frm.submit();
+			frm.submit(); --%>
+			var frm = x.form;
+				frm.action="roomModify.jsp"; 
+				frm.method="post";
+				frm.submit();
+			console.dir(f);
+			
 		}
 		
-		function read(input){
+		function read<%=rno%>(input){
 			if(input.files && input.files[0]){
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					document.getElementById('preview').src = e.target.result;
+					document.getElementById('preview<%=rno%>').src = e.target.result;
 				};
 				reader.readAsDataURL(input.files[0]);
 			}else{
 				/* document.getElementById('preview').src=""; */
 			}
 		}
-		function read2(input){
+		function read2<%=rno%>(input){
 			if(input.files && input.files[0]){
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					document.getElementById('preview2').src = e.target.result;
+					document.getElementById('preview2<%=rno%>').src = e.target.result;
 				};
 				reader.readAsDataURL(input.files[0]);
 			}else{
@@ -140,7 +164,7 @@
 		</script>
 	
 	
-		<% 	} %>
+		<% 	} %> 
 	
 	
 	
