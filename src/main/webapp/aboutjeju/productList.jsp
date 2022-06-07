@@ -134,7 +134,7 @@
 	if (atype != null) { // 메인에서 카테고리 버튼을 눌러서 productList로 이동한 경우
 		totalCount = dao.getTotalCount(atype);
 		System.out.println("totalCountType : " + totalCount);
-	} else if (search != null) { // 메인에서 검색을 통해 productList로 이동한경우
+	} else if (search=="") { // 메인에서 검색을 통해 productList로 이동한경우
 		totalCount = dao.getSearchedAccomodationTotalCount(search, remainAlist);
 		System.out.println("totalCountSearch : " + totalCount);
 	}
@@ -182,7 +182,6 @@
 				alt="<%=list.get(i).getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-
 					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname()%></div>
 
 					<%
@@ -221,7 +220,7 @@
 			}
 		} else if (search != null) { // 메인에서 검색을 통해 productList로 이동한경우
 		ReviewDAO rvdao = new ReviewDAO();
-		
+
 		if (searchedList.size() == 0) {
 		out.println("<h4 class='text-center py-5 mt-5'>검색 조건에 맞는 숙소가 없습니다.</h4>");
 		}

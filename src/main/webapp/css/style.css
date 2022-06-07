@@ -348,6 +348,46 @@ a {
 	height: 100%;
 }
 
+/* 숙소상세 페이지 */
+.productDetail .infobox {
+	margin: auto;
+	padding: 20px;
+	position: relative;
+}
+
+.productDetail .infowrap {
+	overflow: hidden;
+	margin: auto;
+	padding: 20px;
+	padding-bottom: 40px;
+	width: 100%;
+	height: 300px;
+	background: RGB(249, 248, 248);
+}
+
+.productDetail .infowrap ul {
+	padding-left: 15px;
+}
+
+.productDetail .infowrap h3 {
+	margin: 20px 0;
+	font-size: 18px;
+}
+
+.productDetail #info-off {
+	display: none;
+}
+
+.productDetail .infobox>button {
+	position: absolute;
+	right: 500px;
+	bottom: 10px;
+}
+
+.productDetail .roomimg:nth-child(odd) {
+	display: none;
+}
+
 /* 푸터 */
 footer>div>p, footer>div>ul {
 	font-size: 13px;

@@ -7,12 +7,12 @@ request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("inputId");
 String pw = request.getParameter("inputPw");
 String pwq = request.getParameter("inputQuestion");
-String pwa = request.getParameter("inputAnswer");
+String pwqa = request.getParameter("inputAnswer");
 String name = request.getParameter("inputName");
 String phone = request.getParameter("inputPhone");
 
 CustomerDAO dao = new CustomerDAO();
-dao.insertOne(id, pw, pwq, pwa, name, phone);
+dao.insertOne(id, pw, pwq, pwqa, name, phone);
 
 dao.close();
 

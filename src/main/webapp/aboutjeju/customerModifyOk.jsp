@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
+
 String id = request.getParameter("inputId");
 String pw = request.getParameter("inputPw");
 String pwq = request.getParameter("inputQuestion");
@@ -14,8 +15,10 @@ System.out.println("pwq:" + pwq);
 System.out.println("pwqa:" + pwqa);
 System.out.println("name:" + name);
 System.out.println("phone:" + phone);
+
 CustomerDAO dao = new CustomerDAO();
 dao.updateOne(pw, pwq, pwqa, name, phone, id);
 dao.close();
-response.sendRedirect("customerModify2.jsp");
+
+response.sendRedirect("customerModify.jsp");
 %>

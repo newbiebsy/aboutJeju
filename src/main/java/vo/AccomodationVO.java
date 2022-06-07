@@ -145,7 +145,4 @@ public class AccomodationVO {
 		this.price = price;
 	}
 	
-	
-
 }
-

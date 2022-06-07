@@ -1,29 +1,35 @@
-<%@page import="vo.CustomerVO"%>
 <%@page import="dao.CustomerDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="vo.CustomerVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!doctype html>
 <html lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ABOUT JEJU</title>
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
 
 <!-- My CSS -->
 <link rel="stylesheet" href="../css/style.css">
 <title>ABOUT JEJU</title>
 
 <!-- JQUERY -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+</head>
 <script>
 	window.onload=function(){
 		
@@ -61,7 +67,7 @@
 		}
 		
 		if(pw.length < 8 || pw.length > 20){
-			alert("8자리 ~ 20자리 이내로 입력해주세요.");
+			alert("비밀번호는 8자리 ~ 20자리 이내로 입력해주세요.");
 			return false;
 		}else if(pw.search(/\s/) != -1){
 		 	alert("비밀번호는 공백 없이 입력해주세요.");
@@ -82,32 +88,26 @@
 	}		
 		// console.log($("#inputName").val());
 	</script>
-</head>
 
-<body class="mypage">
+<body>
+
 	<jsp:include page="mypageHeader.jsp" />
-
-	<div class="container-fluid">
+	<div class="container-fluid mypage mt-4">
 		<div class="row">
-			<jsp:include page="mypageSidebarC.jsp" />
+			<jsp:include page="mypageSidebarC.jsp" /> <!--제원님은 이부분만 mypageSidebarH.jsp 로 변경해서 연결하시면 됩니다  -->
 
-			<div class="col-md-9 contents py-5 px-4">
-
-				<%
+			<div class="col-md-9">
+			<%
 				Object obj = session.getAttribute("cvo");
 				CustomerVO cvo = (CustomerVO) obj;
 
 				CustomerDAO dao = new CustomerDAO();
 				CustomerVO vo = dao.selectOne(cvo.getCid());
 				System.out.println(vo);
-
+				
 				//println("obj : " + obj);
 				//out.println("id : " + id);
 				%>
-
-				<!-- 수정 버튼 누르면 customerModifyOk.jsp으로 이동 -->
-				<div class="row">
-					<div class="col-0 col-sm-2 col-lg-3"></div>
 					<form name="frm" class="col-12 col-sm-8 col-lg-6" id="signUpfrm">
 						<h4 class="mb-4 fw-bold text-center">내 정보 수정</h4>
 						<div class="mb-3 row">
@@ -136,11 +136,11 @@
 							<label for="inputQuestion" class="col-form-label col-4">비밀번호 찾기 질문</label>
 							<div class="col-8">
 								<select class="form-select" name="inputQuestion" id="inputQuestion">
-									<option value="아버지의 성함은?" <%="아버지의 성함은?".equals(vo.getCfindpw()) ? "selected" : ""%>>아버지의 성함은?</option>
-									<option value="어머니의 성함은?" <%="어머니의 성함은?".equals(vo.getCfindpw()) ? "selected" : ""%>>어머니의 성함은?</option>
-									<option value="부모님의 고향은?" <%="부모님의 고향은?".equals(vo.getCfindpw()) ? "selected" : ""%>>부모님의 고향은?</option>
-									<option value="출신 초등학교는?" <%="출신 초등학교는?".equals(vo.getCfindpw()) ? "selected" : ""%>>출신 초등학교는?</option>
-									<option value="가장 기억에 남는 선생님 성함은?" <%="가장 기억에 남는 선생님 성함은?".equals(vo.getCfindpw()) ? "selected" : ""%>>가장 기억에 남는 선생님 성함은?</option>
+									<option value="아버지의 성함은?" <%="아버지의 성함은?".equals(cvo.getCfindpw()) ? "selected" : ""%>>아버지의 성함은?</option>
+									<option value="어머니의 성함은?" <%="어머니의 성함은?".equals(cvo.getCfindpw()) ? "selected" : ""%>>어머니의 성함은?</option>
+									<option value="부모님의 고향은?" <%="부모님의 고향은?".equals(cvo.getCfindpw()) ? "selected" : ""%>>부모님의 고향은?</option>
+									<option value="출신 초등학교는?" <%="출신 초등학교는?".equals(cvo.getCfindpw()) ? "selected" : ""%>>출신 초등학교는?</option>
+									<option value="가장 기억에 남는 선생님 성함은?" <%="가장 기억에 남는 선생님 성함은?".equals(cvo.getCfindpw()) ? "selected" : ""%>>가장 기억에 남는 선생님 성함은?</option>
 								</select>
 							</div>
 						</div>
@@ -171,18 +171,15 @@
 							<input type="button" class="btn btn-primary m-3 px-4" value=" 수 정 " id="btn1" />
 						</div>
 					</form>
-					<div class="col-0 col-sm-2 col-lg-3"></div>
-				</div>
 			</div>
-			<!-- contents end -->
 		</div>
-		<!-- row end -->
 	</div>
-	<!-- container-fluid end -->
 
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script
+		src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous">
 		
 	</script>
 

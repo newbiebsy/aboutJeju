@@ -18,9 +18,9 @@
 			/* System.out.println("aaddress : "+ address); */
 			
 		%>
-	<div id="map" style="width: 800px; height: 250px; margin:auto; ">
+	<div id="map" style="width:100%; height:250px; margin:auto; ">
 	</div>
-		<div style="width: 800px; margin:auto; "><%=address %></div>
+		<div style="widht:100%; margin:auto; "><%=address %></div>
 	
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

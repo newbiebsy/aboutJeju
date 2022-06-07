@@ -28,3 +28,4 @@ OwnerVO ovo = (OwnerVO) obj;
 
 	</nav>
 </div>
+>>>>>>> branch 'master' of https://github.com/kjhws1028/webproject.git

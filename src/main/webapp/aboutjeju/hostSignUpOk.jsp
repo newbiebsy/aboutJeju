@@ -18,3 +18,4 @@ dao.close();
 
 response.sendRedirect("login.jsp");
 %>
+>>>>>>> branch 'master' of https://github.com/kjhws1028/webproject.git
