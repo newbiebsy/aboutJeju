@@ -166,7 +166,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					</p>
 					<p><%=accoVo.getAtype()%></p>
 				</div>
-				<form action="customerBooking.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
+				<form action="customerBooking.jsp" >
 				<div class="border border-1 my-3 p-3 text-center">
 					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
 					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
