@@ -88,7 +88,7 @@
 	%>
 
 	<h4 class="border-bottom border-3 m-3 pb-3 ps-3 fw-bold">후기</h4>
-	<ul class="list-group list-group-flush m-3">
+	<ul class="list-group list-group-flush m-3" id="reviewindex">
 
 		<%
 		if (totalCount == 0) {
@@ -132,7 +132,7 @@
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center mt-5">
 			<li class="page-item">
-				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=beforePage(startPage)%>" aria-label="Previous">
+				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=beforePage(startPage)%>#reviewindex" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 				</a>
 			</li>
@@ -142,7 +142,7 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=i%>"><%=i%></a>
+				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=i%>#reviewindex"><%=i%></a>
 			</li>
 
 			<%
@@ -150,7 +150,7 @@
 			%>
 
 			<li class="page-item">
-				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=nextPage(endPage)%>" aria-label="Next">
+				<a class="page-link" href="productDetail.jsp?ano=<%=ano%>&cp=<%=nextPage(endPage)%>#reviewindex" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 				</a>
 			</li>

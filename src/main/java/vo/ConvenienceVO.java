@@ -5,6 +5,7 @@ public class ConvenienceVO {
 	int ano;
 	String coption;
 
+
 	public ConvenienceVO(int cvno, int ano, String coption) {
 		super();
 		this.cvno = cvno;
@@ -39,3 +40,4 @@ public class ConvenienceVO {
 	}
 
 }
+

@@ -86,13 +86,13 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 		}
 
 	}
+	
 </script>
 </head>
 
 <body class="productDetail">
 	<jsp:include page="header.jsp" />
 	<jsp:include page="nav.jsp" />
-
 	<div class="container-fluid mt-4">
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -130,7 +130,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 						<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
 					</button>
 				</div>
-
+				
 				<!-- 숙소정보 -->
 				<div class="border border-1 my-3 p-3">
 					<h4 class="fw-bold"><%=accoVo.getAname()%></h4>
@@ -159,7 +159,6 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					</p>
 					<p><%=accoVo.getAtype()%></p>
 				</div>
-
 				<div class="border border-1 my-3 p-3 text-center">
 					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
 					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
@@ -170,7 +169,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 				for (RoomVO vo : roomList) {
 					ArrayList<RoomdetailVO> rdList = rdDao.select(vo.getRno());
 				%>
-
+				<a href="customerBooking.jsp" id="<%=vo.getRno() %>" >
 				<div class="card mb-3 mx-auto" style="max-width: 900px;">
 					<div class=" row g-0 border-1 border-bottom">
 						<div class="col-md-4">
@@ -200,7 +199,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 						</div>
 					</div>
 				</div>
-
+				</a>
 				<%
 				}
 				%>
@@ -273,7 +272,6 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 			<div class="col-md-2"></div>
 		</div>
 	</div>
-
 	<%
 	roomDao.close();
 	conDao.close();
