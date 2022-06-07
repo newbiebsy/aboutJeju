@@ -21,12 +21,6 @@
 </style>
 <script>
 	<%
-	/* 	// URL에 체크인날짜를 checkin으로 넘겨받음(기본값이 null이어야 sql 에러안남)
-		String checkin = request.getParameter("checkin");
-	
-		// URL에 체크아웃날짜를 checkout으로 넘겨받음(기본값이 null이어야 sql 에러안남)
-		String checkout = request.getParameter("checkout"); */
-	
 		request.setCharacterEncoding("UTF-8");
 		Object obj = session.getAttribute("cvo");
 		if(obj==null){
@@ -42,6 +36,11 @@
 		
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
+		
+		// 날짜 체크하지 않고 방 클릭시 productDetail.jsp로 돌아감
+		if ((checkin == "" || "".equals(checkin))||checkout == "" || "".equals(checkout)){
+			response.sendRedirect("productDetail.jsp?ano="+ano+"&bn=1");
+		}
 		
 		AccomodationDAO aDao = new AccomodationDAO();
 		AccomodationVO aVo = aDao.selectOne(ano);
