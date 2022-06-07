@@ -47,6 +47,12 @@ if (anoNum != null) {
 	ano = Integer.parseInt(anoNum);
 }
 
+String bNum = request.getParameter("bn");
+int bn = 0;
+if(bNum != null){
+	bn = Integer.parseInt(bNum);
+}
+
 // dao 객체 생성
 RoomDAO roomDao = new RoomDAO();
 RoomdetailDAO rdDao = new RoomdetailDAO();
@@ -67,6 +73,11 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 		
 		var submitbtn = document.getElementById("submitbtn");
 
+		var test = <%=bn%>;
+		
+		if(test == 1){
+			alert("날짜를 선택해주세요!");
+		}
 		// 숙소소개란 내용이 짦을 경우 div길이 조절 후 펼치기 버튼 display : none;
 		if (spanText.offsetHeight < 100) {
 			info.style.height = "auto";
@@ -166,7 +177,6 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					</p>
 					<p><%=accoVo.getAtype()%></p>
 				</div>
-
 				<form action="customerBooking.jsp" >
 				<div class="border border-1 my-3 p-3 text-center">
 					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
