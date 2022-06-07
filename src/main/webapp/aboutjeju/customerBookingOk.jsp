@@ -29,8 +29,8 @@
 		RoomVO rvo = rdao.select(rno);
 		
 		// 날짜
-		String bsdate = null;
-		String bedate = null;
+		String bsdate = request.getParameter("checkin");
+		String bedate = request.getParameter("checkout");
 		
 		int bprice = rvo.getPrice();
 		String bname = request.getParameter("bname");

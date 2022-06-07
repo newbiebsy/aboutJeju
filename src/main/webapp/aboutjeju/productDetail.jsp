@@ -226,6 +226,9 @@
 		var infoOnBtn = document.getElementById("info-on");	
 		var infoOffBtn = document.getElementById("info-off");
 		
+		var submitbtn = document.getElementById("submitbtn");
+		
+		
 		// 숙소소개란 내용이 짦을 경우 div길이 조절 후 펼치기 버튼 display : none;
 		if(spanText.offsetHeight < 100){
 			info.style.height = "auto";
@@ -247,6 +250,11 @@
 			infoOffBtn.style.display = "none";
 		}
 		
+	}
+	
+	function movepage(x){
+		var btn = document.getElementById("hiddenbtn");
+		btn.click();
 	}
 	
 	$.datepicker.setDefaults({
@@ -339,15 +347,20 @@
 			<br>후기 <%=reviewDao.getCountOne(ano) %>개
 		
 		</div>
+		<form action="customerBooking.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
 		<div class="calendar">
 			<input type="text" id="checkin" name="checkin" value="체크인" class="w-25" /> 
-			<input type="text" id="checkout" name="checkout" value="체크아웃" class="w-25" />
+			<input type="text" id="checkout" name="checkout" value="체크아웃" class="w-25" />	
+			<input type="submit" id="hiddenbtn" hidden=""/>
 		</div>
+		
 		<%
 			for(RoomVO vo : roomList){
 				ArrayList<RoomdetailVO> rdList = rdDao.select(vo.getRno());	
 		%>
-		<a href="customerBooking.jsp?rno=<%=vo.getRno()%>&ano=<%=vo.getAno()%>">
+		<a href="#" id="<%=vo.getRno() %>" onclick="movepage(this)" >
+		<input type="hidden" name="rno" value="<%=vo.getRno() %>" />
+		<input type="hidden" name="ano" value="<%=vo.getAno() %>" />
 		<div class="roomwrap">
 			<div class="imgwrap">
 		<%
@@ -370,6 +383,7 @@
 			</div>
 		</div>
 		</a>
+		</form>
 		<%
 			}
 		%>

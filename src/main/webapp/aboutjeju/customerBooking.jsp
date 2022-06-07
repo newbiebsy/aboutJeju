@@ -40,6 +40,9 @@
 		String rnoStr = request.getParameter("rno");
 		int rno = Integer.parseInt(rnoStr);
 		
+		String checkin = request.getParameter("checkin");
+		String checkout = request.getParameter("checkout");
+		
 		AccomodationDAO aDao = new AccomodationDAO();
 		AccomodationVO aVo = aDao.selectOne(ano);
 		RoomDAO rDao = new RoomDAO();
@@ -85,11 +88,13 @@
 		<form action="customerBookingOk.jsp" name="frm">	 
 			<input type="hidden" name="rno" value="<%=rno %>" />
 			<input type="hidden" name="ano" value="<%=ano %>" />
+			<input type="hidden" name="checkin" value="<%=checkin %>" />
+			<input type="hidden" name="checkout" value="<%=checkout %>" />
 			<div class="productinfo">
 				<div class="leftinfo">
 					<h4><%=aVo.getAname() %></h4>
 					<h4><%=rVo.getRtype() %></h4>
-					<h4>날짜</h4>
+					<h4>날짜<%=checkin %>~<%=checkout %></h4>
 					<h4>체크인 14:00|체크아웃 11:00</h4>
 				</div>
 				<div class="rightinfo">
