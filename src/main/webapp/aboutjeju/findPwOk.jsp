@@ -12,7 +12,7 @@ CustomerDAO cdao = new CustomerDAO();
 String cwho = cdao.findPw(inputId, inputQuestion, inputAnswer);
 
 OwnerDAO odao = new OwnerDAO();
-String owho = odao.findPw(inputId, inputQuestion);
+String owho = odao.findPw(inputId, inputQuestion, inputAnswer);
 
 if (cwho != null) {
 	response.sendRedirect("changePw.jsp?inputId=" + inputId + "&who=" + cwho);
