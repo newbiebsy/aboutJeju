@@ -2,7 +2,6 @@
 <%@page import="vo.CustomerVO"%>
 <%@page import="dao.OwnerDAO"%>
 <%@page import="dao.CustomerDAO"%>
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
  
