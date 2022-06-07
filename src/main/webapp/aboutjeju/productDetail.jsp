@@ -64,6 +64,8 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 		var spanText = document.getElementById("infoheight");
 		var infoOnBtn = document.getElementById("info-on");
 		var infoOffBtn = document.getElementById("info-off");
+		
+		var submitbtn = document.getElementById("submitbtn");
 
 		// 숙소소개란 내용이 짦을 경우 div길이 조절 후 펼치기 버튼 display : none;
 		if (spanText.offsetHeight < 100) {
@@ -87,10 +89,15 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 
 	}
 	
+	function movepage(x){
+		var btn = document.getElementById("hiddenbtn");
+		btn.click();
+	}
+	
 </script>
 </head>
-
 <body class="productDetail">
+
 	<jsp:include page="header.jsp" />
 	<jsp:include page="nav.jsp" />
 	<div class="container-fluid mt-4">
@@ -159,18 +166,22 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					</p>
 					<p><%=accoVo.getAtype()%></p>
 				</div>
+				<form action="customerBooking.jsp" id="headerfrm" class="rounded-pill mt-3 h-75">
 				<div class="border border-1 my-3 p-3 text-center">
 					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
 					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
+					<input type="submit" id="hiddenbtn" hidden=""/>
 				</div>
-
+				
 				<%
 				DecimalFormat df = new DecimalFormat("###,###");
 				for (RoomVO vo : roomList) {
 					ArrayList<RoomdetailVO> rdList = rdDao.select(vo.getRno());
 				%>
-				<a href="customerBooking.jsp" id="<%=vo.getRno() %>" >
+				<input type="hidden" name="rno" value="<%=vo.getRno() %>" />
+				<input type="hidden" name="ano" value="<%=vo.getAno() %>" />
 				<div class="card mb-3 mx-auto" style="max-width: 900px;">
+					<a href="#" id="<%=vo.getRno() %>" onclick="movepage(this)" >
 					<div class=" row g-0 border-1 border-bottom">
 						<div class="col-md-4">
 							<img src="<%=rdList.get(0).getRimage()%>" class="img-fluid rounded-start rooming" alt="<%=vo.getRtype()%>이미지">
@@ -198,8 +209,9 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 							</div>
 						</div>
 					</div>
+					</a>
 				</div>
-				</a>
+				</form>
 				<%
 				}
 				%>
@@ -288,5 +300,6 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 
 	<!-- My JS -->
 	<script src="../js/script.js"></script>
+	
 </body>
 </html>
