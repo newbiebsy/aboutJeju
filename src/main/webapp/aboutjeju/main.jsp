@@ -45,8 +45,10 @@
 		<%
 		AccomodationDAO adao = new AccomodationDAO();
 		ArrayList<AccomodationVO> list = adao.selectAll(0, 3);
+
 		RoomDAO rdao = new RoomDAO();
 		DecimalFormat df = new DecimalFormat("###,###");
+
 		for (AccomodationVO vo : list) {
 			RoomVO rvo = rdao.selectOne(vo.getAno());
 		%>
@@ -61,6 +63,7 @@
 					<%
 					int star = (int) Math.floor(vo.getStar());
 					float remainder = vo.getStar() % 1;
+
 					for (int j = 1; j <= star; j++) {
 					%>
 
@@ -99,8 +102,10 @@
 
 		<%
 		ArrayList<AccomodationVO> list2 = adao.selectBargain();
+
 		for (int i = 0; i < 2; i++) {
 			AccomodationVO vo = list2.get(i);
+
 			int price = vo.getPrice();
 			int discount = vo.getDiscount();
 		%>
@@ -133,11 +138,15 @@
 	<%
 	RoomDAO rmdao = new RoomDAO();
 	int dealCount = rmdao.getDealCount();
+
 	CustomerDAO cdao = new CustomerDAO();
 	int customerCount = cdao.getCustomerCount();
+
 	OwnerDAO odao = new OwnerDAO();
 	int ownerCount = odao.getOwnerCount();
+
 	int accomodationCount = adao.getAccomodationCount();
+
 	ReviewDAO rvdao = new ReviewDAO();
 	int reviewCount = rvdao.getReviewCount();
 	%>
@@ -169,7 +178,9 @@
 
 		<%
 		int startNo = (int) Math.round((Math.random() * 50));
+
 		ArrayList<AccomodationVO> list3 = adao.selectAll(startNo, 6);
+
 		for (AccomodationVO vo : list3) {
 			RoomVO rvo = rdao.selectOne(vo.getAno());
 		%>
@@ -185,6 +196,7 @@
 					<%
 					int star = (int) Math.floor(vo.getStar());
 					float remainder = vo.getStar() % 1;
+
 					for (int j = 1; j <= star; j++) {
 					%>
 
@@ -213,6 +225,7 @@
 
 		<%
 		}
+
 		rmdao.close();
 		cdao.close();
 		odao.close();
