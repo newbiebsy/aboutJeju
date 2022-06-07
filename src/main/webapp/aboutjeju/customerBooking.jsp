@@ -43,6 +43,11 @@
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
 		
+		// 날짜 체크하지 않고 방 클릭시 productDetail.jsp로 돌아감
+		if ((checkin == "" || "".equals(checkin))||checkout == "" || "".equals(checkout)){
+			response.sendRedirect("productDetail.jsp?ano="+ano+"&bn=1");
+		}
+		
 		AccomodationDAO aDao = new AccomodationDAO();
 		AccomodationVO aVo = aDao.selectOne(ano);
 		RoomDAO rDao = new RoomDAO();
