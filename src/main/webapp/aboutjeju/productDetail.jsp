@@ -119,9 +119,9 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 
 				<!-- 캐러셀 -->
 				<div id="carouselExampleIndicators" class="carousel carousel-dark slide mt-5" data-bs-ride="carousel">
-					<div class="carousel-inner" style="height: 320px;">
+					<div class="carousel-inner" style="height: 400px;">
 						<div class="carousel-item active">
-							<img src="<%=accoVo.getAimage()%>" class="d-block w-100 h-100" alt="숙소이미지">
+							<img src="<%=accoVo.getAimage()%>" class="d-block w-100" alt="숙소이미지" height="400px">
 						</div>
 
 						<%
@@ -132,7 +132,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 						%>
 
 						<div class="carousel-item">
-							<img src="<%=rdList.get(i).getRimage()%>" class="d-block w-100 h-100" alt="숙소이미지">
+							<img src="<%=rdList.get(i).getRimage()%>" class="d-block w-100" alt="숙소이미지" height="400px">
 						</div>
 
 						<%
@@ -150,7 +150,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 				</div>
 				
 				<!-- 숙소정보 -->
-				<div class="border border-1 my-3 p-3">
+				<div class="row border border-1 my-3 p-3">
 					<h4 class="fw-bold"><%=accoVo.getAname()%></h4>
 					<p>
 						<%
@@ -178,9 +178,9 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					<p><%=accoVo.getAtype()%></p>
 				</div>
 				<form action="customerBooking.jsp" >
-				<div class="border border-1 my-3 p-3 text-center">
-					<input type="text" id="checkin" name="checkin" placeholder="체크인" class="w-25" />
-					<input type="text" id="checkout" name="checkout" placeholder="체크아웃" class="w-25" />
+				<div class="border border-1 my-3 p-3 text-center row px-3">
+					<input type="text" id="checkin" name="checkin" placeholder="체크인 날짜 선택" class="col form-control me-3" />
+					<input type="text" id="checkout" name="checkout" placeholder="체크아웃 날짜 선택" class="col form-control border border-1 ms-3" />
 					<input type="submit" id="hiddenbtn" hidden=""/>
 				</div>
 				
@@ -265,7 +265,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					%>
 
 					<div class="d-inline-block text-center">
-						<img src="../image/<%=src%>.png" alt="" width="65px" height="65px" />
+						<img src="../images/<%=src%>.png" alt="" width="65px" height="65px" />
 						<br /> <span><%=vo.getCoption()%></span>
 					</div>
 

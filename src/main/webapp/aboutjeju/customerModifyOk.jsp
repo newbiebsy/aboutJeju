@@ -5,6 +5,7 @@ request.setCharacterEncoding("UTF-8");
 
 String id = request.getParameter("inputId");
 String pw = request.getParameter("inputPw");
+String repw = request.getParameter("inputRePw");
 String pwq = request.getParameter("inputQuestion");
 String pwqa = request.getParameter("inputAnswer");
 String name = request.getParameter("inputName");
