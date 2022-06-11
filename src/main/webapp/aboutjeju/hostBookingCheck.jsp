@@ -141,7 +141,7 @@
 					</table>
 				</div>
 				<button type="button" class="btn btn-outline-secondary mt-3"
-					data-bs-toggle="modal" data-bs-target="#hostBookCancel">예약취소</button>
+					data-bs-toggle="modal" data-bs-target="#hostBookCancel" disabled>예약취소</button>
 
 				<!-- Modal -->
 				<div class="modal fade" id="hostBookCancel" tabindex="-1"

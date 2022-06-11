@@ -28,9 +28,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
-<body>
+<body class="mypage">
 	<jsp:include page="mypageHeader.jsp" />
-	<div class="container-fluid mypage mt-4">
+	<div class="container-fluid mt-2">
 		<div class="row">
 			<jsp:include page="mypageSidebarH.jsp" />
 
@@ -58,7 +58,7 @@
 				
 				%>
 				
-				<div class="mx-auto text-end py-4" style="max-width: 650px;">
+				<div class="mx-auto text-end py-2 pb-4" style="max-width: 650px;">
 					<!-- <button type="submit" class="btn btn-outline-primary px-4 shadow-sm" id="add">+ 추가하기</button> -->
 					<form name="frm2" enctype="multipart/form-data">
 					<!-- <a type="button" class="btn btn-outline-primary px-4 shadow-sm" id="add" onclick="addRoom(this)">+ 추가하기</a> -->
@@ -153,7 +153,7 @@
 				
 			function addRoom(x){
 			var frm2 = x.form;
-			frm2.action="addRoom.jsp"; 
+			frm2.action="addRoom.jsp?loc=rmanage"; 
 			frm2.method="post";
 			frm2.submit();
 		}

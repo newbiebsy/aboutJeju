@@ -112,7 +112,7 @@
 
 		<div class="col-md-6 my-2 px-3 position-relative">
 			<a href="productDetail.jsp?ano=<%=vo.getAno()%>" class="card mx-auto text-reset">
-				<img src="<%=vo.getAimage() != null ? vo.getAimage() : "../images/noimage.png"%>" class="card-img-top" alt="<%=vo.getAname()%>" />
+				<img src="<%=vo.getAimage() != null ? vo.getAimage() : "../images/noimage.png"%>" class="card-img-top" alt="<%=vo.getAname()%>" style="height: 220px;" />
 				<div class="card-body">
 					<p class="card-text">
 					<div class="fs-4 fw-bold" style="height: 3.8rem"><%=vo.getAname()%></div>

@@ -33,17 +33,25 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script>
 	
-<%request.setCharacterEncoding("UTF-8");
+<%
+request.setCharacterEncoding("UTF-8");
 Object obj = session.getAttribute("cvo");
+Object oobj = session.getAttribute("ovo");
+
+String anoStr = request.getParameter("ano");
+int ano = Integer.parseInt(anoStr);
+
 if (obj == null) {
-	response.sendRedirect("login.jsp");
+	if (oobj != null) {	// 호스트로 로그인시 숙소상세보기 페이지로 돌아감	
+		response.sendRedirect("productDetail.jsp?ano=" + ano);
+	} else { // 로그인 안했으면 로그인화면으로 이동
+		response.sendRedirect("login.jsp");
+	}
 } else {
+
 	DecimalFormat df = new DecimalFormat("###,###");
 
 	CustomerVO cvo = (CustomerVO) obj;
-
-	String anoStr = request.getParameter("ano");
-	int ano = Integer.parseInt(anoStr);
 
 	String rnoStr = request.getParameter("rno");
 	int rno = Integer.parseInt(rnoStr);
@@ -68,7 +76,9 @@ if (obj == null) {
 	AccomodationDAO aDao = new AccomodationDAO();
 	AccomodationVO aVo = aDao.selectOne(ano);
 	RoomDAO rDao = new RoomDAO();
-	RoomVO rVo = rDao.select(rno);%>
+	RoomVO rVo = rDao.select(rno);
+%>
+	
 	window.onload = function() {
 		var paybtn = document.getElementById("pay");
 		var allcheck = document.getElementById("allcaution");
@@ -121,11 +131,12 @@ if (obj == null) {
 						<p class="fs-5">
 							<%=checkin%>
 							~
-							<%=checkout%> (<%=diffDays %>박)<br /> <span class="text-muted">체크인 14:00 &nbsp;|&nbsp; 체크아웃 11:00</span>
+							<%=checkout%>
+							(<%=diffDays%>박)<br /> <span class="text-muted">체크인 14:00 &nbsp;|&nbsp; 체크아웃 11:00</span>
 						</p>
 						<div class="text-end fs-4 fw-bold pe-4">
 							금액
-							 <%=df.format(Math.round(rVo.getPrice() * (1 - rVo.getDiscount() * 0.01) * diffDays))%>원
+							<%=df.format(Math.round(rVo.getPrice() * (1 - rVo.getDiscount() * 0.01) * diffDays))%>원
 						</div>
 					</div>
 

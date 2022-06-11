@@ -1,3 +1,6 @@
+<%@page import="vo.AccomodationVO"%>
+<%@page import="dao.AccomodationDAO"%>
+<%@page import="vo.OwnerVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,8 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
 <!-- Bootstrap icon CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" />
@@ -35,22 +38,33 @@
 
 		var btn2 = document.getElementById("btn2");
 		btn2.onclick = function() {
-			/* 	var title = document.getElementById("title");
-				var detail = $('input:radio[name=detail]').is(':checked');
-				var addrs1 = document.getElementById("addrs1");
-				var addrs2 = document.getElementById("addrs2");
-				var phone = document.getElementById("phone");
-				var convenience = $('input:checkbox[name=convenience]').is(':checked');
-				
-				
-				
-				if(title.isEmpty()) {alert("숙소이름을 입력해주시기 바랍니다")}
-				else if(detail ==false){alert("숙소종류를 확인해주시기 바랍니다")}
-				else if(addrs1==null){alert("주소를 입력해주시기 바랍니다")}
-				else if(addrs2==null){alert("주소를 입력해주시기 바랍니다")}
-				else if(phone==null){alert("전화번호를 입력해주시기 바랍니다")}
-				else if(convenience==false){alert("편의사항을 확인해주시기 바랍니다")}
-				else{ } */
+			var title = document.getElementById("title").value;
+			var detail = $("input:radio[name='detail']").is(':checked');
+			var addrs1 = document.getElementById("addrs1").value;
+			var addrs2 = document.getElementById("addrs2").value;
+			var phone = document.getElementById("phone").value;
+			var convenience = $("input:checkbox[name='convenience']").is(
+					':checked');
+
+			if (title == "") {
+				alert("숙소이름을 입력해주시기 바랍니다");
+				return;
+			} else if (detail == false) {
+				alert("숙소종류를 확인해주시기 바랍니다");
+				return;
+			} else if (addrs1 == "") {
+				alert("주소를 입력해주시기 바랍니다");
+				return;
+			} else if (addrs2 == "") {
+				alert("주소를 입력해주시기 바랍니다");
+				return;
+			} else if (phone == "") {
+				alert("전화번호를 입력해주시기 바랍니다");
+				return;
+			} else if (convenience == false) {
+				alert("편의사항을 확인해주시기 바랍니다");
+				return;
+			}
 
 			alert("수정이 완료되었습니다");
 
@@ -65,8 +79,8 @@
 		new daum.Postcode({
 			oncomplete : function(data) {
 				console.dir(data);
-				document.getElementById("addrs").value = data.roadAddress;
-				document.getElementById("detailaddrs").focus();
+				document.getElementById("addrs1").value = data.roadAddress;
+				document.getElementById("addrs2").focus();
 			}
 
 		}).open();
@@ -86,19 +100,18 @@
 	}
 </script>
 </head>
-<body class="productManage">
-	<jsp:include page="mypageHeader.jsp" />
-	<div class="container-fluid mypage mt-4">
+<body class="productManage mypage">
+		<jsp:include page="mypageHeader.jsp" />
+	<div class="container-fluid mt-4">
 		<div class="row">
 			<jsp:include page="mypageSidebarH.jsp" />
-
 			<div class="col-md-9 mb-3">
 				<form name="frm" method="post" enctype="multipart/form-data" class="col-12 col-sm-8 col-lg-6 mx-auto">
-					<h4 class="mt-5 mb-4 fw-bold text-center">숙소 정보 관리</h4>
+					<h4 class="mt-2 mb-4 fw-bold text-center">숙소 정보 관리</h4>
 					<div class="mb-3 row">
 						<label for="title" class="col-form-label col-3">숙소 이름</label>
 						<div class="col-9">
-							<input type="text" class="form-control" name="title" id="title">
+							<input type="text" class="form-control" name="title" id="title" />
 						</div>
 					</div>
 
@@ -109,24 +122,18 @@
 								<div>
 									<input type="radio" name="detail" id="" value="호텔" />
 									호텔
-									<img src="../image/hotel.png" alt="" />
 								</div>
 								<div>
 									<input type="radio" name="detail" id="" value="모텔" />
 									모텔
-									<img src="../image/motel.png" alt="" />
 								</div>
-							</div>
-							<div class="d-flex justify-content-evenly">
 								<div>
 									<input type="radio" name="detail" id="" value="게스트하우스" />
 									게스트 하우스
-									<img src="../image/guesthouse.png" alt="" />
 								</div>
 								<div>
 									<input type="radio" name="detail" id="" value="펜션" />
 									펜션
-									<img src="../image/pension.png" alt="" />
 								</div>
 							</div>
 						</div>
@@ -163,51 +170,51 @@
 								<div>
 									<input type="checkbox" name="convenience" id="" value="주차가능" />
 									주차가능
-									<img src="../image/parking.png" alt="parking" />
+									<img src="../images/parking.png" alt="parking" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="수영장" />
 									수영장
-									<img src="../image/swim.png" alt="swim" />
+									<img src="../images/swim.png" alt="swim" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="냉장고" />
 									냉장고
-									<img src="../image/refrigerator.png" alt="refrigerator" />
+									<img src="../images/refrigerator.png" alt="refrigerator" />
 								</div>
 							</div>
 							<div class="d-flex justify-content-evenly mb-3">
 								<div>
 									<input type="checkbox" name="convenience" id="" value="짐보관" />
 									짐보관
-									<img src="../image/baggage.png" alt="baggage" />
+									<img src="../images/baggage.png" alt="baggage" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="24H" />
 									24H
-									<img src="../image/24h.png" alt="24h" />
+									<img src="../images/24h.png" alt="24h" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="레스토랑" />
 									레스토랑
-									<img src="../image/restaurant.png" alt="restaurant" />
+									<img src="../images/restaurant.png" alt="restaurant" />
 								</div>
 							</div>
 							<div class="d-flex justify-content-evenly mb-3">
 								<div>
 									<input type="checkbox" name="convenience" id="" value="WIFI" />
 									WIFI
-									<img src="../image/wifi.png" alt="wifi" />
+									<img src="../images/wifi.png" alt="wifi" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="금연객실" />
 									금연객실
-									<img src="../image/nosmoke.png" alt="nosmoke" />
+									<img src="../images/nosmoke.png" alt="nosmoke" />
 								</div>
 								<div>
 									<input type="checkbox" name="convenience" id="" value="흡연구역" />
 									흡연구역
-									<img src="../image/smokingarea.png" alt="smokingarea" />
+									<img src="../images/smokingarea.png" alt="smokingarea" />
 								</div>
 							</div>
 						</div>
@@ -235,8 +242,7 @@
 	</div>
 
 	<!-- Bootstrap Bundle with Popper -->
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 		
 	</script>
 

@@ -32,7 +32,8 @@ window.onload=function(){
 }
 	
 	function modify(){
-		var pw = $("#inputRePw").val();
+		var pw = $("#inputPw").val();
+		var repw = $("#inputRePw").val();
 		var num = pw.search(/[0-9]/g);
 		var frm = document.frm;
 		var phoneNum = $("#inputPhone").val(); 
@@ -65,6 +66,9 @@ window.onload=function(){
 		}else if(pw.search(/\s/) != -1){
 		 	alert("비밀번호는 공백 없이 입력해주세요.");
 		 	return false;
+		}else if(pw!=repw){
+		 	alert("비밀번호가 동일하지 않습니다. 다시 입력해주세요.");
+		 	return false;
 		}else if(!patternPhone.test(phoneNum)){
 			alert('핸드폰 번호를 확인 해주세요');
 			return;
@@ -83,37 +87,40 @@ window.onload=function(){
 
 </script>
 </head>
-<body>
-
+<body class="mypage">
 	<jsp:include page="mypageHeader.jsp" />
-	<div class="container-fluid mypage mt-4">
+	<div class="container-fluid mt-4">
 		<div class="row">
 			<jsp:include page="mypageSidebarH.jsp" />
 
 			<div class="col-md-9">
 				<%
 				Object obj = session.getAttribute("ovo");
-				OwnerVO ovo = (OwnerVO) obj;
+				OwnerVO vo = (OwnerVO) obj;
+				
+				OwnerDAO dao = new OwnerDAO();
+				OwnerVO ovo = dao.selectOne(vo.getOid());
+				System.out.println(ovo.getOfindpw());
 
 				//println("obj : " + obj);
 				//out.println("id : " + id);
 				%>
 				<form name="frm" class="col-12 col-sm-8 col-lg-6 mx-auto" id="signUpfrm">
-					<h4 class="mt-5 mb-4 fw-bold text-center">내 정보 수정</h4>
+					<h4 class="mt-2 mb-4 fw-bold text-center">내 정보 수정</h4>
 					<div class="mb-3 row">
 						<label for="inputId" class="col-form-label col-4">사업자번호</label>
 						<div class="col-8">
 							<!-- readonly는 disabled처럼 입력은 비활성화 되지만 폼으로 전송 가능 -->
-							<input type="text" class="form-control" id="inputOno" placeholder="<%=ovo.getOno()%>" readonly> <input type="hidden" name="inputOno"
-								value="<%=ovo.getOno()%>" />
+							<input type="text" class="form-control" id="inputOno" placeholder="<%=vo.getOno()%>" readonly> <input type="hidden" name="inputOno"
+								value="<%=vo.getOno()%>" />
 						</div>
 					</div>
 					<div class="mb-3 row">
 						<label for="inputId" class="col-form-label col-4">아이디</label>
 						<div class="col-8">
 							<!-- readonly는 disabled처럼 입력은 비활성화 되지만 폼으로 전송 가능 -->
-							<input type="text" class="form-control" id="inputId" placeholder="<%=ovo.getOid()%>" readonly> <input type="hidden" name="inputId"
-								value="<%=ovo.getOid()%>" />
+							<input type="text" class="form-control" id="inputId" placeholder="<%=vo.getOid()%>" readonly> <input type="hidden" name="inputId"
+								value="<%=vo.getOid()%>" />
 						</div>
 					</div>
 					<div class="mb-3 row">
@@ -144,7 +151,7 @@ window.onload=function(){
 					<div class="mb-3 row">
 						<label for="inputAnswer" class="col-form-label col-4">비밀번호 찾기 답</label>
 						<div class="col-8">
-							<input type="text" class="form-control" name="inputAnswer" id="inputAnswer" value="홍길동">
+							<input type="text" class="form-control" name="inputAnswer" id="inputAnswer" value="<%=ovo.getOfindpwa()%>">
 						</div>
 					</div>
 					<div class="mb-3 row">

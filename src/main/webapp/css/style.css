@@ -39,6 +39,7 @@ a {
 
 .header>div>a>img {
 	width: 150px;
+	height:50px;
 }
 
 #headerfrm {
@@ -206,6 +207,20 @@ a {
 	overflow: hidden;
 }
 
+.fixedheader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index:50;
+}
+
+.fixedsidebar {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	z-index:50;
+}
+
 .mypage .header .bi-list {
 	font-size: 40px;
 }
@@ -214,13 +229,13 @@ a {
 	height: 100vh;
 	background-color: #549ecf;
 	margin: 0;
-	padding: 40px 0 0 40px;
+	padding: 40px 40px 0 40px;
 }
 
-.mypage .row>.position-absolute {
+.mypage .row>.col-md-3>.position-absolute {
 	/* .mypage .sidebar */
 	top: 0;
-	right: 0;
+	left:50%;
 	background-color: rgba(0, 0, 0, 0.9);
 	height: 100%;
 	width: 50%;
@@ -253,6 +268,11 @@ a {
 .mypage .contents {
 	height: 100vh;
 	margin: 0;
+}
+
+/* 호스트예약화면 */
+.hostBookingCheck{
+	overflow: hidden;
 }
 
 /* 손님예약화면 */

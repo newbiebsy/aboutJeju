@@ -238,7 +238,7 @@ ArrayList<ConvenienceVO> conList = conDao.selectAll(ano);%>
 					</div>
 				</div>
 
-				<div class="conveniencebox my-3 d-flex justify-content-between my-3 py-3">
+				<div class="conveniencebox my-3 d-flex justify-content-evenly my-3 py-3">
 					<%
 					for (ConvenienceVO vo : conList) {
 						String src = "";
