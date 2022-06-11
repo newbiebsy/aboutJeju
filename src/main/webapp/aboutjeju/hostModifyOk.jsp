@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 
 <%
+request.setCharacterEncoding("UTF-8");
 String id = request.getParameter("inputId");
 String pw = request.getParameter("inputPw");
 String pwq = request.getParameter("inputQuestion");
