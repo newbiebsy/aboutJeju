@@ -8,17 +8,18 @@ public class OwnerVO {
 	String ofindpwa;
 	String oname;
 	String ophone;
-	
 
-	public OwnerVO(String ono, String oid, String opw, String ofindpw, String oname, String ophone) {
+	public OwnerVO(String ono, String oid, String opw, String ofindpw, String ofindpwa, String oname, String ophone) {
 		super();
 		this.ono = ono;
 		this.oid = oid;
 		this.opw = opw;
 		this.ofindpw = ofindpw;
+		this.ofindpwa = ofindpwa;
 		this.oname = oname;
 		this.ophone = ophone;
 	}
+
 	public OwnerVO(String ofindpw, String ofindpwa, String oname, String ophone) {
 		super();
 		this.ofindpw = ofindpw;
@@ -73,6 +74,14 @@ public class OwnerVO {
 
 	public void setOphone(String ophone) {
 		this.ophone = ophone;
+	}
+
+	public String getOfindpwa() {
+		return ofindpwa;
+	}
+
+	public void setOfindpwa(String ofindpwa) {
+		this.ofindpwa = ofindpwa;
 	}
 
 }

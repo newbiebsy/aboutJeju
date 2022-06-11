@@ -28,12 +28,17 @@
 	String saveDir = request.getRealPath("/upload");
 	MultipartRequest mr = new MultipartRequest(request, saveDir, 1024*1024*10, "UTF-8", new DefaultFileRenamePolicy());
 	
-	int rno = rdVo.getRno();
-	System.out.println(rno);
+	//int rno = rdVo.getRno();
+	
+/* 	String ano = mr.getParameter("ano");
+	System.out.println(ano);
+	if(ano !=null){
+		int rno = Integer.parseInt(ano);
+	
 	
 	/* 	if(rno2!=null){
 			int rno = Integer.parseInt(rno2);
-		 */
+		 */ 
 	
 	String rtype = mr.getParameter("type");
 	int rcount = Integer.parseInt(mr.getParameter("count"));
@@ -41,12 +46,7 @@
 	int discount = Integer.parseInt(mr.getParameter("discount"));
 	int rpeople = Integer.parseInt(mr.getParameter("people"));
 	
-	System.out.println(rtype);
-	System.out.println(rcount);
-	System.out.println(price);
-	System.out.println(discount);
-	System.out.println(rpeople);
-	System.out.println(rno);
+
 	
 	String f = mr.getOriginalFileName("filename");
 	System.out.println(f);
@@ -60,14 +60,16 @@
 	rVo.setDiscount(discount);
 	rVo.setRpeople(rpeople); 
 	
-	//rDao.insertRoom(rVo);
+	rDao.insertRoom(rVo);
 	
 	rdVo.setRdno(rdVo.getRdno());
-	rdVo.setRno(rno);
+	rdVo.setRno(rVo.getRno());
 	rdVo.setRimage("../upload/"+f);
 	
-	//rdDao.insertImage(rdVo);
+	rdDao.insertImage(rdVo);
 	
 	 response.sendRedirect("roomManage.jsp");  
+	 
+	//}	
 		
 %>

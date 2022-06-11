@@ -69,15 +69,12 @@
 
 	// URL에 체크인날짜를 checkin으로 넘겨받음(기본값이 null이어야 sql 에러안남)
 	String checkin = request.getParameter("checkin");
-
+	
 	// URL에 체크아웃날짜를 checkout으로 넘겨받음(기본값이 null이어야 sql 에러안남)
 	String checkout = request.getParameter("checkout");
 
 	// URL에 숙소 타입을 atype으로 넘겨받음
 	String atype = request.getParameter("atype");
-	if(atype == null){
-		atype="호텔";
-	}
 
 	// 현재 페이지 번호
 	String cp = request.getParameter("cp");
@@ -137,7 +134,7 @@
 	if (atype != null) { // 메인에서 카테고리 버튼을 눌러서 productList로 이동한 경우
 		totalCount = dao.getTotalCount(atype);
 		System.out.println("totalCountType : " + totalCount);
-	} else if (search != null) { // 메인에서 검색을 통해 productList로 이동한경우
+	} else if (search=="") { // 메인에서 검색을 통해 productList로 이동한경우
 		totalCount = dao.getSearchedAccomodationTotalCount(search, remainAlist);
 		System.out.println("totalCountSearch : " + totalCount);
 	}
@@ -185,7 +182,6 @@
 				alt="<%=list.get(i).getAname()%>" />
 				<div class="card-body">
 					<p class="card-text">
-
 					<div class="fs-5 fw-bold" style="height: 3.8rem"><%=list.get(i).getAname()%></div>
 
 					<%
@@ -221,10 +217,10 @@
 		</div>
 
 		<%
-		}
+			}
 		} else if (search != null) { // 메인에서 검색을 통해 productList로 이동한경우
 		ReviewDAO rvdao = new ReviewDAO();
-		
+
 		if (searchedList.size() == 0) {
 		out.println("<h4 class='text-center py-5 mt-5'>검색 조건에 맞는 숙소가 없습니다.</h4>");
 		}
