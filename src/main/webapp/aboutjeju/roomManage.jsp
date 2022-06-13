@@ -134,13 +134,13 @@
 										<input class="form-control" type="file" id="filename" name="filename" onchange="read<%=rno %>(this)">
 										<span><img src="" alt="" id="preview<%=rno %>" style="width: 40px; height: 30px;" class="mt-3" /></span>
 									</div>
-								</div>
+								</div>								
 							</div>
 
 						</div>
-						<div class="d-flex justify-content-end">
-							<button type="button" id="<%=rno%>" class="btn btn-primary m-2" onclick="modifyRoom(this);" role="button">수정</button>
-							<button type="button" id="<%=rno%>" class="btn btn-secondary m-2" onclick="deleteRoom(this)" role="button">삭제</button>
+						<div class="d-flex justify-content-end">					
+							<button type="button" class="btn btn-primary m-2" onclick="modifyRoom(this);" role="button">수정</button>
+							<a href="roomDelete.jsp?rno=<%=rno %>" class="btn btn-secondary m-2" role="button">삭제</a>
 						</div>
 					</div>
 				</form>
@@ -157,25 +157,7 @@
 			frm2.method="post";
 			frm2.submit();
 		}
-
-		function deleteRoom(x){
-			/* 	console.log(e.getAttribute("id"));
-				var a = e.getAttribute("id");
-				$(e).attr('id') */
-				 
-			<%-- 	<% 
-				rdDao.deleteAll();
-				rDao.deleteOne();
-				%> --%>
-			<%-- var frm = document.frm;
-			frm.action="roomDelete.jsp?rno=<%=rno%>";
-			frm.method="post";
-			frm.submit(); --%>
-			var frm = x.form;
-				frm.action="roomDelete.jsp?rno=<%=rno%>";
-				frm.method="post";
-				frm.submit();
-			}		
+	
 		
 		function modifyRoom(x){
 			<%-- var frm = document.frm;

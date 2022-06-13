@@ -326,7 +326,7 @@
 						%>
 
 						<li class="page-item"><a class="page-link"
-							href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous" title="5페이지 앞으로">
+							href="customerBookingCheck.jsp?cp=<%=(currentPage - 5 < 1) ? 1 : (currentPage - 5)%>" aria-label="Previous" title="5페이지 앞으로">
 								<span aria-hidden="true">&laquo;</span>
 						</a></li>
 
@@ -336,13 +336,13 @@
 						if (i == currentPage) {
 						%>
 
-						<li class="page-item"><a class="page-link bg-primary text-white" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
+						<li class="page-item"><a class="page-link bg-primary text-white" href="customerBookingCheck.jsp?cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						} else {
 						%>
 
-						<li class="page-item"><a class="page-link" href="costomerBookingCheck.jsp?cno=<%=cno%>&cp=<%=i%>"><%=i%></a></li>
+						<li class="page-item"><a class="page-link" href="customerBookingCheck.jsp?cp=<%=i%>"><%=i%></a></li>
 
 						<%
 						}

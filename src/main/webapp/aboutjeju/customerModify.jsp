@@ -87,10 +87,10 @@
 		// console.log($("#inputName").val());
 	</script>
 
-<body>
+<body class="mypage">
 
 	<jsp:include page="mypageHeader.jsp" />
-	<div class="container-fluid mypage mt-4">
+	<div class="container-fluid mt-4">
 		<div class="row">
 			<jsp:include page="mypageSidebarC.jsp" />
 			<!--제원님은 이부분만 mypageSidebarH.jsp 로 변경해서 연결하시면 됩니다  -->

@@ -49,7 +49,7 @@
 	function cancleRoom() {
 		console.log("te");
 		var frm = document.frm;
-		frm.action="roomManage.jsp";
+		frm.action="roomManage.jsp?loc=rmanage";
 		frm.method="post";
 		frm.submit();
 	}
@@ -78,15 +78,15 @@
 	}
 </script>
 </head>
-<body>
+<body class="mypage">
 	<jsp:include page="mypageHeader.jsp" />
-	<div class="container-fluid mypage mt-4">
+	<div class="container-fluid mt-4">
 		<div class="row">
 			<jsp:include page="mypageSidebarH.jsp" />
 		
 			<div class="col-md-9">
 				<form name="frm" class="col-12 col-sm-8 col-lg-6 mx-auto" method="post" enctype="multipart/form-data">
-					<h4 class="mt-5 mb-4 fw-bold text-center">방 추가</h4>
+					<h4 class="mt-2 mb-4 fw-bold text-center">방 추가</h4>
 					<div class="mb-3 row">
 						<label for="type" class="col-3 col-form-label">방 종류</label>
 						<div class="col-9">
@@ -120,11 +120,6 @@
 						<div class="col-9">
 							<input class="form-control" type="file" id="filename" name="filename" onchange="read(this)">
 							<span><img src="" alt="" id="preview" style="width: 40px; height: 30px;" class="my-3" /></span>
-						</div>
-						<label for="filename2" class="col-3 col-form-label">방 사진2</label>
-						<div class="col-9">
-							<input class="form-control" type="file" id="filename2" name="filename2" onchange="read2(this)">
-							<span><img src="" alt="" id="preview2" style="width: 40px; height: 30px;" class="my-3" /></span>
 						</div>
 					</div>
 					<div class="d-flex justify-content-center">
