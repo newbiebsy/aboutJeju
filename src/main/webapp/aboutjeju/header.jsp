@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!-- ## 헤더 -->
 <div class="container-fluid py-4 headerWrap" id="headerWrap">
 	<div class="row header">
@@ -36,11 +37,27 @@
 
 		<%
 		// 로그인되어있는 상태
-		} else {
+		} else {		
 		%>
 
 		<div class="dropdown text-end position-absolute w-25">
+			<%
+			if(cvo != null){
+				if(cvo.getCid().equals("bsy1234")  ){
+			%>
+			<i type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img id="headermyimg" src="../images/bsy.jpg"  class="rounded-circle" width="130px" height="130px" alt="내사진" /></i>
+			<%
+				}else{				
+			%>
 			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+			<%
+				}
+			}else{
+			%>
+			<i class="bi bi-person-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>		
+			<%
+			}
+			%>
 			<ul class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton1">
 				<li><a class="dropdown-item" href="<%=cvo != null ? "customerModify.jsp" : "hostModify.jsp"%>">마이페이지</a></li>
 				<li><a class="dropdown-item" href="<%=cvo != null ? "customerBookingCheck.jsp?cp=1" : "hostBookingCheck.jsp?cp=1"%>">예약내역</a></li>
