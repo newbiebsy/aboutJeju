@@ -3,7 +3,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,eclipse
 
-### Eclipse ###
+### Eclipse ##
 .metadata
 bin/
 tmp/
@@ -120,5 +120,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# aws
+DbProperties.java
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
